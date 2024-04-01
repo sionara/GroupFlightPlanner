@@ -1,0 +1,35 @@
+﻿@model IEnumerable<GroupFlightPlanner.Models.AirplaneDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Airplanes in the system</h2>
+
+<a href="/Airplane/New" class="btn btn-success">New Airplane <span class="fa-solid fa-circle-plus"></span></a>
+
+<form action="/Airplane/List" method="GET" class="space-search">
+    <div class="display-search">
+        <input type="text" name="AirplaneSearch" class="form-control" />
+        <input type="submit" value="Search" class="btn btn-primary">
+    </div>
+</form>
+
+<div class="container">
+    <div class="row">
+        @foreach (var airplane in Model)
+        {
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card">
+                    <div class="card-header background-main-text2">
+                        <h2><a href="/Airplane/Details/@airplane.AirplaneId" class="link-entity-details">@airplane.AirplaneModel</a></h2>
+                    </div>
+                    <div class="p-2">
+                        <div>Registration Number: <span class="title-entity">@airplane.RegistrationNum</span></div>
+                        <div>Manufacture Year: @airplane.ManufactureYear.Date.ToString("yyyy-MM-dd")</div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

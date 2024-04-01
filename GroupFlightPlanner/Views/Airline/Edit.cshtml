@@ -1,0 +1,38 @@
+﻿@model GroupFlightPlanner.Models.AirlineDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Airline</h2>
+
+<form action="/Airline/Update/@Model.AirlineId" method="POST">
+    <div>
+        <input type="text" name="AirlineId" value="@Model.AirlineId" style="display:none" />
+    </div>
+    <div class="mb-2">
+        <label>Name Airline : </label> <input type="text" name="AirlineName" value="@Model.AirlineName" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Country : </label> <input type="text" name="Country" value="@Model.Country" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Headquarters : </label> <input type="text" name="Headquarters" value="@Model.Headquarters" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Founder : </label> <input type="text" name="FounderName" value="@Model.FounderName" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Founding Year : </label> <input type="date" name="FoundingYear" value="@Model.FoundingYear.Date.ToString("yyyy-MM-dd")" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Website : </label> <input type="text" name="Website" value="@Model.Website" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Contact Number : </label> <input type="tel" name="ContactNumber" value="@Model.ContactNumber" class="input-forms" />
+    </div>
+
+    <div>
+        <input type="submit" value="Update Airline" class="btn btn-primary" />
+
+    </div>
+</form>

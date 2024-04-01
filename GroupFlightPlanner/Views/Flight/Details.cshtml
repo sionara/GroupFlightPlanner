@@ -1,0 +1,25 @@
+﻿@model GroupFlightPlanner.Models.ViewModels.DetailsFlight
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="redirect-features">
+    <a href="/Flight/List" class="btn btn-primary">Go back to list</a>
+
+    <a href="/Flight/Edit/@Model.SelectedFlight.FlightId" class="btn btn-warning">Update <span class="fa-solid fa-arrows-rotate"></span></a>
+
+    <a href="/Flight/DeleteConfirm/@Model.SelectedFlight.FlightId" class="btn btn-danger">Delete <span class="fa-solid fa-trash icon-trash"></span></a>
+</div>
+
+<h2 class="mt-2">Details of Flight Number: <span class="title-entity">@Model.SelectedFlight.FlightNumber</span></h2>
+<div><strong>From: </strong> @Model.SelectedFlight.From</div>
+<div><strong>To: </strong> @Model.SelectedFlight.To</div>
+<div><strong>Airline: </strong> <span class="title-entity">@Model.SelectedFlight.AirlineName</span></div>
+<div><strong>Airplane: </strong> <span class="title-entity">@Model.SelectedFlight.AirplaneModel</span></div>
+<div><span class="fa-solid fa-plane" style="color: #dc3545 "></span> <strong>Duration: </strong> <span class="title-entity">@Model.FlightDuration</span></div>
+<div><strong>Departure Airport: </strong> @Model.SelectedFlight.DepartureAirport</div>
+<div><strong>Destination Airport: </strong> @Model.SelectedFlight.DestinationAirport</div>
+<div><strong>Departure Time: </strong> <span class="title-entity">@Model.SelectedFlight.DepartureTime.ToString("yyyy-MM-dd hh:mm:ss tt") -- @Model.SelectedFlight.TimeZoneFrom</span></div>
+<div><strong>Arrival Time: </strong> <span class="title-entity">@Model.SelectedFlight.ArrivalTime.ToString("yyyy-MM-dd h:mm:ss tt") -- @Model.SelectedFlight.TimeZoneTo</span></div>
+<div><strong>Ticket Price: </strong> @Model.SelectedFlight.TicketPrice</div>
+

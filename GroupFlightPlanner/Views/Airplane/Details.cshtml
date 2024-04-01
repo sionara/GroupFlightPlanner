@@ -1,0 +1,45 @@
+﻿@model GroupFlightPlanner.Models.ViewModels.DetailsAirplane
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="redirect-features">
+    <a href="/Airplane/List" class="btn btn-primary">Go back to list</a>
+
+    <a href="/Airplane/Edit/@Model.SelectedAirplane.AirplaneId" class="btn btn-warning">Update <span class="fa-solid fa-arrows-rotate"></span></a>
+
+    <a href="/Airplane/DeleteConfirm/@Model.SelectedAirplane.AirplaneId" class="btn btn-danger">Delete <span class="fa-solid fa-trash icon-trash"></span></a>
+</div>
+
+<h2 class="mt-2">Details of Airplane Model: <span class="title-entity">@Model.SelectedAirplane.AirplaneModel</span></h2>
+<div><strong>Registration Number: </strong> <span class="title-entity">@Model.SelectedAirplane.RegistrationNum</span></div>
+<div><strong>Manufacturer: </strong> @Model.SelectedAirplane.ManufacturerName</div>
+<div><strong>Manufacture Year: </strong> <span class="title-entity">@Model.SelectedAirplane.ManufactureYear.Date.ToString("yyyy-MM-dd")</span></div>
+<div><strong>Max Passengers: </strong> @Model.SelectedAirplane.MaxPassenger</div>
+<div><strong>Engine Model: </strong> @Model.SelectedAirplane.EngineModel</div>
+<div><strong>Speed: </strong> @Model.SelectedAirplane.Speed</div>
+<div><strong>Range: </strong> @Model.SelectedAirplane.Range</div>
+
+<div style="margin-top:50px;">
+    <h3>Flights related to the Airplane <span class="title-entity">@Model.SelectedAirplane.AirplaneModel</span></h3>
+
+    @{
+        if (Model.RelatedFlights == null || !Model.RelatedFlights.Any())
+        {
+            <p> **This Airplane does not have any scheduled Flight</p>
+        }
+        else
+        {
+            <ul>
+                @foreach (var flight in Model.RelatedFlights)
+                {
+                    <li>
+                        <a href="/Flight/Details/@flight.FlightId"><span class="related-entities">@flight.FlightNumber</span> -- Date: @flight.DepartureTime.ToString("yyyy-MM-dd h:mm tt")</a>
+                    </li>
+                }
+            </ul>
+        }
+    }
+
+</div>
+

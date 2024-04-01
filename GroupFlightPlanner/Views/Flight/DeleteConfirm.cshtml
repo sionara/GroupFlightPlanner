@@ -1,0 +1,17 @@
+﻿@model GroupFlightPlanner.Models.FlightDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this Flight?</h2>
+<a href="/Flight/List" class="btn btn-danger">Cancel <span class="fa-solid fa-x"></span></a>
+
+<h2>@Model.FlightNumber</h2>
+<div>From: @Model.From</div>
+<div>To: @Model.To</div>
+<div>Airline: <span class="title-entity">@Model.AirlineName</span></div>
+<div>Date: <span class="title-entity">@Model.DepartureTime</span></div>
+
+<form action="/Flight/Delete/@Model.FlightId" method="POST">
+    <input type="submit" value="Confirm Delete" class="btn btn-primary mt-4" />
+</form>

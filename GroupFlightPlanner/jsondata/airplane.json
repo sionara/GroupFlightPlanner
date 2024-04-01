@@ -1,0 +1,11 @@
+﻿{
+  "AirplaneId": 2,
+  "AirplaneModel": "Airbus A220-300",
+  "RegistrationNum": "C-GMZN",
+  "ManufacturerName": "Airbus S.A.S.",
+  "ManufactureYear": "2020-10-01 00:00:00",
+  "MaxPassenger": 160,
+  "EngineModel": "2 Pratt & Whitney PW1500G",
+  "Speed": 871.00,
+  "Range": 6700.00
+}

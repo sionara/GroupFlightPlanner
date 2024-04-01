@@ -1,0 +1,41 @@
+﻿@model GroupFlightPlanner.Models.AirplaneDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Airplane</h2>
+
+<form action="/Airplane/Update/@Model.AirplaneId" method="POST">
+    <div>
+        <input type="text" name="AirplaneId" value="@Model.AirplaneId" style="display:none" />
+    </div>
+    <div class="mb-2">
+        <label>Airplane Model : </label> <input type="text" name="AirplaneModel" value="@Model.AirplaneModel" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Registration Number : </label> <input type="text" name="RegistrationNum" value="@Model.RegistrationNum" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Manufacturer : </label> <input type="text" name="ManufacturerName" value="@Model.ManufacturerName" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Manufacture Year : </label> <input type="date" name="ManufactureYear" value="@Model.ManufactureYear.Date.ToString("yyyy-MM-dd")" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Max Passengers : </label> <input type="number" name="MaxPassenger" min="0" value="@Model.MaxPassenger" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Engine Model : </label> <input type="text" name="EngineModel" value="@Model.EngineModel" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Speed : </label> <input type="number" name="Speed" step="0.01" min="0" value="@Model.Speed" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Range : </label> <input type="number" name="Range" step="0.01" min="0" value="@Model.Range" class="input-forms" />
+    </div>
+
+    <div>
+        <input type="submit" value="Update Airplane" class="btn btn-primary" />
+
+    </div>
+</form>

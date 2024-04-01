@@ -1,0 +1,17 @@
+﻿@model GroupFlightPlanner.Models.AirplaneDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this Airplane?</h2>
+<a href="/Airplane/List" class="btn btn-danger">Cancel <span class="fa-solid fa-x"></span></a>
+
+<h2>@Model.AirplaneModel</h2>
+<div>Registration Number: <span class="title-entity">@Model.RegistrationNum</span></div>
+<div>Manufacturer: @Model.ManufacturerName</div>
+<div>Manufacture Year: <span class="title-entity">@Model.ManufactureYear.Date.ToString("yyyy-MM-dd")</span></div>
+
+<form action="/Airplane/Delete/@Model.AirplaneId" method="POST">
+    <input type="submit" value="Confirm Delete" class="btn btn-primary mt-4" />
+</form>
+

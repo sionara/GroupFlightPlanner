@@ -1,0 +1,15 @@
+﻿{
+  "FlightId": 2,
+  "FlightNumber": "AC 426",
+  "From": "Toronto",
+  "To": "Montreal",
+  "DepartureAirport": "Toronto Pearson International Airport (YYZ)",
+  "DestinationAirport": "Montréal-Pierre Elliott Trudeau International Airport (YUL)",
+  "DepartureTime": "2/6/2024 8:30:00 AM",
+  "ArrivalTime": "2/6/2024 9:50:00 PM",
+  "TicketPrice": 965.00,
+  "TimeZoneFrom": "Eastern Standard Time",
+  "TimeZoneTo": "Eastern Standard Time",
+  "AirlineId": 4,
+  "AirplaneId": 1
+}

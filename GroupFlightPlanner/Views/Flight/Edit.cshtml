@@ -1,0 +1,68 @@
+﻿@model GroupFlightPlanner.Models.ViewModels.UpdateFlight
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Flight</h2>
+
+<form action="/Flight/Update/@Model.SelectedFlight.FlightId" method="POST">
+    <div>
+        <input type="text" name="FlightId" value="@Model.SelectedFlight.FlightId" style="display:none" />
+    </div>
+    <div class="mb-2">
+        <label>Flight Number : </label> <input type="text" name="FlightNumber" value="@Model.SelectedFlight.FlightNumber" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>From : </label> <input type="text" name="From" value="@Model.SelectedFlight.From" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>To : </label> <input type="text" name="To" value="@Model.SelectedFlight.To" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Departure Airport : </label> <input type="text" name="DepartureAirport" value="@Model.SelectedFlight.DepartureAirport" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Destination Airport : </label> <input type="text" name="DestinationAirport" value="@Model.SelectedFlight.DestinationAirport" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Departure Time : </label> <input type="datetime-local" name="DepartureTime" value="@Model.SelectedFlight.DepartureTime.ToString("yyyy-MM-ddT"+@Model.SelectedFlight.DepartureTime.TimeOfDay+"")" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Arrival Time : </label> <input type="datetime-local" name="ArrivalTime" value="@Model.SelectedFlight.ArrivalTime.ToString("yyyy-MM-ddT"+@Model.SelectedFlight.ArrivalTime.TimeOfDay+"")" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Ticket Price : </label> <input type="number" name="TicketPrice" step="0.01" min="0" value="@Model.SelectedFlight.TicketPrice" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Time Zone From : </label> <input type="text" name="TimeZoneFrom" value="@Model.SelectedFlight.TimeZoneFrom" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Time Zone To : </label> <input type="text" name="TimeZoneTo" value="@Model.SelectedFlight.TimeZoneTo" class="input-forms" />
+    </div>
+
+    <div class="mb-2">
+        <label>Airline Id : </label>  <!-- <input type="number" name="AirlineId" value="@Model.SelectedFlight.AirlineId" /> -->
+        <select name="AirlineId" class="input-forms">
+            @foreach (var airline in Model.AirlinesOptions)
+            {
+                <option value="@airline.AirlineId" selected="@(airline.AirlineId == Model.SelectedFlight.AirlineId)">@airline.AirlineName</option>
+            }
+        </select>
+    </div>
+    <div class="mb-2">
+        <label>Airplane : </label>  <!-- <input type="number" name="AirplaneId" value="@Model.SelectedFlight.AirplaneId" /> -->
+        <select name="AirplaneId" class="input-forms">
+            @foreach (var airplane in Model.AirplanesOptions)
+            {
+                <option value="@airplane.AirplaneId" selected="@(airplane.AirplaneId == Model.SelectedFlight.AirplaneId)">@airplane.AirplaneModel</option>
+            }
+        </select>
+    </div>
+
+
+    <div>
+        <input type="submit" value="Update Flight" class="btn btn-primary" />
+
+    </div>
+</form>
+

@@ -1,0 +1,66 @@
+﻿@model GroupFlightPlanner.Models.ViewModels.AddFlight
+
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Create Flight</h2>
+
+<form action="/Flight/Create" method="POST">
+    <div class="mb-2">
+        <label>Flight Number : </label> <input type="text" name="FlightNumber" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>From : </label> <input type="text" name="From" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>To : </label> <input type="text" name="To" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Departure Airport : </label> <input type="text" name="DepartureAirport" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Destination Airport : </label> <input type="text" name="DestinationAirport" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Departure Time : </label> <input type="datetime-local" name="DepartureTime" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Arrival Time : </label> <input type="datetime-local" name="ArrivalTime" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Ticket Price : </label> <input type="number" name="TicketPrice" step="0.01" min="0" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Time Zone From : </label> <input type="text" name="TimeZoneFrom" class="input-forms" />
+    </div>
+    <div class="mb-2">
+        <label>Time Zone To : </label> <input type="text" name="TimeZoneTo" class="input-forms" />
+    </div>
+
+    <div class="mb-2">
+        <label>Airline : </label> <!-- <input type="number" name="AirlineId" /> -->
+        <select name="AirlineId" class="input-forms">
+            @foreach (var airline in Model.AirlinesOptions)
+            {
+                <option value="@airline.AirlineId">@airline.AirlineName</option>
+            }
+        </select>
+    </div>
+    <div class="mb-2">
+        <label>Airplane : </label>   <!-- <input type="number" name="AirplaneId" /> -->
+        <select name="AirplaneId" class="input-forms">
+            @foreach (var airplane in Model.AirplanesOptions)
+            {
+                <option value="@airplane.AirplaneId">@airplane.AirplaneModel</option>
+            }
+        </select>
+    </div>
+
+
+    <div>
+        <input type="submit" value="Add Flight" class="btn btn-primary" />
+
+    </div>
+</form>
+

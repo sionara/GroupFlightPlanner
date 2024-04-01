@@ -1,0 +1,93 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.space-search {
+    margin: 10px 0
+}
+
+.display-search {
+    display: flex;
+    gap: 10px
+}
+
+.background-main-text {
+    background-color: #3a5a40;
+}
+
+.background-main-text2 {
+    background-color: #9e2a2b;
+}
+
+.background-main-text3 {
+    background-color: #495057;
+}
+
+.link-entity-details {
+    color: white;
+}
+
+    .link-entity-details:hover {
+        color: #fca311;
+    }
+
+.redirect-features {
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input-forms {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+}
+
+.title-entity {
+    color: #9e2a2b;
+    font-weight: bold;
+}
+
+.color-lime {
+    color: #b7e4c7;
+}
+
+.related-entities {
+    color: #3a5a40;
+    font-weight: bold;
+}
+
+.background-red {
+    background-color: #9e2a2b
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover, .navbar-brand:hover {
+    color: #fca311;
+}

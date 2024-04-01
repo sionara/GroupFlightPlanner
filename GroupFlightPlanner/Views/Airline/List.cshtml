@@ -1,0 +1,35 @@
+﻿@model IEnumerable<GroupFlightPlanner.Models.AirlineDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Airlines in the system</h2>
+
+<a href="/Airline/New" class="btn btn-success">New Airline <span class="fa-solid fa-circle-plus"></span></a>
+
+<form action="/Airline/List" method="GET" class="space-search">
+    <div class="display-search">
+        <input type="text" name="AirlineSearch" class="form-control" />
+        <input type="submit" value="Search" class="btn btn-primary">
+    </div>
+</form>
+
+<div class="container">
+    <div class="row">
+        @foreach (var airline in Model)
+        {
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card">
+                    <div class="card-header background-main-text">
+                        <h2><a href="/Airline/Details/@airline.AirlineId" class="link-entity-details">@airline.AirlineName</a></h2>
+                    </div>
+                    <div class="p-2">
+                        <div>Country: @airline.Country</div>
+                        <div>Phone number: @airline.ContactNumber</div>
+                        <a href="@airline.Website">Website: @airline.AirlineName</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
