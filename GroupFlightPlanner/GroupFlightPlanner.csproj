@@ -186,10 +186,16 @@
     <Compile Include="Controllers\AirlineDataController.cs" />
     <Compile Include="Controllers\AirplaneController.cs" />
     <Compile Include="Controllers\AirplaneDataController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\EventDataController.cs" />
     <Compile Include="Controllers\FlightController.cs" />
     <Compile Include="Controllers\FlightDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\LocationDataController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrganizationController.cs" />
+    <Compile Include="Controllers\OrganizationDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -213,17 +219,40 @@
     <Compile Include="Migrations\202403310704217_flightsFK-airline-airplane.Designer.cs">
       <DependentUpon>202403310704217_flightsFK-airline-airplane.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404012213225_event.cs" />
+    <Compile Include="Migrations\202404012213225_event.Designer.cs">
+      <DependentUpon>202404012213225_event.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404012216283_location.cs" />
+    <Compile Include="Migrations\202404012216283_location.Designer.cs">
+      <DependentUpon>202404012216283_location.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404012219422_organization.cs" />
+    <Compile Include="Migrations\202404012219422_organization.Designer.cs">
+      <DependentUpon>202404012219422_organization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404012225229_eventFK-organization-location.cs" />
+    <Compile Include="Migrations\202404012225229_eventFK-organization-location.Designer.cs">
+      <DependentUpon>202404012225229_eventFK-organization-location.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Airline.cs" />
     <Compile Include="Models\Airplane.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\ViewModels\AddFlight.cs" />
+    <Compile Include="Models\ViewModels\CreateEvent.cs" />
     <Compile Include="Models\ViewModels\DetailsAirline.cs" />
     <Compile Include="Models\ViewModels\DetailsAirplane.cs" />
     <Compile Include="Models\ViewModels\DetailsFlight.cs" />
+    <Compile Include="Models\ViewModels\DetailsLocation.cs" />
+    <Compile Include="Models\ViewModels\DetailsOrganization.cs" />
+    <Compile Include="Models\ViewModels\UpdateEvent.cs" />
     <Compile Include="Models\ViewModels\UpdateFlight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -320,6 +349,24 @@
     <Content Include="Views\Flight\Error.cshtml" />
     <Content Include="Views\Flight\List.cshtml" />
     <Content Include="Views\Flight\New.cshtml" />
+    <Content Include="Views\Event\ConfirmDelete.cshtml" />
+    <Content Include="Views\Event\Details.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
+    <Content Include="Views\Event\Error.cshtml" />
+    <Content Include="Views\Event\List.cshtml" />
+    <Content Include="Views\Event\New.cshtml" />
+    <Content Include="Views\Location\ConfirmDelete.cshtml" />
+    <Content Include="Views\Location\Details.cshtml" />
+    <Content Include="Views\Location\Edit.cshtml" />
+    <Content Include="Views\Location\Error.cshtml" />
+    <Content Include="Views\Location\List.cshtml" />
+    <Content Include="Views\Location\New.cshtml" />
+    <Content Include="Views\Organization\ConfirmDelete.cshtml" />
+    <Content Include="Views\Organization\Details.cshtml" />
+    <Content Include="Views\Organization\Edit.cshtml" />
+    <Content Include="Views\Organization\Error.cshtml" />
+    <Content Include="Views\Organization\List.cshtml" />
+    <Content Include="Views\Organization\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -366,6 +413,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202403310704217_flightsFK-airline-airplane.resx">
       <DependentUpon>202403310704217_flightsFK-airline-airplane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404012213225_event.resx">
+      <DependentUpon>202404012213225_event.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404012216283_location.resx">
+      <DependentUpon>202404012216283_location.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404012219422_organization.resx">
+      <DependentUpon>202404012219422_organization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404012225229_eventFK-organization-location.resx">
+      <DependentUpon>202404012225229_eventFK-organization-location.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

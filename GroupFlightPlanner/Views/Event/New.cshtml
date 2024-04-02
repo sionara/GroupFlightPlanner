@@ -1,0 +1,48 @@
+﻿@model GroupFlightPlanner.Models.ViewModels.CreateEvent
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Event</h2>
+<form action="/Event/Create" method="post">
+    <div>
+        <label>Name:</label> <input type="text" name="eventName" required />
+    </div>
+
+    <div>
+        <label>Registration:</label> <input type="text" name="registrationWebsite" required />
+    </div>
+
+    @* show list of existing Organizations by id. *@
+    <div>
+        <label>Organization Id:</label>
+
+        <select name="OrganizationID">
+            @foreach (var organizations in Model.organizationOptions) //this is just for locationdto, no need to specify which model you are referring to.
+            {
+                <option value="@organizations.OrganizationId">@organizations.OrganizationName</option>
+
+            }
+        </select>
+    </div>
+
+    @* show list of existing locations by id. *@
+    <div>
+        <label>Location ID:</label>
+
+        <select name="LocationID">
+            @foreach (var locations in Model.locationOptions) //this is just for locationdto, no need to specify which model you are referring to.
+            {
+                <option value="@locations.LocationId">@locations.LocationName</option>
+
+            }
+        </select>
+    </div>
+
+    <div>
+        <input type="submit" value="Add Event" />
+    </div>
+</form>
+
+<a href="/Event/List">Back To List</a>

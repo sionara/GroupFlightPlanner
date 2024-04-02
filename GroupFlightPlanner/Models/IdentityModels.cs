@@ -34,6 +34,15 @@ namespace GroupFlightPlanner.Models
         //Add an Flight model as a db Table
         public DbSet<Flight> Flights { get; set; }
 
+        //Add an Event model as a db Table
+        public DbSet<Event> Events { get; set; }
+
+        //Add a Location model as a db Table
+        public DbSet<Location> Locations { get; set; }
+
+        //Add an Organization model as a db Table
+        public DbSet<Organization> Organizations { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<GroupFlightPlanner.Models.EventDto>
+@{
+    ViewBag.Title = "Events";
+}
+
+
+<h2>@ViewBag.Title</h2>
+
+@*Quick access to the create page*@
+
+<div>
+    <a class="btn btn-primary" href="/Event/New" role="button">Add a new Event!</a>
+</div>
+
+
+@foreach (var e in Model)
+{
+    <div class="border border-3 m-2">
+        <h2><a href="/Event/Details/@e.EventId">@e.EventName</a></h2>
+
+        <a class="btn btn-danger m-2" href="/Event/ConfirmDelete/@e.EventId" role="button">Delete Event</a>
+    </div>
+
+}
+
+

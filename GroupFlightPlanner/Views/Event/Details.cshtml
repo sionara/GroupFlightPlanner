@@ -1,0 +1,17 @@
+﻿@model GroupFlightPlanner.Models.EventDto
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<a href="/Event/List">Back To List</a>
+<h2>@Model.EventName</h2>
+<div>Organization: @Model.OrganizationName</div>
+<div>Location: @Model.LocationName</div>
+<div>Registration: @Model.registrationWebsite</div>
+
+<div>
+    <a href="/Event/Edit/@Model.EventId">Edit Event</a>
+</div>
+<a href="//@Model.registrationWebsite">Go to registration site </a>
