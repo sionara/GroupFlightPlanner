@@ -1,0 +1,43 @@
+﻿﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Create Group</h2>
+<form action="/Group/Create" method="POST" name="myForm" onsubmit="return validateForm()">
+    <div class="row">
+        <label class="col-md-2 col-form-label">Group Name:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="GroupName" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Description:</label>
+        <div class="col-md-10">
+            <textarea class="form-control" type="text" name="Description"></textarea>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <input type="submit" value="Add Group" />
+            <a href="/Group/List">Cancel</a>
+        </div>
+    </div>
+</form>
+<script>
+    function validateForm() {
+        let x = document.forms["myForm"]["GroupName"].value;
+        let y = document.forms["myForm"]["Description"].value;
+
+        if (x == "") {
+            alert("Group Name must be filled out");
+            return false;
+        }
+        if (y == "") {
+            alert("Description must be filled out");
+            return false;
+        }
+
+    }
+</script>

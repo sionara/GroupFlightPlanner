@@ -91,3 +91,42 @@ textarea {
 .nav-link:hover, .navbar-brand:hover {
     color: #fca311;
 }
+
+/* ------------------------- */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid;
+    text-align: center;
+    padding: 8px;
+}
+
+.nav {
+    display: flex;
+    flex-flow: row wrap;
+    column-gap: 2em;
+}
+
+.add {
+    border-radius: 4px;
+    border: 1px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 0 30px 940px;
+    cursor: pointer;
+}
+
+.detail {
+    border-radius: 4px;
+    border: 1px;
+    border-style: solid;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}

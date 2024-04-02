@@ -1,0 +1,98 @@
+﻿﻿@model IEnumerable<GroupFlightPlanner.Models.GroupDto>
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Create Volunteer</h2>
+<form action="/Volunteer/Create" method="POST" name="myForm" onsubmit="return validateForm()">
+    <div class="row">
+        <label class="col-md-2 col-form-label">First Name:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="FirstName" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Last Name:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="LastName" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Christian Name:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="ChristianName" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Email:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="Email" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Phone Number:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="PhoneNumber" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Address:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="Address" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Group:</label>
+        <div class="col-md-10">
+            <select name="GroupId">
+                @foreach (var groups in Model)
+                {
+                    <option value="@groups.GroupId">@groups.GroupName</option>
+
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <input type="submit" value="Add Volunteer" />
+            <a href="/Volunteer/List">Cancel</a>
+        </div>
+    </div>
+</form>
+
+<script>
+    function validateForm() {
+        let x = document.forms["myForm"]["FirstName"].value;
+        let y = document.forms["myForm"]["LastName"].value;
+        let z = document.forms["myForm"]["ChristianName"].value;
+        let a = document.forms["myForm"]["Email"].value;
+        let b = document.forms["myForm"]["PhoneNumber"].value;
+        let c = document.forms["myForm"]["Address"].value;
+
+        if (x == "") {
+            alert("First Name must be filled out");
+            return false;
+        }
+        if (y == "") {
+            alert("Last Name must be filled out");
+            return false;
+        }
+        if (z == "") {
+            alert("Christian name must be filled out");
+            return false;
+        }
+        if (a == "") {
+            alert("Email must be filled out");
+            return false;
+        }
+        if (b == "") {
+            alert("Phone Number must be filled out");
+            return false;
+        }
+        if (c == "") {
+            alert("Address must be filled out");
+            return false;
+        }
+    }
+</script>

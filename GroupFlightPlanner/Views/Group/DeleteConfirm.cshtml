@@ -1,0 +1,13 @@
+﻿﻿@model GroupFlightPlanner.Models.GroupDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this group?</h2>
+<a href="/Group/List">Cancel</a>
+<h2>Group Name: @Model.GroupName</h2>
+<div>Description: @Model.Description</div>
+<form action="/Group/Delete/@Model.GroupId" method="POST">
+    <input type="submit" value="Confirm Delete" />
+
+</form>

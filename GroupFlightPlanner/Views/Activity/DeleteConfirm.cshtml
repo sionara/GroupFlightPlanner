@@ -1,0 +1,14 @@
+﻿﻿@model GroupFlightPlanner.Models.ActivityDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+
+<h2>Are you sure you want to delete this activity?</h2>
+<a href="/Activity/List">Cancel</a>
+<h2>Activity Name: @Model.ActivityName</h2>
+<div>Description: @Model.Description</div>
+<form action="/Activity/Delete/@Model.ActivityId" method="POST">
+    <input type="submit" value="Confirm Delete" />
+
+</form>

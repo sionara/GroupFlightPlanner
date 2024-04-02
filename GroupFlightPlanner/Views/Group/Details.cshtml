@@ -1,0 +1,35 @@
+﻿﻿@model GroupFlightPlanner.Models.ViewModels.DetailsGroup
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Group Details</h2>
+<a href="/Group/List">Go back to list</a>
+<br />
+<a href="/Group/Edit/@Model.SelectedGroup.GroupId">Update</a>
+<br />
+
+<h2>Group Name: @Model.SelectedGroup.GroupName</h2>
+<div>Description: @Model.SelectedGroup.Description</div>
+<div><a style="color:#ab2020;" href="/Group/DeleteConfirm/@Model.SelectedGroup.GroupId">Delete</a></div>
+
+<div style="margin-top:100px;">
+    <h3>Volunteers related to this group</h3>
+    @foreach (var volunteer in Model.RelatedVolunteers)
+    {
+        <div>
+            <a href="/Volunteer/Details/@volunteer.VolunteerId">@volunteer.FirstName @volunteer.LastName</a>
+        </div>
+
+    }
+</div>
+
+<div>
+    <h3>Responsible for:</h3>
+    @foreach (var activity in Model.JoinedActivities)
+    {<div>
+            <a href="/Activity/Details/@activity.ActivityId">@activity.ActivityName</a>
+        </div>
+
+    }
+</div>

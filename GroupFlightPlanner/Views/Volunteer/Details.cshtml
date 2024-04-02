@@ -1,0 +1,18 @@
+﻿﻿@model GroupFlightPlanner.Models.VolunteerDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Volunteer Details</h2>
+<a href="/Volunteer/List">Go back to list</a>
+<br />
+<a href="/Volunteer/Edit/@Model.VolunteerId">Update</a>
+<br />
+
+<h2>Full Name: @Model.FirstName @Model.LastName</h2>
+<div>Christian Name: @Model.ChristianName</div>
+<div>Email: @Model.Email</div>
+<div>Phone Number: @Model.PhoneNumber</div>
+<div>Adrress: @Model.Address</div>
+<div>Group: @Model.GroupName</div>
+<div><a style="color:#ab2020;" href="/Volunteer/DeleteConfirm/@Model.VolunteerId">Delete</a></div>

@@ -43,6 +43,15 @@ namespace GroupFlightPlanner.Models
         //Add an Organization model as a db Table
         public DbSet<Organization> Organizations { get; set; }
 
+        //Add an Activity model as a db Table
+        public DbSet<Activity> Activities { get; set; }
+
+        //Add a Group model as a db Table
+        public DbSet<Group> Groups { get; set; }
+
+        //Add a Volunteer model as a db Table
+        public DbSet<Volunteer> Volunteers { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

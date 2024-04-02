@@ -1,0 +1,67 @@
+﻿﻿@model GroupFlightPlanner.Models.ViewModels.UpdateVolunteer
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Volunteer</h2>
+<form action="/Volunteer/Update/@Model.SelectedVolunteer.VolunteerId" method="POST">
+    <div style="display:none;">
+        @* Pass through the volunteer ID *@
+        <input type="text" name="VolunteerId" value="@Model.SelectedVolunteer.VolunteerId" />
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">First Name:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="FirstName" value="@Model.SelectedVolunteer.FirstName" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Last Name:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="LastName" value="@Model.SelectedVolunteer.LastName" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Christian Name:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="ChristianName" value="@Model.SelectedVolunteer.ChristianName" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Email:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="Email" value="@Model.SelectedVolunteer.Email" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Phone Number:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="PhoneNumber" value="@Model.SelectedVolunteer.PhoneNumber" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Address:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="Address" value="@Model.SelectedVolunteer.Address" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Group:</label>
+        <div class="col-md-10">
+            <select class="form-control" name="GroupId">
+                @foreach (var groups in Model.GroupOptions)
+                {
+                    <option value="@groups.GroupId">@groups.GroupName</option>
+
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <input type="submit" value="Update" />
+            <a href="/Volunteer/List">Cancel</a>
+        </div>
+
+    </div>
+</form>

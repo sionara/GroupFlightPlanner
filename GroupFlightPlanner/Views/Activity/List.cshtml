@@ -1,0 +1,32 @@
+﻿﻿@model IEnumerable<GroupFlightPlanner.Models.ActivityDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List Activities</h2>
+
+<div class="add">
+    <a href="/Activity/New">Add A New Activity</a>
+</div>
+<div>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Activity Name</th>
+            <th>Description</th>
+            <th>Date Time</th>
+            <th></th>
+        </tr>
+        @foreach (GroupFlightPlanner.Models.ActivityDto Activity in Model)
+        {
+            <tr>
+                <td>@Activity.ActivityId</td>
+                <td>@Activity.ActivityName</td>
+                <td>@Activity.Description</td>
+                <td>@Activity.DateTime</td>
+                <td><a href="/Activity/Details/@Activity.ActivityId">Detail</a></td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -182,6 +182,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\ActivityDataController.cs" />
     <Compile Include="Controllers\AirlineController.cs" />
     <Compile Include="Controllers\AirlineDataController.cs" />
     <Compile Include="Controllers\AirplaneController.cs" />
@@ -190,12 +192,16 @@
     <Compile Include="Controllers\EventDataController.cs" />
     <Compile Include="Controllers\FlightController.cs" />
     <Compile Include="Controllers\FlightDataController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\GroupDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\LocationDataController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Controllers\OrganizationDataController.cs" />
+    <Compile Include="Controllers\VolunteerController.cs" />
+    <Compile Include="Controllers\VolunteerDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,25 +241,52 @@
     <Compile Include="Migrations\202404012225229_eventFK-organization-location.Designer.cs">
       <DependentUpon>202404012225229_eventFK-organization-location.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404020307140_activity.cs" />
+    <Compile Include="Migrations\202404020307140_activity.Designer.cs">
+      <DependentUpon>202404020307140_activity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404020313344_group.cs" />
+    <Compile Include="Migrations\202404020313344_group.Designer.cs">
+      <DependentUpon>202404020313344_group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404020316032_volunteer.cs" />
+    <Compile Include="Migrations\202404020316032_volunteer.Designer.cs">
+      <DependentUpon>202404020316032_volunteer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404020321266_volunteerFK-group.cs" />
+    <Compile Include="Migrations\202404020321266_volunteerFK-group.Designer.cs">
+      <DependentUpon>202404020321266_volunteerFK-group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404020328190_groups-activities.cs" />
+    <Compile Include="Migrations\202404020328190_groups-activities.Designer.cs">
+      <DependentUpon>202404020328190_groups-activities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\Airline.cs" />
     <Compile Include="Models\Airplane.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\ViewModels\AddFlight.cs" />
     <Compile Include="Models\ViewModels\CreateEvent.cs" />
+    <Compile Include="Models\ViewModels\DetailsActivity.cs" />
     <Compile Include="Models\ViewModels\DetailsAirline.cs" />
     <Compile Include="Models\ViewModels\DetailsAirplane.cs" />
     <Compile Include="Models\ViewModels\DetailsFlight.cs" />
+    <Compile Include="Models\ViewModels\DetailsGroup.cs" />
     <Compile Include="Models\ViewModels\DetailsLocation.cs" />
     <Compile Include="Models\ViewModels\DetailsOrganization.cs" />
+    <Compile Include="Models\ViewModels\DetailsVolunteer.cs" />
     <Compile Include="Models\ViewModels\UpdateEvent.cs" />
     <Compile Include="Models\ViewModels\UpdateFlight.cs" />
+    <Compile Include="Models\ViewModels\UpdateVolunteer.cs" />
+    <Compile Include="Models\Volunteer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -367,6 +400,21 @@
     <Content Include="Views\Organization\Error.cshtml" />
     <Content Include="Views\Organization\List.cshtml" />
     <Content Include="Views\Organization\New.cshtml" />
+    <Content Include="Views\Activity\DeleteConfirm.cshtml" />
+    <Content Include="Views\Activity\Details.cshtml" />
+    <Content Include="Views\Activity\Edit.cshtml" />
+    <Content Include="Views\Activity\List.cshtml" />
+    <Content Include="Views\Activity\New.cshtml" />
+    <Content Include="Views\Group\DeleteConfirm.cshtml" />
+    <Content Include="Views\Group\Details.cshtml" />
+    <Content Include="Views\Group\Edit.cshtml" />
+    <Content Include="Views\Group\List.cshtml" />
+    <Content Include="Views\Group\New.cshtml" />
+    <Content Include="Views\Volunteer\DeleteConfirm.cshtml" />
+    <Content Include="Views\Volunteer\Details.cshtml" />
+    <Content Include="Views\Volunteer\Edit.cshtml" />
+    <Content Include="Views\Volunteer\List.cshtml" />
+    <Content Include="Views\Volunteer\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -425,6 +473,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404012225229_eventFK-organization-location.resx">
       <DependentUpon>202404012225229_eventFK-organization-location.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404020307140_activity.resx">
+      <DependentUpon>202404020307140_activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404020313344_group.resx">
+      <DependentUpon>202404020313344_group.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404020316032_volunteer.resx">
+      <DependentUpon>202404020316032_volunteer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404020321266_volunteerFK-group.resx">
+      <DependentUpon>202404020321266_volunteerFK-group.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404020328190_groups-activities.resx">
+      <DependentUpon>202404020328190_groups-activities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

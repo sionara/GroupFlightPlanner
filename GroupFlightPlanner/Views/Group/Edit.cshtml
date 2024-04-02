@@ -1,0 +1,32 @@
+﻿﻿@model GroupFlightPlanner.Models.GroupDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form action="/Group/Update/@Model.GroupId" method="POST">
+    <div style="display:none;">
+        @* Pass through the Group ID *@
+        <input type="text" name="GroupId" value="@Model.GroupId" />
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Group Name:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="GroupName" value="@Model.GroupName" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Description:</label>
+        <div class="col-md-10">
+            <textarea class="form-control" type="text" name="Description">@Model.Description</textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <input type="submit" value="Update" />
+            <a href="/Group/List">Cancel</a>
+        </div>
+
+    </div>
+</form>

@@ -1,0 +1,18 @@
+﻿﻿@model GroupFlightPlanner.Models.VolunteerDto
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this volunteer?</h2>
+<a href="/Volunteer/List">Cancel</a>
+<h2>Full Name: @Model.FirstName @Model.LastName</h2>
+<div>Christian Name: @Model.ChristianName</div>
+<div>Email: @Model.Email</div>
+<div>Phone Number: @Model.PhoneNumber</div>
+<div>Adrress: @Model.Address</div>
+<div>Group: @Model.GroupName</div>
+<form action="/Volunteer/Delete/@Model.VolunteerId" method="POST">
+    <input type="submit" value="Confirm Delete" />
+
+</form>

@@ -1,0 +1,30 @@
+﻿﻿@model IEnumerable<GroupFlightPlanner.Models.GroupDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List Groups</h2>
+
+<div class="add">
+    <a href="/Group/New">Add A New Group</a>
+</div>
+<div>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Group Name</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        @foreach (GroupFlightPlanner.Models.GroupDto Group in Model)
+        {
+            <tr>
+                <td>@Group.GroupId</td>
+                <td>@Group.GroupName</td>
+                <td>@Group.Description</td>
+                <td><a href="/Group/Details/@Group.GroupId">Detail</a></td>
+            </tr>
+        }
+
+    </table>
+</div>

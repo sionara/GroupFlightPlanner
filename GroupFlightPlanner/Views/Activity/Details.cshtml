@@ -1,0 +1,43 @@
+﻿﻿@model GroupFlightPlanner.Models.ViewModels.DetailsActivity
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Activity Name: @Model.SelectedActivity.ActivityName</h2>
+<div class="nav">
+    <a href="/Activity/List">Go back to list</a>
+
+    <a href="/Activity/Edit/@Model.SelectedActivity.ActivityId">Update</a>
+    <a style="color:#ab2020;" href="/Activity/DeleteConfirm/@Model.SelectedActivity.ActivityId">Delete</a>
+</div>
+</br>
+<div>Description: @Model.SelectedActivity.Description</div>
+<div>Date Time: @Model.SelectedActivity.DateTime</div>
+<div>
+
+    </br>
+    <h4>Groups Responsible for @Model.SelectedActivity.ActivityName:</h4>
+    @foreach (var group in Model.ResponsibleGroups)
+    {
+
+        <a href="/Group/Details/@group.GroupId">@group.GroupName</a> <a style="color:#ab2020;" href="/Activity/Unassociate/@Model.SelectedActivity.ActivityId?GroupId=@group.GroupId">[x]</a><br />
+    }
+
+    <div>
+        </br>
+        <h4>Add new Group to join in  @Model.SelectedActivity.ActivityName</h4>
+        <form method="POST" action="/Activity/Associate/@Model.SelectedActivity.ActivityId">
+            <select name="GroupId">
+                @foreach (var group in Model.AvailableGroups)
+                {
+                    <option value="@group.GroupId">@group.GroupName</option>
+                }
+
+            </select>
+            </br>
+            <input type="submit" value="Associate Group" />
+        </form>
+    </div>
+
+</div>
+

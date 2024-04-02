@@ -1,0 +1,37 @@
+﻿﻿@model GroupFlightPlanner.Models.ActivityDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Activity</h2>
+<form action="/Activity/Update/@Model.ActivityId" method="POST">
+    <div style="display:none;">
+        @* Pass through the Activity ID *@
+        <input type="text" name="ActivityId" value="@Model.ActivityId" />
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Activity Name:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="ActivityName" value="@Model.ActivityName" />
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Description:</label>
+        <div class="col-md-10">
+            <textarea class="form-control" type="text" name="Description">@Model.Description</textarea>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-2 col-form-label">Date Time:</label>
+        <div class="col-md-10">
+            <textarea class="form-control" type="text" name="DateTime">@Model.DateTime</textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <input type="submit" value="Update" />
+            <a href="/Activity/List">Cancel</a>
+        </div>
+
+    </div>
+</form>
