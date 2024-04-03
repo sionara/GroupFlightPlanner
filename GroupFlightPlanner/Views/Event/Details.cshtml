@@ -1,4 +1,4 @@
-﻿@model GroupFlightPlanner.Models.EventDto
+﻿@model GroupFlightPlanner.Models.ViewModels.DetailsEvent
 
 
 @{
@@ -6,12 +6,41 @@
 }
 
 <a href="/Event/List">Back To List</a>
-<h2>@Model.EventName</h2>
-<div>Organization: @Model.OrganizationName</div>
-<div>Location: @Model.LocationName</div>
-<div>Registration: @Model.registrationWebsite</div>
+<h2>@Model.SelectedEvent.EventName</h2>
+<div>Organization: @Model.SelectedEvent.OrganizationName</div>
+<div>Location: @Model.SelectedEvent.LocationName</div>
+<div>Registration: @Model.SelectedEvent.registrationWebsite</div>
 
 <div>
-    <a href="/Event/Edit/@Model.EventId">Edit Event</a>
+
+    </br>
+    <h4>Participated Groups for @Model.SelectedEvent.EventName:</h4>
+    @foreach (var group in Model.ResponsibleGroups)
+    {
+
+        <a href="/Group/Details/@group.GroupId">@group.GroupName</a> <a style="color:#ab2020;" href="/Activity/Unassociate/@Model.SelectedEvent.EventId?GroupId=@group.GroupId">[x]</a><br />
+    }
+
+    <div>
+        </br>
+        <h4>Add new Group to join in  @Model.SelectedEvent.EventName</h4>
+        <form method="POST" action="/Event/Associate/@Model.SelectedEvent.EventId">
+            <select name="GroupId">
+                @foreach (var group in Model.AvailableGroups)
+                {
+                    <option value="@group.GroupId">@group.GroupName</option>
+                }
+
+            </select>
+            </br>
+            <input type="submit" value="Associate Group" />
+        </form>
+    </div>
+
 </div>
-<a href="//@Model.registrationWebsite">Go to registration site </a>
+
+<div>
+    <a href="/Event/Edit/@Model.SelectedEvent.EventId">Edit Event</a>
+</div>
+<a href="//@Model.SelectedEvent.registrationWebsite">Go to registration site </a>
+

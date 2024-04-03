@@ -77,12 +77,12 @@ namespace GroupFlightPlanner.Controllers
             string url = "https://localhost:44380/api/activitydata/findactivity/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            Debug.WriteLine("The response code is ");
-            Debug.WriteLine(response.StatusCode);
+            //Debug.WriteLine("The response code is ");
+            //Debug.WriteLine(response.StatusCode);
 
             ActivityDto SelectedActivity = response.Content.ReadAsAsync<ActivityDto>().Result;
-            Debug.WriteLine("activity received : ");
-            Debug.WriteLine(SelectedActivity.ActivityName);
+            //Debug.WriteLine("activity received : ");
+            //Debug.WriteLine(SelectedActivity.ActivityName);
 
             ViewModel.SelectedActivity = SelectedActivity;
             //show associated groups with this activity
@@ -112,7 +112,7 @@ namespace GroupFlightPlanner.Controllers
 
             HttpClient client = new HttpClient() { };
 
-            //call our api to associate animal with keeper
+            //call our api to associate activity with group
             string url = "https://localhost:44380/api/activitydata/associateactivitywithgroup/" + id + "/" + GroupId;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";

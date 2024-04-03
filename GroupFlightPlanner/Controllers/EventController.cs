@@ -94,6 +94,8 @@ namespace GroupFlightPlanner.Controllers
         // GET: Event/Details/5
         public ActionResult Details(int id)
         {
+            DetailsEvent ViewModel = new DetailsEvent();
+
             //connects with EventData to fetch list of Events from Db.
             // curl https://localhost:44380/api/eventdata/findevent
 
@@ -108,9 +110,78 @@ namespace GroupFlightPlanner.Controllers
             //Debug.WriteLine("Event Received: ");
             //Debug.WriteLine(selectedEvent.EventName);
 
-            return View(selectedEvent);
+            ViewModel.SelectedEvent = selectedEvent;
+
+            //show associated groups with this event
+            url = "https://localhost:44380/api/groupdata/listgroupsforevent/" + id;
+            response = httpClient.GetAsync(url).Result;
+            IEnumerable<GroupDto> ResponsibleGroups = response.Content.ReadAsAsync<IEnumerable<GroupDto>>().Result;
+            ViewModel.ResponsibleGroups = ResponsibleGroups;
+
+
+            url = "https://localhost:44380/api/groupdata/listgroupsnotjoininevent/" + id;
+            response = httpClient.GetAsync(url).Result;
+            IEnumerable<GroupDto> AvailableGroups = response.Content.ReadAsAsync<IEnumerable<GroupDto>>().Result;
+
+            ViewModel.AvailableGroups = AvailableGroups;
+
+            return View(ViewModel);
         }
 
+
+        /// <summary>
+        /// list groups joining in this event based on Id of event.
+        /// </summary>
+        /// <param name="id">Id of the event</param>
+        /// <param name="GroupId">Id of the participated groups</param>
+        /// <returns>
+        /// A view with details of a particular event
+        /// </returns>
+        //POST: Event/Associate/{id}
+        [HttpPost]
+        [Authorize]
+        public ActionResult Associate(int id, int GroupId)
+        {
+            GetApplicationCookie();//get token credentials
+            Debug.WriteLine("Attempting to associate event :" + id + " with group " + GroupId);
+
+            HttpClient client = new HttpClient() { };
+
+            //call our api to associate event with group
+            string url = "eventdata/associateeventwithgroup/" + id + "/" + GroupId;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            return RedirectToAction("Details/" + id);
+        }
+
+        /// <summary>
+        /// list groups haven't joined in this event.
+        /// </summary>
+        /// <param name="id">Id of the event</param>
+        /// <param name="GroupId">Id of the groups have no association</param>
+        /// <returns>
+        /// A view with details of a particular event
+        /// </returns>
+        //Get: Event/UnAssociate/{id}?GroupId={groupId}
+        [HttpGet]
+        [Authorize]
+        public ActionResult UnAssociate(int id, int GroupId)
+        {
+            GetApplicationCookie();//get token credentials
+            Debug.WriteLine("Attempting to unassociate event :" + id + " with group: " + GroupId);
+
+            HttpClient client = new HttpClient() { };
+
+            //call our api to associate event with group
+            string url = "/eventdata/unassociateeventwithgroup/" + id + "/" + GroupId;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            return RedirectToAction("Details/" + id);
+        }
 
         /// <summary>
         /// handles request for the new view to add an event
