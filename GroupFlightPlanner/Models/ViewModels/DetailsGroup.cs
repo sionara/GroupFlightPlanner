@@ -12,5 +12,7 @@ namespace GroupFlightPlanner.Models.ViewModels
         public IEnumerable<VolunteerDto> RelatedVolunteers { get; set; }
 
         public IEnumerable<ActivityDto> JoinedActivities { get; set; }
+
+        public IEnumerable<EventDto> JoinedEvents { get; set; }
     }
 }

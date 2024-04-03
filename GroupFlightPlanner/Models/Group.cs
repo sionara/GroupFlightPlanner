@@ -18,6 +18,9 @@ namespace GroupFlightPlanner.Models
 
         // a group has many activities to join in
         public ICollection<Activity> Activities { get; set; }
+
+        // a group has many events to participate in
+        public ICollection<Event> Events { get; set; }
     }
     public class GroupDto
     {

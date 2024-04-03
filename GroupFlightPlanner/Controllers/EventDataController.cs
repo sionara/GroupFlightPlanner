@@ -48,6 +48,118 @@ namespace GroupFlightPlanner.Controllers
         }
 
         /// <summary>
+        /// Gathers information about events related to a particular group
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all events in the database that match to a particular group id
+        /// </returns>
+        /// <param name="id">Group Id.</param>
+        /// <example>
+        /// GET: api/EventData/ListEventsForGroup/1
+        /// </example>
+        [HttpGet]
+        [ResponseType(typeof(EventDto))]
+
+        public IHttpActionResult ListEventsForGroup(int id)
+        {
+            //all events that have groups which match with our ID
+            List<Event> Events = db.Events.Where(
+                e => e.Groups.Any(
+                    g => g.GroupId == id
+                )).ToList();
+            List<EventDto> EventDtos = new List<EventDto>();
+
+            Events.ForEach(e => EventDtos.Add(new EventDto()
+            {
+                EventId = e.EventId,
+                EventName = e.EventName,
+                registrationWebsite = e.registrationWebsite,
+                OrganizationName = e.Organization.OrganizationName,
+                LocationName = e.Location.LocationName
+            }));
+
+            return Ok(EventDtos);
+        }
+
+        /// <summary>
+        /// Associates a particular group with a particular event
+        /// </summary>
+        /// <param name="eventid">The event ID primary key</param>
+        /// <param name="groupid">The group ID primary key</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST api/EventData/AssociateEventWithGroup/9/1
+        /// </example>
+        [HttpPost]
+        [Route("api/EventData/AssociateEventWithGroup/{eventid}/{groupid}")]
+
+        public IHttpActionResult AssociateEventWithGroup(int eventid, int groupid)
+        {
+
+            Event SelectedEvent = db.Events.Include(e => e.Groups).Where(e => e.EventId == eventid).FirstOrDefault();
+            Group SelectedGroup = db.Groups.Find(groupid);
+
+            if (SelectedEvent == null || SelectedGroup == null)
+            {
+                return NotFound();
+            }
+
+            Debug.WriteLine("input event id is: " + eventid);
+            Debug.WriteLine("selected event name is: " + SelectedEvent.EventName);
+            Debug.WriteLine("input group id is: " + groupid);
+            Debug.WriteLine("selected group name is: " + SelectedGroup.GroupName);
+
+
+            SelectedEvent.Groups.Add(SelectedGroup);
+            db.SaveChanges();
+
+            return Ok();
+        }
+        /// <summary>
+        /// Removes an association between a particular group and a particular event
+        /// </summary>
+        /// <param name="eventid">The event ID primary key</param>
+        /// <param name="groupid">The group ID primary key</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST api/EventData/AssociateEventWithGroup/9/1
+        /// </example>
+        [HttpPost]
+        [Route("api/EventData/UnAssociateEventWithGroup/{eventid}/{groupid}")]
+
+        public IHttpActionResult UnAssociateEventWithGroup(int eventid, int groupid)
+        {
+
+            Event SelectedEvent = db.Events.Include(e => e.Groups).Where(e => e.EventId == eventid).FirstOrDefault();
+            Group SelectedGroup = db.Groups.Find(groupid);
+
+            if (SelectedEvent == null || SelectedGroup == null)
+            {
+                return NotFound();
+            }
+
+            Debug.WriteLine("input event id is: " + eventid);
+            Debug.WriteLine("selected event name is: " + SelectedEvent.EventName);
+            Debug.WriteLine("input group id is: " + groupid);
+            Debug.WriteLine("selected group name is: " + SelectedGroup.GroupName);
+
+
+            SelectedEvent.Groups.Remove(SelectedGroup);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        /// <summary>
         /// Returns data of all events associated with a paritcular location with id = {id}
         /// </summary>
         /// <param name="id">Id of a particular Location in Db</param>

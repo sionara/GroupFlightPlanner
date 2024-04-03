@@ -24,12 +24,23 @@
     }
 </div>
 
-<div>
-    <h3>Responsible for:</h3>
-    @foreach (var activity in Model.JoinedActivities)
-    {<div>
-            <a href="/Activity/Details/@activity.ActivityId">@activity.ActivityName</a>
-        </div>
+<div class="row">
+    <div class="col-8">
+        <h3>Responsible for:</h3>
+        @foreach (var activity in Model.JoinedActivities)
+        {<div>
+                <a href="/Activity/Details/@activity.ActivityId">@activity.ActivityName</a>
+            </div>
 
-    }
+        }
+    </div>
+    <div class="col-4 border border-light-subtle">
+        <h3>Responsible for:</h3>
+        @foreach (var events in Model.JoinedEvents)
+        {<div>
+                <a href="/Event/Details/@events.EventId">@events.EventName</a>
+            </div>
+
+        }
+    </div>
 </div>

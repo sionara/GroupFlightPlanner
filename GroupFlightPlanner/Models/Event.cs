@@ -29,6 +29,9 @@ namespace GroupFlightPlanner.Models
         [ForeignKey("Location")]
         public int LocationId { get; set; }
         public virtual Location Location { get; set; }
+
+        // an event has many groups joined in
+        public ICollection<Group> Groups { get; set; }
     }
 
     public class EventDto

@@ -98,6 +98,74 @@ namespace GroupFlightPlanner.Controllers
 
             return Ok(GroupDtos);
         }
+
+        /// <summary>
+        /// Gathers information about groups related to a particular event
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all groups in the database that match to a particular event id
+        /// </returns>
+        /// <param name="id">Event Id.</param>
+        /// <example>
+        /// GET: api/GroupData/ListGroupsForEvent/1
+        /// </example>
+        [HttpGet]
+        [ResponseType(typeof(GroupDto))]
+
+        public IHttpActionResult ListGroupsForEvent(int id)
+        {
+            //all events that have groups which match with our ID
+            List<Group> Groups = db.Groups.Where(
+                g => g.Events.Any(
+                    e => e.EventId == id
+                )).ToList();
+            List<GroupDto> GroupDtos = new List<GroupDto>();
+
+            Groups.ForEach(b => GroupDtos.Add(new GroupDto()
+            {
+                GroupId = b.GroupId,
+                GroupName = b.GroupName,
+                Description = b.Description,
+
+            }));
+
+            return Ok(GroupDtos);
+        }
+
+        /// <summary>
+        /// Returns Groups in the system not joining in a particular event.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all groups in the database not joining in a particular event
+        /// </returns>
+        /// <param name="id">Event Primary Key</param>
+        /// <example>
+        /// GET: api/GroupData/ListGroupsNotJoinInEvent/1
+        /// </example>
+        [HttpGet]
+        [ResponseType(typeof(GroupDto))]
+        public IHttpActionResult ListGroupsNotJoinInEvent(int id)
+        {
+            List<Group> Groups = db.Groups.Where(
+               g => !g.Events.Any(
+                   e => e.EventId == id
+               )).ToList();
+            List<GroupDto> GroupDtos = new List<GroupDto>();
+
+            Groups.ForEach(b => GroupDtos.Add(new GroupDto()
+            {
+                GroupId = b.GroupId,
+                GroupName = b.GroupName,
+                Description = b.Description,
+
+            }));
+
+            return Ok(GroupDtos);
+        }
+
+
         // Find Group
         // GET: api/GroupData/FindGroup/2
 

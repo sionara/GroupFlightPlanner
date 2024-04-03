@@ -102,6 +102,12 @@ namespace GroupFlightPlanner.Controllers
             IEnumerable<ActivityDto> JoinedActivities = response.Content.ReadAsAsync<IEnumerable<ActivityDto>>().Result;
             ViewModel.JoinedActivities = JoinedActivities;
 
+            // show all events were joined in by this group
+            url = "https://localhost:44380/api/eventdata/listeventsforgroup/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<EventDto> JoinedEvents = response.Content.ReadAsAsync<IEnumerable<EventDto>>().Result;
+            ViewModel.JoinedEvents = JoinedEvents;
+
             return View(ViewModel);
         }
         public ActionResult Error()
