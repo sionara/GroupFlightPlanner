@@ -26,5 +26,40 @@
     </li>
 }
 
+<div style="margin-top:50px;">
+    <h3>Flights related to this location:</h3>
+
+    @{
+        if (Model.RelatedFlights == null || !Model.RelatedFlights.Any())
+        {
+            <p> **This Location does not have any flight associated</p>
+        }
+        else
+        {
+            <ul>
+                @foreach (var flight in Model.RelatedFlights)
+                {
+                    <li class="mb-2">
+                        <a href="/Flight/Details/@flight.FlightId" style="font-weight: bold;"><span class="related-entities">@flight.FlightNumber</span> - @flight.AirlineName</a> <a href="/Location/UnAssociate/@Model.selectedLocation.LocationId?FlightId=@flight.FlightId" style="font-weight: bold; color: red">[x]</a>
+                    </li>
+                }
+            </ul>
+        }
+    }
+
+    <div>
+        <h3>Add a new flight that is coming to @Model.selectedLocation.LocationName :</h3>
+        <form method="POST" action="/Location/Associate/@Model.selectedLocation.LocationId">
+            <select name="FlightId">
+                @foreach (var flight in Model.AvailableFlights)
+                {
+                    <option value="@flight.FlightId">@flight.AirlineName: @flight.FlightNumber - Date: @flight.DepartureTime.ToString("dd/MM/yyyy")</option>
+                }
+            </select>
+            <input type="submit" value="Associate Flight" />
+        </form>
+    </div>
+</div>
+
 
 

@@ -124,7 +124,52 @@ namespace GroupFlightPlanner.Controllers
             //convert related events into viewmodel format
             ViewModel.hostedEvents = hostedEvents;
 
+            //show associated flights with this location 
+            url = "FlightData/ListFlightsForLocation/" + id;
+            response = httpClient.GetAsync(url).Result;
+            IEnumerable<FlightDto> RelatedFlights = response.Content.ReadAsAsync<IEnumerable<FlightDto>>().Result;
+            ViewModel.RelatedFlights = RelatedFlights;
+
+            //flights that are not associated to the location
+            url = "FlightData/ListFlightsNotAssociatedForLocation/" + id;
+            response = httpClient.GetAsync(url).Result;
+            IEnumerable<FlightDto> AvailableFlights = response.Content.ReadAsAsync<IEnumerable<FlightDto>>().Result;
+            ViewModel.AvailableFlights = AvailableFlights;
+
             return View(ViewModel);
+        }
+
+
+        //POST: Location/Associate/{locationid}/{FlightId}
+        [HttpPost]
+        public ActionResult Associate(int id, int FlightId)
+        {
+
+            Debug.WriteLine("Attempting to associate location :" + id + " with flight " + FlightId);
+
+            //call our api to associate location with flight
+            string url = "LocationData/AssociateLocationWithFlight/" + id + "/" + FlightId;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = httpClient.PostAsync(url, content).Result;
+
+            return RedirectToAction("Details/" + id);
+        }
+
+        //Get: Location/UnAssociate/{id}?FlightId={FlightId}
+        [HttpGet]
+        public ActionResult UnAssociate(int id, int FlightId)
+        {
+
+            Debug.WriteLine("Attempting to unassociate location :" + id + " with flight " + FlightId);
+
+            //call our api to associate location with flight
+            string url = "LocationData/UnAssociateLocationWithFlight/" + id + "/" + FlightId;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = httpClient.PostAsync(url, content).Result;
+
+            return RedirectToAction("Details/" + id);
         }
 
 

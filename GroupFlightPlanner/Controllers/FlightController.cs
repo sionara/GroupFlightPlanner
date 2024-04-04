@@ -117,6 +117,13 @@ namespace GroupFlightPlanner.Controllers
 
             /* ---------- handle time difference to get flight duration ---------- */
 
+            //show all the locations under this flight
+
+            url = "LocationData/ListLocationsForFlight/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<LocationDto> RelatedLocations = response.Content.ReadAsAsync<IEnumerable<LocationDto>>().Result;
+            ViewModel.RelatedLocations = RelatedLocations;
+
             return View(ViewModel);
         }
 

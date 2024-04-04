@@ -14,5 +14,8 @@ namespace GroupFlightPlanner.Models.ViewModels
 
         //2. The variable which will store the Flight duration
         public string FlightDuration { get; set; }
+
+        //the related locations to a flight
+        public IEnumerable<LocationDto> RelatedLocations { get; set; }
     }
 }
