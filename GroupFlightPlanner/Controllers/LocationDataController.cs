@@ -41,6 +41,108 @@ namespace GroupFlightPlanner.Controllers
         }
 
         /// <summary>
+        /// Gather information on Locations related to a flight, this Get method will find all the locations that were associated with a flight
+        /// this method is in charge of lopping the database and look for any location that contains flights taht match with the flight id that will be providadded in the url
+        /// </summary>
+        /// <example>
+        /// Using browser => GET: api/LocationData/ListLocationsForFlight/1
+        /// 
+        /// Using curl comands in the terminal => curl https://localhost:44380/api/LocationData/ListLocationsForFlight/1
+        /// </example>
+        /// <param name="id">This is the id of the flight that we are looking for </param>
+        /// <returns>
+        /// Return a list of the locations that are associated to the flight 
+        /// </returns>
+        [HttpGet]
+        [ResponseType(typeof(LocationDto))]
+        public IHttpActionResult ListLocationsForFlight(int id)
+        {
+            //all locations that have flight that match with the ID provided
+            List<Location> Locations = db.Locations.Where(
+                l => l.Flights.Any(
+                    f => f.FlightId == id
+                )).ToList();
+
+            List<LocationDto> LocationDtos = new List<LocationDto>();
+
+            Locations.ForEach(l => LocationDtos.Add(new LocationDto()
+            {
+                LocationId = l.LocationId,
+                LocationName = l.LocationName,
+                LocationAddress = l.LocationAddress
+            }));
+
+
+            return Ok(LocationDtos);
+        }
+
+        /// <summary>
+        /// This is a POST method. Its function is to associate a flight to a location, the flight will be one of the flighst taht are not associated.
+        /// In order to work, this method requier 2 different parameters, the location id that will let the logic know which location will receive the association of a fligh and the flight id 
+        /// that will be the flight to associate
+        /// </summary>
+        /// <example>
+        /// POST api/LocationData/AssociateLocationWithFlight/1/1
+        /// </example>
+        /// <param name="locationid">The location ID primary key</param>
+        /// <param name="flightid">The flight ID primary key</param>
+        /// <returns>
+        /// it will return a 200(OK) if the association is successful or a 404 (Not Found) when the API does not found the id of the location or flight
+        /// </returns>
+        [HttpPost]
+        [Route("api/LocationData/AssociateLocationWithFlight/{locationid}/{flightid}")]
+        public IHttpActionResult AssociateLocationWithFlight(int locationid, int flightid)
+        {
+
+            Location SelectedLocation = db.Locations.Include(l => l.Flights).Where(l => l.LocationId == locationid).FirstOrDefault();
+            Flight SelectedFlight = db.Flights.Find(flightid);
+
+            if (SelectedLocation == null || SelectedFlight == null)
+            {
+                return NotFound();
+            }
+
+            SelectedLocation.Flights.Add(SelectedFlight);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+
+        /// <summary>
+        /// This is a POST method. Its function is to unassociate a flight that is associated to a location.
+        /// In order to work, this method requier 2 different parameters, the location id that will let the logic know which location will remoce the association of a fligh and the flight id 
+        /// that will be the flight to unassociate
+        /// </summary>
+        /// <example>
+        /// POST api/LocationData/UnAssociateLocationWithFlight/1/1
+        /// </example>
+        /// <param name="locationid">The location ID primary key</param>
+        /// <param name="flightid">The flight ID primary key</param>
+        /// <returns>
+        /// it will return a 200(OK) if the unassociation is successful or a 404 (Not Found) when the API does not found the id of the location or flight
+        /// </returns>
+        [HttpPost]
+        [Route("api/LocationData/UnAssociateLocationWithFlight/{locationid}/{flightid}")]
+        public IHttpActionResult UnAssociateLocationWithFlight(int locationid, int flightid)
+        {
+
+            Location SelectedLocation = db.Locations.Include(l => l.Flights).Where(l => l.LocationId == locationid).FirstOrDefault();
+            Flight SelectedFlight = db.Flights.Find(flightid);
+
+            if (SelectedLocation == null || SelectedFlight == null)
+            {
+                return NotFound();
+            }
+
+            SelectedLocation.Flights.Remove(SelectedFlight);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+
+        /// <summary>
         /// Returns a particular location based on id
         /// </summary>
         /// <param name="id">Id of a location</param>
