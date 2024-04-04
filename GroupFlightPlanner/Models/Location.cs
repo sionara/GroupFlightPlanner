@@ -14,6 +14,9 @@ namespace GroupFlightPlanner.Models
         public string LocationName { get; set; }
 
         public string LocationAddress { get; set; }
+
+        //Many flights are coming to a location 
+        public ICollection<Flight> Flights { get; set; }
     }
     public class LocationDto
     {
