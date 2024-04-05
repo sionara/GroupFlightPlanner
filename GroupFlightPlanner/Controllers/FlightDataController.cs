@@ -242,6 +242,98 @@ namespace GroupFlightPlanner.Controllers
             return FlightsDtosUnique;
         }
 
+        /// <summary>
+        /// Gather information on Flights that are gonna go to a location (list of associated flights to a location), this Get method will find all the flights that were associated with a location
+        /// this method is in charge of lopping the database and look for any flight that contains locations that match with the location id that will be providadded in the url
+        /// </summary>
+        /// <example>
+        /// Using browser => GET: api/FlightData/ListFlightsForLocation/1
+        /// 
+        /// Using curl comands in the terminal => curl https://localhost:44380/api/FlightData/ListFlightsForLocation/1
+        /// </example>
+        /// <param name="id">This is the id of the location that we are looking for</param>
+        /// <returns>
+        /// Return a list of the flights that are associated to the location 
+        /// </returns>
+        [HttpGet]
+        public IEnumerable<FlightDto> ListFlightsForLocation(int id)
+        {
+
+            List<Flight> Flights = db.Flights.Where(
+                f => f.Locations.Any(
+                    l => l.LocationId == id
+                )).ToList();
+
+            List<FlightDto> FlightsDtos = new List<FlightDto>();
+
+            Flights.ForEach(f => FlightsDtos.Add(new FlightDto()
+            {
+                FlightId = f.FlightId,
+                FlightNumber = f.FlightNumber,
+                From = f.From,
+                To = f.To,
+                DepartureAirport = f.DepartureAirport,
+                DestinationAirport = f.DestinationAirport,
+                DepartureTime = f.DepartureTime,
+                ArrivalTime = f.ArrivalTime,
+                TicketPrice = f.TicketPrice,
+                TimeZoneFrom = f.TimeZoneFrom,
+                TimeZoneTo = f.TimeZoneTo,
+                AirlineId = f.AirlineId,
+                AirlineName = f.Airline.AirlineName,
+                AirplaneId = f.AirplaneId,
+                AirplaneModel = f.Airplane.AirplaneModel
+            }));
+
+            return FlightsDtos;
+        }
+
+        /// <summary>
+        /// This Get method will list the differente flights taht are not asssociated with aa Location. the purpose of this method is to be able
+        /// to assign a flight to the location, but if the flight is already assigned it shoul not display it on the dropdown list
+        /// </summary>
+        /// <example>
+        /// Using browser => GET: api/FlightData/ListFlightsNotAssociatedForLocation/1
+        /// 
+        /// Using curl comands in the terminal => curl https://localhost:44380/api/FlightData/ListFlightsNotAssociatedForLocation/1
+        /// </example>
+        /// <param name="id">This is the id of the location that we are looking for</param>
+        /// <returns>
+        /// Return a list of the flights that are associated to the location 
+        /// </returns>
+        [HttpGet]
+        public IEnumerable<FlightDto> ListFlightsNotAssociatedForLocation(int id)
+        {
+
+            List<Flight> Flights = db.Flights.Where(
+                f => !f.Locations.Any(
+                    l => l.LocationId == id
+                )).ToList();
+
+            List<FlightDto> FlightsDtos = new List<FlightDto>();
+
+            Flights.ForEach(f => FlightsDtos.Add(new FlightDto()
+            {
+                FlightId = f.FlightId,
+                FlightNumber = f.FlightNumber,
+                From = f.From,
+                To = f.To,
+                DepartureAirport = f.DepartureAirport,
+                DestinationAirport = f.DestinationAirport,
+                DepartureTime = f.DepartureTime,
+                ArrivalTime = f.ArrivalTime,
+                TicketPrice = f.TicketPrice,
+                TimeZoneFrom = f.TimeZoneFrom,
+                TimeZoneTo = f.TimeZoneTo,
+                AirlineId = f.AirlineId,
+                AirlineName = f.Airline.AirlineName,
+                AirplaneId = f.AirplaneId,
+                AirplaneModel = f.Airplane.AirplaneModel
+            }));
+
+            return FlightsDtos;
+        }
+
 
         /// <summary>
         /// This GET method returns an individual flight from the database by specifying the primary key FlightId
@@ -315,6 +407,7 @@ namespace GroupFlightPlanner.Controllers
         /// </returns>
         [ResponseType(typeof(Flight))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult DeleteFlight(int id)
         {
             Flight Flight = db.Flights.Find(id);
@@ -362,6 +455,7 @@ namespace GroupFlightPlanner.Controllers
         /// </returns>
         [ResponseType(typeof(Flight))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult AddFlight(Flight Flight)
         {
             if (!ModelState.IsValid)
@@ -420,6 +514,7 @@ namespace GroupFlightPlanner.Controllers
         /// </returns>
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult UpdateFlight(int id, Flight Flight)
         {
             Debug.WriteLine("Update Flight method starts here");

@@ -46,6 +46,9 @@ namespace GroupFlightPlanner.Models
         [ForeignKey("Airplane")]
         public int AirplaneId { get; set; }
         public virtual Airplane Airplane { get; set; }
+
+        //A flight can go to a specific city but that city is holding events in different locations (addresses)
+        public ICollection<Location> Locations { get; set; }
     }
 
     public class FlightDto

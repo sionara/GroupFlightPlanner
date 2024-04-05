@@ -265,6 +265,10 @@
     <Compile Include="Migrations\202404021712192_events-groups.designer.cs">
       <DependentUpon>202404021712192_events-groups.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404041352018_locations-flights.cs" />
+    <Compile Include="Migrations\202404041352018_locations-flights.Designer.cs">
+      <DependentUpon>202404041352018_locations-flights.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -496,6 +500,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404021712192_events-groups.resx">
       <DependentUpon>202404021712192_events-groups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404041352018_locations-flights.resx">
+      <DependentUpon>202404041352018_locations-flights.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

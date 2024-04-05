@@ -23,3 +23,24 @@
 <div><strong>Arrival Time: </strong> <span class="title-entity">@Model.SelectedFlight.ArrivalTime.ToString("yyyy-MM-dd h:mm:ss tt") -- @Model.SelectedFlight.TimeZoneTo</span></div>
 <div><strong>Ticket Price: </strong> @Model.SelectedFlight.TicketPrice</div>
 
+<div style="margin-top:50px;">
+    <h3>Locations related to this flight:</h3>
+
+    @{
+        if (Model.RelatedLocations == null || !Model.RelatedLocations.Any())
+        {
+            <p> **This Flight does not have any location associated</p>
+        }
+        else
+        {
+            <ul>
+                @foreach (var location in Model.RelatedLocations)
+                {
+                    <li class="mb-2">
+                        <a href="/Location/Details/@location.LocationId" style="font-weight: bold;">@location.LocationName</a><br />
+                    </li>
+                }
+            </ul>
+        }
+    }
+</div>
