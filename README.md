@@ -4,7 +4,10 @@ A C# and ASP.NET web app which displays information about treeplanting events, f
 
 Collaborators and Contributions:
 ### Sion Lee 
--> Created new header menu to allow users to navigate through all the pages efficiently
+1. Fixed URL string but on Event and Group controllers for Associate and Unassociate methods
+2. Created new header menu to allow users to navigate through all the pages efficiently
+3. Refactored merged code to fix spelling errors and clear labelling
+4. Collaborated with group members to solve issues during migration and merging tasks such as creating new local databases and merging main branch into working branch
 
 ### Arnulfo Sanchez
 
