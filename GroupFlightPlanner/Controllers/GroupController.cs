@@ -64,6 +64,7 @@ namespace GroupFlightPlanner.Controllers
         }
 
         // GET: Group/Details/5
+        
         public ActionResult Details(int id)
         {
             // get a group data through an Http request
@@ -116,6 +117,7 @@ namespace GroupFlightPlanner.Controllers
             return View();
         }
         // GET: Group/New
+        [Authorize]
         public ActionResult New()
         {
             return View();
@@ -124,6 +126,7 @@ namespace GroupFlightPlanner.Controllers
 
         // POST: Group/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Group Group)
         {
             Debug.WriteLine("the json payload is :");
@@ -153,6 +156,7 @@ namespace GroupFlightPlanner.Controllers
         }
 
         // GET: Group/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             HttpClient client = new HttpClient() { };
@@ -184,6 +188,7 @@ namespace GroupFlightPlanner.Controllers
         }
 
         // GET: Group/Delete/5
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             HttpClient client = new HttpClient() { };
@@ -195,6 +200,7 @@ namespace GroupFlightPlanner.Controllers
 
         // POST: Group/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             HttpClient client = new HttpClient() { };

@@ -147,9 +147,8 @@ namespace GroupFlightPlanner.Controllers
 
             HttpClient client = new HttpClient() { };
 
-        //call our api to associate event with group
-        //string url = "eventdata/associateeventwithgroup/" + id + "/" + GroupId;
-        string url = "https://localhost:44380/api/Eventdata/associateeventwithgroup/" + id + "/" + GroupId;
+            //call our api to associate event with group
+            string url = "https://localhost:44380/api/eventdata/associateeventwithgroup/" + id + "/" + GroupId;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
@@ -176,8 +175,7 @@ namespace GroupFlightPlanner.Controllers
             HttpClient client = new HttpClient() { };
 
             //call our api to associate event with group
-            //string url = "/eventdata/unassociateeventwithgroup/" + id + "/" + GroupId;
-            string url = "https://localhost:44380/api/Eventdata/unassociateeventwithgroup/" + id + "/" + GroupId;
+            string url = "https://localhost:44380/api/eventdata/unassociateeventwithgroup/" + id + "/" + GroupId;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;

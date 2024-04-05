@@ -38,7 +38,6 @@ namespace GroupFlightPlanner.Controllers
 
         // GET: Activity/List
         // Objective: a webpage that lists the Activities in our system
-        [Authorize]
         public ActionResult List()
         {
 
@@ -63,7 +62,6 @@ namespace GroupFlightPlanner.Controllers
         }
 
         // GET: Activity/Details/5
-        [Authorize]
         public ActionResult Details(int id)
         {
 
@@ -149,7 +147,7 @@ namespace GroupFlightPlanner.Controllers
         }
 
         // GET: Activity/New
-        //[Authorize]
+        [Authorize]
         public ActionResult New()
         {
 
@@ -158,7 +156,7 @@ namespace GroupFlightPlanner.Controllers
 
         // POST: Activity/Create
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public ActionResult Create(Activity activity)
         {
             GetApplicationCookie();//get token credentials
@@ -189,6 +187,7 @@ namespace GroupFlightPlanner.Controllers
 
         }
         // GET: Activity/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             HttpClient client = new HttpClient() { };
@@ -219,6 +218,7 @@ namespace GroupFlightPlanner.Controllers
             }
         }
         // GET: Activity/Delete/5
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             HttpClient client = new HttpClient() { };
@@ -230,6 +230,7 @@ namespace GroupFlightPlanner.Controllers
 
         // POST: Activity/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             HttpClient client = new HttpClient() { };
