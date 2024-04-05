@@ -1,6 +1,10 @@
+<<<<<<< Updated upstream
 ﻿@model GroupFlightPlanner.Models.ViewModels.DetailsEvent
 
 
+=======
+﻿﻿@model GroupFlightPlanner.Models.ViewModels.DetailsEvent
+>>>>>>> Stashed changes
 @{
     ViewBag.Title = "Details";
 }
@@ -18,7 +22,11 @@
     @foreach (var group in Model.ResponsibleGroups)
     {
 
-        <a href="/Group/Details/@group.GroupId">@group.GroupName</a> <a style="color:#ab2020;" href="/Activity/Unassociate/@Model.SelectedEvent.EventId?GroupId=@group.GroupId">[x]</a><br />
+<<<<<<< Updated upstream
+        <a href="/Group/Details/@group.GroupId">@group.GroupName</a> <a style="color:#ab2020;" href="/Event/Unassociate/@Model.SelectedEvent.EventId?GroupId=@group.GroupId">[x]</a><br />
+=======
+        <a href="/Group/Details/@group.GroupId">@group.GroupName</a> <a style="color:#ab2020;" href="/Event/Unassociate/@Model.SelectedEvent.EventId?GroupId=@group.GroupId">[x]</a><br />
+>>>>>>> Stashed changes
     }
 
     <div>
@@ -37,6 +45,13 @@
         </form>
     </div>
 
+<<<<<<< Updated upstream
+=======
+</div>
+
+<div>
+    <a href="/Event/Edit/@Model.SelectedEvent.EventId">Edit Event</a>
+>>>>>>> Stashed changes
 </div>
 
 <div>
