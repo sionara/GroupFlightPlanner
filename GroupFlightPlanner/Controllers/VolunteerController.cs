@@ -158,7 +158,7 @@ namespace GroupFlightPlanner.Controllers
         }
 
         // GET: Volunteer/Edit/5
-        //[Authorize]
+        [Authorize]
         public ActionResult Edit(int id)
         {
             UpdateVolunteer ViewModel = new UpdateVolunteer();
@@ -189,7 +189,7 @@ namespace GroupFlightPlanner.Controllers
 
         // POST: Volunteer/Update/5
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public ActionResult Update(int id, Volunteer Volunteer)
         {
             GetApplicationCookie();//get token credentials   
@@ -211,6 +211,7 @@ namespace GroupFlightPlanner.Controllers
         }
 
         // GET: Volunteer/Delete/5
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             // get a volunteer data through an Http request
@@ -227,6 +228,7 @@ namespace GroupFlightPlanner.Controllers
 
         // POST: Volunteer/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             HttpClient client = new HttpClient() { };
@@ -245,21 +247,5 @@ namespace GroupFlightPlanner.Controllers
                 return RedirectToAction("Error");
             }
         }
-
-        // POST: Volunteer/Delete/5
-        /*[HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }*/
     }
 }
