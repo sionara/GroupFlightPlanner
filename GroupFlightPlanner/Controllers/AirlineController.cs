@@ -19,9 +19,45 @@ namespace GroupFlightPlanner.Controllers
 
         static AirlineController()
         {
-            client = new HttpClient();
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                AllowAutoRedirect = false,
+                //cookies are manually set in RequestHeader
+                UseCookies = false
+            };
+
+            client = new HttpClient(handler);
             client.BaseAddress = new Uri("https://localhost:44380/api/");
         }
+
+
+        /// <summary>
+        /// Grabs the authentication cookie sent to this controller.
+        /// For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+        /// 
+        /// Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+        /// https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+        /// </summary>
+        private void GetApplicationCookie()
+        {
+            string token = "";
+            //HTTP client is set up to be reused, otherwise it will exhaust server resources.
+            //This is a bit dangerous because a previously authenticated cookie could be cached for
+            //a follow-up request from someone else. Reset cookies in HTTP client before grabbing a new one.
+            client.DefaultRequestHeaders.Remove("Cookie");
+            if (!User.Identity.IsAuthenticated) return;
+
+            HttpCookie cookie = System.Web.HttpContext.Current.Request.Cookies.Get(".AspNet.ApplicationCookie");
+            if (cookie != null) token = cookie.Value;
+
+            //collect token as it is submitted to the controller
+            //use it to pass along to the WebAPI.
+            Debug.WriteLine("Token Submitted is : " + token);
+            if (token != "") client.DefaultRequestHeaders.Add("Cookie", ".AspNet.ApplicationCookie=" + token);
+
+            return;
+        }
+
 
         /// <summary>
         /// 1. GET: Airline/List
@@ -127,6 +163,7 @@ namespace GroupFlightPlanner.Controllers
         /// <returns>
         /// Returns the view of the form so that the user can insert a new airline.
         /// </returns>
+        [Authorize]
         public ActionResult New()
         {
             return View();
@@ -148,8 +185,10 @@ namespace GroupFlightPlanner.Controllers
         /// Returns the user to either the List View or the Error View, depending on the response StatusCode
         /// </returns>
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Airline airline)
         {
+            GetApplicationCookie();
             Debug.WriteLine("the json payload is :");
             //Debug.WriteLine(airline.AirlineName);
             //objective: add a new airline into the system using the API
@@ -185,6 +224,7 @@ namespace GroupFlightPlanner.Controllers
         /// <returns>
         /// Returns the view with the form filled with the information of the airline to update
         /// </returns>
+        [Authorize]
         public ActionResult Edit(int id)
         {
             string url = "AirlineData/FindAirline/" + id;
@@ -212,8 +252,10 @@ namespace GroupFlightPlanner.Controllers
         /// If the update is satisfactory the user will be redirected to the airline list, otherwise it will be sent to the error page
         /// </returns>
         [HttpPost]
+        [Authorize]
         public ActionResult Update(int id, Airline airline)
         {
+            GetApplicationCookie();
             //serialize into JSON
             //Send the request to the API
             string url = "AirlineData/UpdateAirline/" + id;
@@ -248,6 +290,7 @@ namespace GroupFlightPlanner.Controllers
         /// <returns>
         /// Returns a view that provides information about the airline to delete, this is through the selectedairline that was found by the supplied id
         /// </returns>
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "AirlineData/FindAirline/" + id;
@@ -269,8 +312,10 @@ namespace GroupFlightPlanner.Controllers
         /// If the IsSuccessStatusCode is false, this will indicate that the record was not deleted and the user will be directed to the View Error 
         /// </returns>
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
+            GetApplicationCookie();
             string url = "AirlineData/DeleteAirline/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
