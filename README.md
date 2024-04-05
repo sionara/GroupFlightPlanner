@@ -5,7 +5,7 @@ A C# and ASP.NET web app which displays information about treeplanting events, f
 ### Collaboration Together (Sion, Arnulfo, Nhi)
 - Setting up the MVP of the 3 Passion Projects in just one project
 
-Collaborators and Contributions:
+### Collaborators and Contributions:
 ### Sion Lee 
 Worked with association between Events and Groups, Locations and Flights.
 1. Fixed URL string but on Event and Group controllers for Associate and Unassociate methods
