@@ -165,6 +165,7 @@ namespace GroupFlightPlanner.Controllers
         /// </returns>
         [ResponseType(typeof(Airline))]
         [HttpPost]
+        [Authorize]
         //[Route("api/AirlineData/DeleteAirline/{id}")]
         public IHttpActionResult DeleteAirline(int id)
         {
@@ -204,6 +205,7 @@ namespace GroupFlightPlanner.Controllers
         /// </returns>
         [ResponseType(typeof(Airline))]
         [HttpPost]
+        [Authorize]
         //[Route("api/AirlineData/AddAirline")]
         public IHttpActionResult AddAirline(Airline Airline)
         {
@@ -241,6 +243,7 @@ namespace GroupFlightPlanner.Controllers
         /// </returns>
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult UpdateAirline(int id, Airline Airline)
         {
             Debug.WriteLine("Update Airline method starts here");
