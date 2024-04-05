@@ -10,8 +10,20 @@ Collaborators and Contributions:
 
 ### Nhi Nguyen
 Worked with association between Events and Groups.
-1. Created and update View Model for DetailsEvent, and DetailsGroups to link associations. Also, Events and Groups have not been unassociated.
-2. Worked with EventController, EventDataController to get data from eventsgroups table to show joined groups on event details, and list unassociated groups on the select box .
-3. Worked with GroupDataController, GroupDataController to get data from eventsgroups table to show registered events on group details, and list unassociated events on the       select box.
-4. Showed associations of events and groups, and events and groups have not been unassociated on the view of event details and group details.
+1. Create a migration and table for many-many relationships between groups and events.
+2. Created and updated View Model for DetailsEvent, and DetailsGroups to link associations. Also, Events and Groups have not been unassociated.
+   - DetailsEvent.
+   - DetailsGroup.
+3. Worked with EventController, EventDataController to get data from eventsgroups table to show joined groups on event details, and list unassociated groups on the select box.
+   - EventController: Detail(show associated groups with this event).
+   - EventDataController.
+     - ListEventsForGroup.
+     - AssociateEventWithGroup.
+     - UnAssociateEventWithGroup.
+4. Worked with GroupDataController, GroupDataController to get data from eventsgroups table to show registered events on group details, and list unassociated events on the       select box.
+   - GroupController: Detail(show all events were joined in by this group).
+   - GroupDataController:
+       - ListGroupsForEvent.
+       - ListGroupsNotJoinInEvent
+5. Showed associations of events and groups, and events and groups have not been unassociated on the view of event details and group details.
 
