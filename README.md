@@ -4,5 +4,7 @@ A C# and ASP.NET web app which displays information about treeplanting events, f
 
 Collaborators and Contributions:
 Sion Lee -> Created new header menu to allow users to navigate through all the pages efficiently
+
 Arnulfo Sanchez -> 
+
 Nhi Nguyen -> 
