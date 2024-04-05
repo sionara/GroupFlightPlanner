@@ -15,13 +15,15 @@ Worked with association between Events and Groups.
    - DetailsEvent.
    - DetailsGroup.
 3. Worked with EventController, EventDataController to get data from eventsgroups table to show joined groups on event details, and list unassociated groups on the select box.
-   - EventController: Detail(show associated groups with this event).
+   - EventController:
+        - Detail(show associated groups with this event).
    - EventDataController.
      - ListEventsForGroup.
      - AssociateEventWithGroup.
      - UnAssociateEventWithGroup.
 4. Worked with GroupDataController, GroupDataController to get data from eventsgroups table to show registered events on group details, and list unassociated events on the       select box.
-   - GroupController: Detail(show all events were joined in by this group).
+   - GroupController:
+        - Detail(show all events were joined in by this group).
    - GroupDataController:
        - ListGroupsForEvent.
        - ListGroupsNotJoinInEvent
