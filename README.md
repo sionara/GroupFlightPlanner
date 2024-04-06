@@ -19,9 +19,12 @@ Worked with association between Events and Groups, Locations and Flights.
    - Views/Event/Details
    - Views/Event/Edit
    - Views/Event/New
-3. Refactored merged code to fix spelling errors and clear labelling
-4. Collaborated with group members to solve issues during migration and merging tasks such as creating new local databases and merging main branch into working branch
-5. Collaborated with problem-solving of integration of the code as well as the elaboration of related methods
+3. Collaborated with methods for Location Controller for the relationship between Locations and Flights
+    - Associate 
+    - UnAssociate
+4. Refactored merged code to fix spelling errors and clear labelling
+5. Collaborated with group members to solve issues during migration and merging tasks such as creating new local databases and merging main branch into working branch
+6. Collaborated with problem-solving of integration of the code as well as the elaboration of related methods
 
 ### Arnulfo Sanchez
 Worked with association between Locations and Flights.
