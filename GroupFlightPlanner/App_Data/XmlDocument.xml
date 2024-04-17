@@ -1,0 +1,2140 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GroupFlightPlanner</name>
+    </assembly>
+    <members>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:GroupFlightPlanner.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:GroupFlightPlanner.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:GroupFlightPlanner.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:GroupFlightPlanner.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:GroupFlightPlanner.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:GroupFlightPlanner.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,GroupFlightPlanner.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,GroupFlightPlanner.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:GroupFlightPlanner.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},GroupFlightPlanner.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.#ctor(GroupFlightPlanner.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,GroupFlightPlanner.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:GroupFlightPlanner.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GroupFlightPlanner.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:GroupFlightPlanner.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GroupFlightPlanner.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.ActivityDataController.ListActivitiesForGroup(System.Int32)">
+            <summary>
+            Gathers information about activities related to a particular group
+            </summary>
+            <returns>
+            HEADER: 200 (OK)
+            CONTENT: all activities in the database that match to a particular group id
+            </returns>
+            <param name="id">Group Id.</param>
+            <example>
+            GET: api/ActivityData/ListActivitiesForGroup/1
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.ActivityDataController.AssociateActivityWithGroup(System.Int32,System.Int32)">
+            <summary>
+            Associates a particular group with a particular activity
+            </summary>
+            <param name="activityid">The activity ID primary key</param>
+            <param name="groupid">The group ID primary key</param>
+            <returns>
+            HEADER: 200 (OK)
+            or
+            HEADER: 404 (NOT FOUND)
+            </returns>
+            <example>
+            POST api/ActivityData/AssociateActivityWithGroup/9/1
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.ActivityDataController.UnAssociateActivityWithGroup(System.Int32,System.Int32)">
+            <summary>
+            Removes an association between a particular group and a particular activity
+            </summary>
+            <param name="activityid">The activity ID primary key</param>
+            <param name="groupid">The group ID primary key</param>
+            <returns>
+            HEADER: 200 (OK)
+            or
+            HEADER: 404 (NOT FOUND)
+            </returns>
+            <example>
+            POST api/ActivityData/AssociateActivityWithGroup/9/1
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.ActivityDataController.FindActivity(System.Int32)">
+            <summary>
+            Returns all activities in the system.
+            </summary>
+            <returns>
+            HEADER: 200 (OK)
+            CONTENT: An activity in the system matching up to the activity ID primary key
+            or
+            HEADER: 404 (NOT FOUND)
+            </returns>
+            <param name="id">The primary key of the activity</param>
+            <example>
+            GET: api/ActivityData/FindActivity/5
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.ActivityDataController.AddActivity(GroupFlightPlanner.Models.Activity)">
+            <summary>
+            Adds an activity to the system
+            </summary>
+            <param name="activity">JSON FORM DATA of an animal</param>
+            <returns>
+            HEADER: 201 (Created)
+            CONTENT: Activity ID, Activity Data
+            or
+            HEADER: 400 (Bad Request)
+            </returns>
+            <example>
+            POST: api/ActivityData/AddActivity
+            FORM DATA: Activity JSON Object
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.ActivityDataController.UpdateActivity(System.Int32,GroupFlightPlanner.Models.Activity)">
+            <summary>
+            Updates a particular activity in the system with POST Data input
+            </summary>
+            <param name="id">Represents the Activity ID primary key</param>
+            <param name="activity">JSON FORM DATA of an activity</param>
+            <returns>
+            HEADER: 204 (Success, No Content Response)
+            or
+            HEADER: 400 (Bad Request)
+            or
+            HEADER: 404 (Not Found)
+            </returns>
+            <example>
+            POST: api/ActivityData/UpdateActivity/5
+            FORM DATA: Animal JSON Object
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.ActivityDataController.DeleteActivity(System.Int32)">
+            <summary>
+            Deletes a activity from the system by it's ID.
+            </summary>
+            <param name="id">The primary key of the activity</param>
+            <returns>
+            HEADER: 200 (OK)
+            or
+            HEADER: 404 (NOT FOUND)
+            </returns>
+            <example>
+            POST: api/ActivityData/DeleteActivity/5
+            FORM DATA: (empty)
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineController.List(System.String)">
+            <summary>
+            1. GET: Airline/List
+            This GET method is responsible for making the call to the airline API, in which it will collect the list of airlines and provide the collected information to the View.
+            This code is responsible for utilizing the client.BaseAddress and calling the ListAirlines method
+            Go to  -> /Views/Airline/List.cshtml
+            
+            2. GET: Airline/List?AirlineSearch=can
+            this will happen when the user provides a searck key in the form, this will display all the Airlines that contains the AirlineSearch = can
+            Go to  -> /Views/Airline/List.cshtml
+            </summary>
+            <param name="AirlineSearch">This parameter is type string and it's function is to search for a specific Airline, if it is not given
+            it will take the value of null and it will show all the Airline sin the system. If the user provides a string, this controller will provide the Airlines
+            that contains the string given</param>
+            <returns>
+            Returns the List View, which will display a list of the airlines in the system. Each of the airlines in the database will be of the datatype AirlineDto.
+            
+            Additionally, if the AirlineSearch != null it will display all the Airlines that contains the AirlineSearch
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineController.Details(System.Int32)">
+            <summary>
+            GET: Airline/Details/{id}
+            This GET method will be responsible for calling the FindAirline method from the airline,the FlightData/ListFlightsForAirline/ + id and the FlightData/ListPlanesForAirline/ + id.
+            Because this time the method will return a ViewModels that holds the SelectedAirline, RelatedFlights (Related method) and RelatedAirplanes (Related method)
+            RelatedFlights => List of flights for airline
+            RelatedAirplanes => List of airplanes that a Airline has
+            Go to  -> /Views/Airline/Details.cshtml
+            </summary>
+            <param name="id">This is an int datatype parameter of the airline you want to find.</param>
+            <returns>
+            It will return a ViewModel of type DetailsAirline this viewmodel will allow the view to acces to the SelectedAirline (airline found by the ID given in the URL), RelatedFlights and RelatedAirplanes
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineController.New">
+            <summary>
+            GET: Airline/New
+            GET method to add a new airline to the system, responsible for providing the view of the form for inserting a new airline.
+            Go to  -> /Views/Airline/New.cshtml
+            </summary>
+            <returns>
+            Returns the view of the form so that the user can insert a new airline.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineController.Create(GroupFlightPlanner.Models.Airline)">
+            <summary>
+            POST: Airline/Create
+            This POST method will be in charge of receiving the information sent by the new form, once the information is received 
+            the method will be in charge of processing the conversion of the Airline object to json in order to be sent in the body of the HTTP REQUEST
+            Additionally, it is indicated that its content is of type json in the reques header. Once this is done, 
+            a POST request will be sent to the specified Uri as an asynchronous operation. If its IsSuccessStatusCode is true, 
+            it will redirect the user to the list page, otherwise it will indicate to the user that there is an error.
+            Go to (if success) -> /Views/Airline/List.cshtml
+            Go to (if not success) -> /Views/Airline/Error.cshtml
+            </summary>
+            <param name="airline">This parameter represents the object received by the form for creating a new airline.</param>
+            <returns>
+            Returns the user to either the List View or the Error View, depending on the response StatusCode
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineController.Edit(System.Int32)">
+            <summary>
+            GET: Airline/Edit/{id}
+            This GET method is in charge of collecting and sending the informaction to the View which will have a form with the airline information that is requested by its id, 
+            for this the api/AirlineData/FindAirline/{id} is used. Once the call to the API is made, the information collected of the datatype AirlineDto will be sent to the view. 
+            In this way the form will be populated with the information of the airline
+            Go to  -> /Views/Airline/Edit.cshtml
+            </summary>
+            <param name="id">This is an int datatype parameter of the AirlineId value providaded by the url that will be displayed in the form in order to make an update</param>
+            <returns>
+            Returns the view with the form filled with the information of the airline to update
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineController.Update(System.Int32,GroupFlightPlanner.Models.Airline)">
+            <summary>
+            POST: Airline/Update/{id}
+            This POST method is responsible for making the call to the UpdateAirline method of the airline api. The information collected by the form will be sent in the body of the request
+            Go to (if success) -> /Views/Airline/Details/{id}.cshtml
+            Go to (if not success) -> /Views/Airline/Error.cshtml
+            </summary>
+            <param name="id">This is the parameter provided by the url that identifies the AirlineId that is going to be modified</param>
+            <param name="airline">The airline object, this parameter holds the new data, this new data will be sent as a body to the UpdateAirline method of the Airline API</param>
+            <returns>
+            If the update is satisfactory the user will be redirected to the airline list, otherwise it will be sent to the error page
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineController.DeleteConfirm(System.Int32)">
+            <summary>
+            GET: Airline/DeleteConfirm/{id}
+            This is a GET method that is responsible for finding the information of the airline to delete, this is done through its airline id which is provided by the id of the url
+            Go to  -> /Views/Airline/DeleteConfirm.cshtml
+            </summary>
+            <param name="id">This is an int datatype parameter of the airline that will be displayed in DeleteConfirm View in order to delete the record</param>
+            <returns>
+            Returns a view that provides information about the airline to delete, this is through the selectedairline that was found by the supplied id
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineController.Delete(System.Int32)">
+            <summary>
+            POST: Airline/Delete/{id}
+            This POST method is responsible for making the request to api/AirlineData/DeleteAirline to be able to delete the indicated airline from the database. 
+            If the IsSuccessStatusCode is true it will send the user to the list of airlines, otherwise it will send the user to the Error page
+            Go to (if success) -> /Views/Airline/List.cshtml
+            Go to (if not success) -> /Views/Airline/Error.cshtml
+            </summary>
+            <param name="id">This id indicates the AirlineId that will be used to determine the airline that will be deleted</param>
+            <returns>
+            If the deletion is completed and no error occurs the user will be directed to the list of airlines which will not show the recently deleted airline. 
+            If the IsSuccessStatusCode is false, this will indicate that the record was not deleted and the user will be directed to the View Error 
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineController.Error">
+            <summary>
+            This Get method is responsible for returning the view when an error occurs, such as not finding the ID in the system or some of the operations that did not work
+            Go to -> /Views/Airline/Error.cshtml
+            </summary>
+            <returns>
+            Return the Error View
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineDataController.ListAirlines(System.String)">
+            <summary>
+            This is a GET method that will return a list of all the airlines in the system. This method presents a foreach that will be responsible 
+            for setting each of the AirlineDto objects with the corresponding information. To do this, the information must first be collected, which will be a list of Airline datatypes. 
+            Once this is done, the foreach will be run to have each of the data types as AirlineDto.
+            
+            Additionally it will accept a search key, this was used in order to filter the list, the concept it's the same but will accept nother parameter in the URL
+            </summary>
+            <example>
+            Using browser => GET: api/AirlineData/ListAirlines
+            
+            Using curl comands in the terminal => curl https://localhost:44379/api/AirlineData/ListAirlines
+            
+            Using browser with a search key => GET: api/AirlineData/ListAirlines/avianca
+            
+            Using curl comands in the terminal => curl https://localhost:44379/api/AirlineData/ListAirlines/avianca
+            </example>
+            <param name="AirlineSearch">This is the search key, the api will use it to look for this specific Airline
+            if the user does not enter a search key the GET method will display the list of all the Airlines otherwise, it will display the 
+            Airlines that Contains the search key. Additionally, its case insensitive
+            </param>
+            <returns>
+            A list of Airlines in the system or the airlines that contains the string given on the AirlineSearch parameter
+            
+            GET: api/AirlineData/ListAirlines =>
+            [{"AirlineId":22,"AirlineName":"United Airlines","Country":"United States","Headquarters":"Willis Tower, Chicago, Illinois U.S.","FounderName":"Walter Varney","FoundingYear":"1926-04-06T00:00:00","Website":"https://www.united.com/en/us","ContactNumber":"18008648331"},
+            {"AirlineId":23,"AirlineName":"Lynx Air","Country":"Canada","Headquarters":"Calgary, Alberta, Canada","FounderName":"Tim Morgan","FoundingYear":"2006-09-06T00:00:00","Website":"https://www.flylynx.com/en#refreshforced","ContactNumber":"18778975969"},
+            {"AirlineId":24,"AirlineName":"WestJet Airlines Ltd.","Country":"Canada","Headquarters":"Calgary, Alberta, Canada","FounderName":"Clive Beddoe","FoundingYear":"1994-06-27T00:00:00","Website":"https://www.westjet.com/en-ca","ContactNumber":"18889378538"}]
+            
+            curl https://localhost:44379/api/AirlineData/ListAirlines
+            [{"AirlineId":22,"AirlineName":"United Airlines","Country":"United States","Headquarters":"Willis Tower, Chicago, Illinois U.S.","FounderName":"Walter Varney","FoundingYear":"1926-04-06T00:00:00","Website":"https://www.united.com/en/us","ContactNumber":"18008648331"},
+            {"AirlineId":23,"AirlineName":"Lynx Air","Country":"Canada","Headquarters":"Calgary, Alberta, Canada","FounderName":"Tim Morgan","FoundingYear":"2006-09-06T00:00:00","Website":"https://www.flylynx.com/en#refreshforced","ContactNumber":"18778975969"},
+            {"AirlineId":24,"AirlineName":"WestJet Airlines Ltd.","Country":"Canada","Headquarters":"Calgary, Alberta, Canada","FounderName":"Clive Beddoe","FoundingYear":"1994-06-27T00:00:00","Website":"https://www.westjet.com/en-ca","ContactNumber":"18889378538"}]
+            
+                Search key example
+            curl https://localhost:44379/api/AirlineData/ListAirlines/avianca
+            [{"AirlineId":32,"AirlineName":"Avianca","Country":"Colombia","Headquarters":"Bogotá, Colombia","FounderName":"Ernesto Cortissoz","FoundingYear":"2024-02-07T00:00:00","Website":"https://www.avianca.com/es/","ContactNumber":"8007228222"}]
+            
+            curl https://localhost:44379/api/AirlineData/ListAirlines/ET
+            [{"AirlineId":24,"AirlineName":"WestJet Airlines Ltd.","Country":"Canada","Headquarters":"Calgary, Alberta, Canada","FounderName":"Clive Beddoe","FoundingYear":"1994-06-27T00:00:00","Website":"https://www.westjet.com/en-ca","ContactNumber":"18889378538"},
+            {"AirlineId":27,"AirlineName":"JetBlue\r\n","Country":"United States\r\n","Headquarters":"Brewster Building Long Island City, New York City, U.S.\r\n","FounderName":"David Neeleman\r\n","FoundingYear":"1998-08-01T00:00:00","Website":"https://www.jetblue.com/\r\n","ContactNumber":"18558385841\r\n"}]
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineDataController.FindAirline(System.Int32)">
+            <summary>
+            This GET method returns an individual airline from the database by specifying the primary key AirlineId
+            </summary>
+            <example>
+            Using browser => GET: api/AirlineData/FindAirline/24
+            
+            Using curl comands in the terminal => curl https://localhost:44379/api/AirlineData/FindAirline/24
+            </example>
+            <param name="id">This is the AirlineId parameter you want to search for.</param>
+            <returns>
+            A AirlineDto object which represent the airline with the id given 
+            
+            curl https://localhost:44379/api/AirlineData/FindAirline/24
+            {"AirlineId":24,"AirlineName":"WestJet Airlines Ltd.","Country":"Canada","Headquarters":"Calgary, Alberta, Canada","FounderName":"Clive Beddoe","FoundingYear":"1994-06-27T00:00:00","Website":"https://www.westjet.com/en-ca","ContactNumber":"18889378538"}
+            
+            curl https://localhost:44379/api/AirlineData/FindAirline/28
+            {"AirlineId":28,"AirlineName":"Air Canada","Country":"Canada","Headquarters":"Saint-Laurent, Quebec, Canada","FounderName":"Canadian National Railway","FoundingYear":"1937-04-10T00:00:00","Website":"https://www.aircanada.com/ca/en/aco/home.html","ContactNumber":"18882472262"}
+            
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineDataController.DeleteAirline(System.Int32)">
+            <summary>
+            This method is responsible for deleting a airline record in the Airlines table, the deleted record will be according to the value indicated in the id parameter
+            </summary>
+            <example>
+            Because this method is POST, you must use the curl command in the terminal to delete the record
+            
+            POST: api/AirlineData/DeleteAirline/31
+            curl -d "" https://localhost:44379/api/AirlineData/DeleteAirline/31
+            </example>
+            <param name="id">This will indicate the AirlineId value that you want to eliminate</param>
+            <returns>
+            curl -d "" https://localhost:44379/api/AirlineData/DeleteAirline/31
+            This method will not return anything on the console, it will delete a airline from the DB, in this case the record with the AirlineId = 31 will be deleated
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineDataController.AddAirline(GroupFlightPlanner.Models.Airline)">
+             <summary>
+             This method is responsible for receiving a new Airline record. For this, the Airline type object must be sent. In order to be able to test this method, 
+             you must open the folder where the airline.json is located
+             </summary>
+             <example>
+             curl -d @airline.json -H "Content-type: application/json" https://localhost:44379/api/AirlineData/AddAirline
+             The airline.json file contains the airline information that will be added to the DB.
+             </example>
+             <param name="Airline">This is the json object that contains the information of the airline to add.</param>
+             <returns>
+             {
+                 "AirlineId":9,
+                 "AirlineName":"American",
+                 "Country":"United States",
+                 "Headquarters":"Fort Worth, Texas, U.S.",
+                 "FounderName":"E.L. Cord and C. R. Smith",
+                 "FoundingYear":"1926-04-15T00:00:00",
+                 "Website":"https://www.aa.com/homePage.do",
+                 "ContactNumber":"+18004337300"
+            }
+             </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineDataController.UpdateAirline(System.Int32,GroupFlightPlanner.Models.Airline)">
+            <summary>
+            This POST method will be in charge of updating the record according to the id parameter that is provided, for this both the value that is delivered by the url (id) 
+            and the value that the AirlineId (within the object received in Airline) have to match. otherwise the record is not updated
+            additionally, because this method is post to check its operation you must use the curl command in the terminal. for this open the folder where the airline.json is located on the terminal screen
+            
+            once you have the folder open you can use this command curl -d @airline.json -H "Content-type: application/json" https://localhost:44379/api/AirlineData/UpdateAirline/31
+            </summary>
+            <example>
+            curl -d @airline.json -H "Content-type: application/json" https://localhost:44379/api/AirlineData/UpdateAirline/31
+            </example>
+            <param name="id">The value of the AirlineId to update</param>
+            <param name="Airline">The Airline object, this parameter holds the new data, with this data the method will update the specified Airline</param>
+            <returns>
+            This method will not return anything on the console, but the method will return whether the update was successful or not, in case it was not successful because there was no id match (id != Airline.AirlineId)
+            The values of the Airline object and the id sent in the url are printed in the console. If the method runs, without problem, the record will be updated.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirlineDataController.AirlineExists(System.Int32)">
+            <summary>
+            This method is responsible for returning a bool indicating if the airline exists
+            </summary>
+            <param name="id">The value of the AirlineId to update</param>
+            <returns>A bool indicating if the record exists</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneController.List(System.String)">
+            <summary>
+            1. GET: Airplane/List
+            This GET method is responsible for making the call to the airplane API, in which it will collect the list of airplanes and provide the collected information to the View.
+            This code is responsible for utilizing the client.BaseAddress and calling the ListAirplanes method
+            Go to  -> /Views/Airplane/List.cshtml
+            
+            2. GET: Airplane/List?AirplaneSearch=airbus
+            this will happen when the user provides a searck key in the form, this will display all the Airplanes that contains the AirplaneSearch = airbus
+            Go to  -> /Views/Airplane/List.cshtml
+            </summary>
+            <param name="AirplaneSearch">This parameter is String type and it will holde the value given ny the user, in case that the user doesn not provide a value it will be null and it will return all the list of Airplanes in the system
+            If the user provide a value. it will provide to the view all the Airplanes that contains the AirplaneSearch parameter</param>
+            <returns>
+            Returns the List View, which will display a list of the airplanes in the system. Each of the airplanes in the database will be of the datatype AirplaneDto.
+            
+            Additionally, if the AirplaneSearch != null it will display all the Airplanes that contains the AirplaneSearch
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneController.Details(System.Int32)">
+            <summary>
+            GET: Airplane/Details/{id}
+            This GET method will be responsible for calling the FindAirplane method from the airplane API, as well as the Related method in order to show the flighst of a particular airplane FlightData/ListFlightsForAirplane/ + id.
+            This method will return a ViewModel that holds the SelectedAirplane and RelatedFlights (Related method)
+            RelatedFlights => List of flights for a specific Airplane
+            Go to  -> /Views/Airplane/Details.cshtml
+            </summary>
+            <param name="id">This is an int datatype parameter of the airplane you want to find.</param>
+            <returns>
+            It will return a ViewModel of type DetailsAirplane this viewmodel will allow the view to acces to the SelectedAirplane (airplane found by the ID given in the URL) and RelatedFlights
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneController.New">
+            <summary>
+            GET: Airplane/New
+            GET method to add a new airplane to the system, responsible for providing the view of the form for inserting a new airplane.
+            Go to  -> /Views/Airplane/New.cshtml
+            </summary>
+            <returns>
+            Returns the view of the form so that the user can insert a new airplane.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneController.Create(GroupFlightPlanner.Models.Airplane)">
+            <summary>
+            POST: Airplane/Create
+            This POST method will be in charge of receiving the information sent by the new form, once the information is received 
+            the method will be in charge of processing the conversion of the Airplane object to json in order to be sent in the body of the HTTP REQUEST
+            Additionally, it is indicated that its content is of type json in the request header. Once this is done, 
+            a POST request will be sent to the specified Uri as an asynchronous operation. If its IsSuccessStatusCode is true, 
+            it will redirect the user to the list airplanes page, otherwise it will indicate to the user that there is an error.
+            Go to (if success) -> /Views/Airplane/List.cshtml
+            Go to (if not success) -> /Views/Airplane/Error.cshtml
+            </summary>
+            <param name="airplane">This parameter represents the object received by the form for creating a new airplane.</param>
+            <returns>
+            Returns the user to either the List View of the airplanes or the Error View, depending on the response StatusCode
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneController.Edit(System.Int32)">
+            <summary>
+            GET: Airplane/Edit/{id}
+            This GET method is in charge of collecting the information of the airplane and send it to the view to prepoluate the form with the airplane information that is requested by its id, 
+            for this the api/AirplaneData/FindAirplane/{id} is used. Once the call to the API is made, the information collected of the datatype AirplaneDto will be sent to the view. 
+            In this way the form will be populated with the information of the airplane
+            Go to  -> /Views/Airplane/Edit.cshtml
+            </summary>
+            <param name="id">This is an int datatype parameter of the AirplaneId providaded by the url that will be displayed in the form in order to make an update</param>
+            <returns>
+            Returns the view with the form filled with the information of the airplane to update
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneController.Update(System.Int32,GroupFlightPlanner.Models.Airplane)">
+            <summary>
+            POST: Airplane/Update/{id}
+            This POST method is responsible for making the call to the UpdateAirplane method of the airplane api. The information collected by the form will be sent in the body of the request
+            Go to after updating (if success) -> /Views/Airplane/Details/{id}.cshtml
+            Go to (if not success) -> /Views/Airplane/Error.cshtml
+            </summary>
+            <param name="id">This is the parameter provided by the url that identifies the AirplaneId that is going to be updated</param>
+            <param name="airplane">The airplane object, this parameter holds the new data, this new data will be sent as a body to the UpdateAirplane method of the Airplane API</param>
+            <returns>
+            If the update is satisfactory the user will be redirected to the airplane list, otherwise it will be sent to the error page
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneController.DeleteConfirm(System.Int32)">
+            <summary>
+            GET: Airplane/DeleteConfirm/{id}
+            This is a GET method that is responsible for finding the information of the airplane to delete, this is done through its airplane id which is provided by the id of the url
+            Go to  -> /Views/Airplane/DeleteConfirm.cshtml
+            </summary>
+            <param name="id">This is an int datatype parameter of the airplane that will be displayed in DeleteConfirm View in order to delete it</param>
+            <returns>
+            Returns a view that provides information about the airplane to delete, this is through the selectedairplane that was found by the supplied id
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneController.Delete(System.Int32)">
+            <summary>
+            POST: Airplane/Delete/{id}
+            This POST method is responsible for making the request to api/AirplaneData/DeleteAirplane to be able to delete the indicated airplane from the database. 
+            If the IsSuccessStatusCode is true it will send the user to the list of airplanes, otherwise it will send the user to the Error page
+            Go to (if success) -> /Views/Airplane/List.cshtml
+            Go to (if not success) -> /Views/Airplane/Error.cshtml
+            </summary>
+            <param name="id">This id indicates the AirplaneId that will be used to determine the airplane that will be deleted</param>
+            <returns>
+            If the deletion is completed and no error occurs the user will be directed to the list of airplanes which will not show the recently deleted airplane. 
+            If the IsSuccessStatusCode is false, this will indicate that the record was not deleted and the user will be directed to the View Error 
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneController.Error">
+            <summary>
+            This Get method is responsible for returning the view when an error occurs, such as not finding the ID in the system or some of the operations that did not work
+            Go to -> /Views/Airplane/Error.cshtml
+            </summary>
+            <returns>
+            Return the Error View
+            </returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:GroupFlightPlanner.Controllers.AirplaneDataController.ListAirplanes(System.String)" -->
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneDataController.FindAirplane(System.Int32)">
+            <summary>
+            This GET method returns an individual airplane from the database by specifying the primary key AirplaneId
+            </summary>
+            <example>
+            Using browser => GET: api/AirplaneData/FindAirplane/24
+            
+            Using curl comands in the terminal => curl https://localhost:44379/api/AirplaneData/FindAirplane/24
+            </example>
+            <param name="id">This is the AirplaneId parameter you want to search for.</param>
+            <returns>
+            A AirplaneDto object which represent the airplane with the id given 
+            
+            curl https://localhost:44379/api/AirplaneData/FindAirplane/24
+            {"AirplaneId":24,"AirplaneModel":"Embraer E175SU","RegistrationNum":"C-FEKD","ManufacturerName":"Brazilian aerospace manufacturer Embraer","ManufactureYear":"2021-04-28T00:00:00","MaxPassenger":88,"EngineModel":"2 General Electric CF34-8E","Speed":870.00,"Range":3704.00}
+            
+            curl https://localhost:44379/api/AirplaneData/FindAirplane/33
+            {"AirplaneId":33,"AirplaneModel":"Saab 340B","RegistrationNum":"C-GOIA","ManufacturerName":"Saab AB and Fairchild Aircraft","ManufactureYear":"2023-02-10T00:00:00","MaxPassenger":37,"EngineModel":"2 General Electric CT7-9B","Speed":522.00,"Range":1685.00}
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneDataController.DeleteAirplane(System.Int32)">
+            <summary>
+            This method is responsible for deleting a airplane record in the Airplanes table, the deleted record will be according to the value indicated in the id parameter
+            </summary>
+            <example>
+            Because this method is POST, you must use the curl command in the terminal to delete the record
+            
+            POST: api/AirplaneData/DeleteAirplane/36
+            curl -d "" https://localhost:44379/api/AirplaneData/DeleteAirplane/36
+            </example>
+            <param name="id">This will indicate the AirplaneId value that you want to eliminate</param>
+            <returns>
+            curl -d "" https://localhost:44379/api/AirplaneData/DeleteAirplane/36
+            This method will not return anything on the console, it will delete a airplane from the DB, in this case the record with the AirplaneId = 36 will be deleated
+            </returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:GroupFlightPlanner.Controllers.AirplaneDataController.AddAirplane(GroupFlightPlanner.Models.Airplane)" -->
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneDataController.UpdateAirplane(System.Int32,GroupFlightPlanner.Models.Airplane)">
+            <summary>
+            This POST method will be in charge of updating the record according to the id parameter that is provided, for this both the value that is delivered by the url (id) 
+            and the value that the AirplaneId (within the object received in Airplane) have to match. otherwise the record is not updated
+            additionally, because this method is post to check its operation you must use the curl command in the terminal. for this open the folder where the airplane.json is located on the terminal screen
+            
+            once you have the folder open you can use this command curl -d @airplane.json -H "Content-type: application/json" https://localhost:44379/api/AirplaneData/UpdateAirplane/36
+            </summary>
+            <example>
+            curl -d @airplane.json -H "Content-type: application/json" https://localhost:44379/api/AirplaneData/UpdateAirplane/36
+            </example>
+            <param name="id">The value of the AirplaneId to update</param>
+            <param name="Airplane">The Airplane object, this parameter holds the new data, with this data the method will update the specified Airplane</param>
+            <returns>
+            This method will not return anything on the console, but the method will return whether the update was successful or not, in case it was not successful because there was no id match (id != Airplane.AirplaneId)
+            The values of the Airplane object and the id sent in the url are printed in the console. If the method runs, without problem, the record will be updated.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.AirplaneDataController.AirplaneExists(System.Int32)">
+            <summary>
+            This method is responsible for returning a bool indicating if the airplane exists
+            </summary>
+            <param name="id">The value of the AirplaneId to update</param>
+            <returns>A bool indicating if the record exists</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventController.List">
+            <summary>
+            handles request to get list of all events. Calls ListEvents API to fetch the data.
+            </summary>
+            <returns>
+            A view listing all events in the Db
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventController.Details(System.Int32)">
+            <summary>
+            handles request to get details of one event based on Id. Calls FindEvent API.
+            </summary>
+            <param name="id">Id of the event being searched </param>
+            <returns>
+            A view with details of a particular event
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventController.Associate(System.Int32,System.Int32)">
+            <summary>
+            list groups joining in this event based on Id of event.
+            </summary>
+            <param name="id">Id of the event</param>
+            <param name="GroupId">Id of the participated groups</param>
+            <returns>
+            A view with details of a particular event
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventController.UnAssociate(System.Int32,System.Int32)">
+            <summary>
+            list groups haven't joined in this event.
+            </summary>
+            <param name="id">Id of the event</param>
+            <param name="GroupId">Id of the groups have no association</param>
+            <returns>
+            A view with details of a particular event
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventController.New">
+            <summary>
+            handles request for the new view to add an event
+            </summary>
+            <returns>The New View to add events</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventController.Error">
+            <summary>
+            handles the request for the error page
+            </summary>
+            <returns>
+            The Error.cshtml view
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventController.Create(GroupFlightPlanner.Models.Event)">
+            <summary>
+            Handles POST request to create a new event. Calls the AddEvent API.
+            </summary>
+            <param name="Event">A new instance of Event object</param>
+            <returns>
+            Redirects to List.cshtml or Error.cshtml based on the result of query.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventController.Edit(System.Int32)">
+            <summary>
+            Recevies request to edit a event with eventid of id and redirects to edit view.
+            </summary>
+            <param name="id">id of event being edited</param>
+            <returns>
+            Edit.cshtml with the form values populated by Event data with id of {id}
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventController.Update(System.Int32,GroupFlightPlanner.Models.Event)">
+            <summary>
+            Handles request to update the information of an existing Event. Calls UpdateEvent API.
+            </summary>
+            <param name="id">Id of the Event being updated</param>
+            <param name="Event">A new instance of Event object used to hold the httprequest as JSON</param>
+            <returns>
+            Redirect to details of Event with id of {id} with updated info.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventController.ConfirmDelete(System.Int32)">
+            <summary>
+            Handles request to delete an Event with id = {id}. Calls FindEvent API.
+            </summary>
+            <param name="id">Id of Event being deleted</param>
+            <returns>
+            Redirects to ConfirmDelete.cshtml view.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventController.Delete(System.Int32,GroupFlightPlanner.Models.Event)">
+            <summary>
+            Handles request to confirm the deletion of an Event. Calls the DeleteEvent API.
+            </summary>
+            <param name="id">Id of the event being deleted</param>
+            <param name="Event">A new instance of the Event object.</param>
+            <returns>
+            Redirect to List or Error view depending on server response.
+            </returns>
+        </member>
+        <member name="F:GroupFlightPlanner.Controllers.EventDataController.db">
+            <summary>
+            login credentials
+            user: sion@outlook.com
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventDataController.ListEvents">
+            <summary>
+            Queries the Db for all Events and sends it back as a list of EventDTos
+            </summary>
+            <returns>
+            List of EventDto objects
+            </returns>
+            
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventDataController.ListEventsForGroup(System.Int32)">
+            <summary>
+            Gathers information about events related to a particular group
+            </summary>
+            <returns>
+            HEADER: 200 (OK)
+            CONTENT: all events in the database that match to a particular group id
+            </returns>
+            <param name="id">Group Id.</param>
+            <example>
+            GET: api/EventData/ListEventsForGroup/1
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventDataController.AssociateEventWithGroup(System.Int32,System.Int32)">
+            <summary>
+            Associates a particular group with a particular event
+            </summary>
+            <param name="eventid">The event ID primary key</param>
+            <param name="groupid">The group ID primary key</param>
+            <returns>
+            HEADER: 200 (OK)
+            or
+            HEADER: 404 (NOT FOUND)
+            </returns>
+            <example>
+            POST api/EventData/AssociateEventWithGroup/9/1
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventDataController.UnAssociateEventWithGroup(System.Int32,System.Int32)">
+            <summary>
+            Removes an association between a particular group and a particular event
+            </summary>
+            <param name="eventid">The event ID primary key</param>
+            <param name="groupid">The group ID primary key</param>
+            <returns>
+            HEADER: 200 (OK)
+            or
+            HEADER: 404 (NOT FOUND)
+            </returns>
+            <example>
+            POST api/EventData/AssociateEventWithGroup/9/1
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventDataController.ListEventsForLocation(System.Int32)">
+            <summary>
+            Returns data of all events associated with a paritcular location with id = {id}
+            </summary>
+            <param name="id">Id of a particular Location in Db</param>
+            <returns>
+            OK: data of all events matching a particular locationId.
+            </returns>
+            
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventDataController.ListEventsForOrganization(System.Int32)">
+            <summary>
+            Returns all events that are associated with an organizaiton with id = {id}
+            </summary>
+            <param name="id">Id of a existing organization</param>
+            <returns>
+            OK: data of all events matching a particular organizationid
+            </returns>
+            
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventDataController.FindEvent(System.Int32)">
+            <summary>
+            Finds a particular Event in Db based on id
+            </summary>
+            <param name="id">Id of Event object being searched</param>
+            <returns>
+            An EventDto object with Id ={id}
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventDataController.UpdateEvent(System.Int32,GroupFlightPlanner.Models.Event)">
+            <summary>
+            Updates a particular Event with id = {id} in the Db based on user input
+            </summary>
+            <param name="id">Id of Event being updated</param>
+            <param name="@event">A new Event object</param>
+            <returns>
+            Bad Request(400), 
+            Not Found(404), 
+            or SaveChanges(204) response
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventDataController.AddEvent(GroupFlightPlanner.Models.Event)">
+            <summary>
+            Adds new Event data into the Db based on user input
+            </summary>
+            <param name="@event">JSON format of Event</param>
+            <returns>
+            HEADER: 201
+            OR
+            HEADER: 400
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.EventDataController.DeleteEvent(System.Int32)">
+            <summary>
+            Deletes an Event in the system with id = {id}
+            </summary>
+            <param name="id">Id of a particular Event</param>
+            <returns>
+            200 OK 
+            or Not Found (404)
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightController.List(System.String)">
+            <summary>
+            1. GET: Flight/List
+            This GET method is responsible for making the call to the flight API, in which it will collect the list of flights and provide the collected information to the View.
+            This code is responsible for utilizing the client.BaseAddress and calling the ListFlights method
+            Go to  -> /Views/Flight/List.cshtml
+            
+            2. GET: Flight/List?FlightSearch=UA
+            this will happen when the user provides a searck key in the form, this will display all the Flights that contains the FlightSearch = UA
+            Go to  -> /Views/Airline/List.cshtml
+            </summary>
+            <param name="FlightSearch">This parameter is type string and it's function is to search for a specific FLight, if it is not given
+            it will take the value of null and it will show all the Flights in the system. If the user provides a string, this controller will provide the Flights
+            that contains the string given</param>
+            <returns>
+            Returns the List View, which will display a list of the flights in the system. Each of the flights in the database will be of the datatype FlightDto.
+            
+            Additionally, if the FlightSearch != null it will display all the Flights that contains the FlightSearch
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightController.Details(System.Int32)">
+            <summary>
+            GET: Flight/Details/{id}
+            This GET method will be responsible for calling the FindFlight method from the flight API. Additionally, this method will be in charge to get the correct Time Flight (duration). Ddue to the time difference between de 
+            Departure City and the Arrivale City the flight will not be congruent. In order to fix this, the logic should convert the Time Zone from on city to the Time Zone of the other city so that the dates of Departure and Arrivale will be on the same Time Zone 
+            this was possible with the use of TimeZoneInfo.ConvertTimeBySystemTimeZoneId => This method converts a time from one time zone to another based on time zone identifiers. It accepts 3 parameters
+            The date and time to convert (DateTime). The identifier of the source time zone (String). The identifier of the destination time zone (String). the time zone (type String) are provided by the user and it's stored in the DB
+            Go to  -> /Views/Flight/Details.cshtml
+            </summary>
+            <param name="id">This is an int datatype parameter of the flight you want to find.</param>
+            <returns>
+            Returns a VIewModel DetailsFlight which holds a property SelectedFlight => the flight found by the ID given in the URL. This flight will be of the datatype FlightDto
+            additionally, the ViewModel returns FlightDuration which its a string of the duration of the flights once the change to Time Zone is done as well as the mathematica operation to het the diference of hurs and minutes
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightController.New">
+            <summary>
+            GET: Flight/New
+            GET method to add a new flight to the system, responsible for providing the view of the form for inserting a new flight.
+            Additionally it will provide the Airlines Options as well as the Airplanes Options so the user can select the desired airline and airplane on the drop downs
+            This was possible through the call of the API to get the list of Airlines (api/AirlineData/ListAirlines) and the Airplanes (api/AirplaneData/ListAirplanes)
+            Go to  -> /Views/Flight/New.cshtml
+            </summary>
+            <returns>
+            Thi method provide the a ViewModel of type AddFlight, which holds the Airlines Options and Airplanes Options, so this properties will given to the VIew New
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightController.Create(GroupFlightPlanner.Models.Flight)">
+            <summary>
+            POST: Flight/Create
+            This POST method will be in charge of receiving the information sent by the new form, once the information is received 
+            the method will be in charge of processing the conversion of the Flight object to json in order to be sent in the body of the HTTP REQUEST
+            Additionally, it is indicated that its content is of type json in the reques header. Once this is done, 
+            A POST request will be sent to the specified Uri as an asynchronous operation. If its IsSuccessStatusCode is true, 
+            it will redirect the user to the list Flights page, otherwise it will indicate to the user that there is an error.
+            Go to (if new flight success) -> /Views/Flight/List.cshtml
+            Go to (if not success) -> /Views/Flight/Error.cshtml
+            </summary>
+            <param name="flight">This parameter represents the object received by the form for creating a new flight.</param>
+            <returns>
+            Returns the user to either the List View or the Error View, depending on the response StatusCode
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightController.Edit(System.Int32)">
+            <summary>
+            GET: Flight/Edit/{id}
+            This GET method is in charge of collecting and sending the informaction to the View which will have a form with the flight information that is requested by its id, 
+            for this the api/FlightData/FindFlight/{id} is used, additioally it will collect and send the information of the differnt Airlines and Airplanes in the sytem so the user can easly see the current vales
+            and if desier, they will be able to change it throgh the use of the drop downs. The api used to get the list of Airlines is => AirlineData/ListAirlines and Airplanes => AirplaneData/ListAirplanes
+            Once the call to this API API is made, the information collected of the datatype FlightDto, ListAirlines and ListAirplanes will be sent to the view by the ViewModel of type UpdateFlight. 
+            In this way the form will be populated with the information of the flight
+            Go to  -> /Views/Flight/Edit.cshtml
+            </summary>
+            <param name="id">This is an int datatype parameter of the FlightId value that will be displayed in the form in order to make an update</param>
+            <returns>
+            Returns a ViewModel of type UpdateFlight which holds the iformation of the flight to edit (ViewModel.SelectedFlight), the list of Airlines (ViewModel.AirlinesOptions) and the list of Airplanes (ViewModel.AirplanesOptions)
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightController.Update(System.Int32,GroupFlightPlanner.Models.Flight)">
+            <summary>
+            POST: Flight/Update/{id}
+            This POST method is responsible for making the call to the UpdateFlight method of the flight api. The information collected by the form will be sent in the body of the request
+            Go to (if success) -> /Views/Flight/Details/{id}.cshtml
+            Go to (if not success) -> /Views/Flight/Error.cshtml
+            </summary>
+            <param name="id">This is the parameter provided by the url that identifies the FlightId that is going to be updated</param>
+            <param name="flight">The flight object, this parameter holds the new data, this new data will be sent as a body to the UpdateFlight method of the Flight API</param>
+            <returns>
+            If the update is satisfactory the user will be redirected to the flight list, otherwise it will be sent to the error page
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightController.DeleteConfirm(System.Int32)">
+            <summary>
+            GET: Flight/DeleteConfirm/{id}
+            This is a GET method that is responsible for finding the information of the flight to delete, this is done through its flight id which is provided by the id of the url
+            Go to  -> /Views/Flight/DeleteConfirm.cshtml
+            </summary>
+            <param name="id">This is an int datatype parameter of the FlightId that will be displayed in DeleteConfirm View in order to delete the record</param>
+            <returns>
+            Returns a view that provides information about the flight to delete, this is through the selectedflight that was found by the supplied id
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightController.Delete(System.Int32)">
+            <summary>
+            POST: Flight/Delete/{id}
+            This POST method is responsible for making the request to api/FlightData/DeleteFlight to be able to delete the indicated flight from the database. 
+            If the IsSuccessStatusCode is true it will send the user to the list of flights, otherwise it will send the user to the Error page
+            Go to (if success) -> /Views/Flight/List.cshtml
+            Go to (if not success) -> /Views/Flight/Error.cshtml
+            </summary>
+            <param name="id">This id indicates the FlightId that will be used to determine the flight that will be deleted</param>
+            <returns>
+            If the deletion is completed and no error occurs the user will be directed to the list of flights which will not show the recently deleted flight. 
+            If the IsSuccessStatusCode is false, this will indicate that the record was not deleted and the user will be directed to the View Error 
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightController.Error">
+            <summary>
+            This Get method is responsible for returning the view when an error occurs, such as not finding the ID in the system or some of the operations that did not work
+            Go to -> /Views/Flight/Error.cshtml
+            </summary>
+            <returns>
+            Return the Error View
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightDataController.ListFlights(System.String)">
+             <summary>
+             1. This is a GET method that will return a list of all the flights in the system. This method presents a foreach that will be responsible 
+             for setting each of the FlightDto objects with the corresponding information. To do this, the information must first be collected, which will be a list of Flight datatypes. 
+             Once this is done, the foreach will be run to have each of the data types as FlightDto. Additionally, this table has 2 Foreign Key that will be accessed through the class Airline
+             for exaxmple to get the Airline name (AirlineName = f.Airline.AirlineName) and Airplane Model (AirplaneModel = f.Airplane.AirplaneModel)
+             
+             2. In this iteration of my passion project users can fiter flights; thats why the implementation of the FlightSearch parameter of this methos was added in order to look for one particular FLight in the system
+             if the user provide a string on chich on search the code will interpret the value of FlightSearch != null, this will allow the code to look for a particular FLight. in case that the user does not
+             want to search for a particular flight. The FlightSearch will be null and it will display all the Flights taht are in teh system
+             </summary>
+             <example>
+             Using browser => GET: api/FlightData/ListFlights
+             
+             Using curl comands in the terminal => curl https://localhost:44379/api/FlightData/ListFlights
+             
+             Using browser with a search key => GET: api/FlightData/ListFlights/UA
+             
+             Using curl comands in the terminal => curl https://localhost:44379/api/FlightData/ListFlights/UA
+             </example>
+             <returns>
+             A list of Flights in the system
+             GET: api/FlightData/ListFlights =>
+            [{"FlightId":18,"FlightNumber":"AC 8606","From":"Montreal","To":"Boston","DepartureAirport":"Montréal-Pierre Elliott Trudeau International Airport (YUL)","DestinationAirport":"Boston Logan International Airport (BOS)","DepartureTime":"2024-02-06T13:10:00","ArrivalTime":"2024-02-06T14:38:00","TicketPrice":588.00,"TimeZoneFrom":"Eastern Standard Time","TimeZoneTo":"Eastern Standard Time","AirlineId":0,"AirlineName":"Air Canada","AirplaneId":0,"AirplaneModel":"Embraer E175SU\r\n"},
+             {"FlightId":22,"FlightNumber":"AC 8607","From":"Boston","To":"Montreal","DepartureAirport":"Boston Logan International Airport (BOS)","DestinationAirport":"Montréal-Pierre Elliott Trudeau International Airport (YUL)","DepartureTime":"2024-02-06T15:40:00","ArrivalTime":"2024-02-06T17:08:00","TicketPrice":661.00,"TimeZoneFrom":"Eastern Standard Time","TimeZoneTo":"Eastern Standard Time","AirlineId":0,"AirlineName":"Air Canada","AirplaneId":0,"AirplaneModel":"Embraer E175SU\r\n"}]
+              
+             curl https://localhost:44379/api/FlightData/ListFlights
+             [{"FlightId":18,"FlightNumber":"AC 8606","From":"Montreal","To":"Boston","DepartureAirport":"Montréal-Pierre Elliott Trudeau International Airport (YUL)","DestinationAirport":"Boston Logan International Airport (BOS)","DepartureTime":"2024-02-06T13:10:00","ArrivalTime":"2024-02-06T14:38:00","TicketPrice":588.00,"TimeZoneFrom":"Eastern Standard Time","TimeZoneTo":"Eastern Standard Time","AirlineId":0,"AirlineName":"Air Canada","AirplaneId":0,"AirplaneModel":"Embraer E175SU\r\n"},
+             {"FlightId":22,"FlightNumber":"AC 8607","From":"Boston","To":"Montreal","DepartureAirport":"Boston Logan International Airport (BOS)","DestinationAirport":"Montréal-Pierre Elliott Trudeau International Airport (YUL)","DepartureTime":"2024-02-06T15:40:00","ArrivalTime":"2024-02-06T17:08:00","TicketPrice":661.00,"TimeZoneFrom":"Eastern Standard Time","TimeZoneTo":"Eastern Standard Time","AirlineId":0,"AirlineName":"Air Canada","AirplaneId":0,"AirplaneModel":"Embraer E175SU\r\n"}]
+             
+                 Search key example
+             curl https://localhost:44379/api/FlightData/ListFlights/UA
+             [{"FlightId":28,"FlightNumber":"UA 816","From":"Newark","To":"New Delhi","DepartureAirport":"Newark Liberty International Airport (EWR)","DestinationAirport":"Indira Gandhi International Airport (Delhi Airport) (DEL)","DepartureTime":"2024-02-06T09:40:00","ArrivalTime":"2024-02-07T11:10:00","TicketPrice":643.00,"TimeZoneFrom":"Eastern Standard Time","TimeZoneTo":"India Standard Time","AirlineId":22,"AirlineName":"United Airlines","AirplaneId":30,"AirplaneModel":"Boeing 787-9 Dreamliner\r\n","RegistrationNum":null},
+             {"FlightId":29,"FlightNumber":"UA 817","From":"New Delhi","To":"Newark","DepartureAirport":"Indira Gandhi International Airport (Delhi Airport) (DEL)","DestinationAirport":"Newark Liberty International Airport (EWR)","DepartureTime":"2024-02-07T13:15:00","ArrivalTime":"2024-02-07T19:40:00","TicketPrice":1090.00,"TimeZoneFrom":"India Standard Time","TimeZoneTo":"Eastern Standard Time","AirlineId":22,"AirlineName":"United Airlines","AirplaneId":30,"AirplaneModel":"Boeing 787-9 Dreamliner\r\n","RegistrationNum":null}]
+             
+             </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightDataController.ListFlightsForAirline(System.Int32)">
+            <summary>
+            The method takes an integer parameter "id," representing the AirlineId, and retrieves a list of flights from the database associated with the specified airline. 
+            The retrieved Flight entities are then mapped to FlightDto objects, which are a data transfer object. This was made in order to solve the related method ListFlightsForAirline => that a Airline has with the FLights (1 Airline - Many Flights)
+            </summary>
+            <param name="id">This is the Id of the Airline which will be used to retieve all the flights for this particular Airline</param>
+            <example>
+            curl https://localhost:44379/api/FlightData/ListFlightsForAirline/22
+            
+            [{"FlightId":28,"FlightNumber":"UA 816","From":"Newark","To":"New Delhi","DepartureAirport":"Newark Liberty International Airport (EWR)","DestinationAirport":"Indira Gandhi International Airport (Delhi Airport) (DEL)","DepartureTime":"2024-02-06T09:40:00","ArrivalTime":"2024-02-07T11:10:00","TicketPrice":643.00,"TimeZoneFrom":"Eastern Standard Time","TimeZoneTo":"India Standard Time","AirlineId":22,"AirlineName":"United Airlines","AirplaneId":30,"AirplaneModel":"Boeing 787-9 Dreamliner\r\n","RegistrationNum":null},
+            {"FlightId":29,"FlightNumber":"UA 817","From":"New Delhi","To":"Newark","DepartureAirport":"Indira Gandhi International Airport (Delhi Airport) (DEL)","DestinationAirport":"Newark Liberty International Airport (EWR)","DepartureTime":"2024-02-07T13:15:00","ArrivalTime":"2024-02-07T19:40:00","TicketPrice":1090.00,"TimeZoneFrom":"India Standard Time","TimeZoneTo":"Eastern Standard Time","AirlineId":22,"AirlineName":"United Airlines","AirplaneId":30,"AirplaneModel":"Boeing 787-9 Dreamliner\r\n","RegistrationNum":null}]
+            
+            curl https://localhost:44379/api/FlightData/ListFlightsForAirline/30
+            
+            [{"FlightId":35,"FlightNumber":"G5 2662","From":"Shihezi","To":"Kuqa, Xinjiang","DepartureAirport":"Shihezi Huayuan Airport (SHF)","DestinationAirport":"Kuqa Qiuci Airport (KCA)","DepartureTime":"2024-02-07T14:50:00","ArrivalTime":"2024-02-07T16:10:00","TicketPrice":94.00,"TimeZoneFrom":"China Standard Time","TimeZoneTo":"China Standard Time","AirlineId":30,"AirlineName":"China Express Airlines\r\nChina\r\n","AirplaneId":34,"AirplaneModel":"Mitsubishi CRJ-900LR\r\n","RegistrationNum":null},
+            {"FlightId":36,"FlightNumber":"G5 2662","From":"Kuqa, Xinjiang","To":"Aksu City","DepartureAirport":"Kuqa Qiuci Airport (KCA)","DestinationAirport":"Aksu Airport (AKU)","DepartureTime":"2024-02-07T16:50:00","ArrivalTime":"2024-02-07T17:30:00","TicketPrice":47.00,"TimeZoneFrom":"China Standard Time","TimeZoneTo":"China Standard Time","AirlineId":30,"AirlineName":"China Express Airlines\r\nChina\r\n","AirplaneId":34,"AirplaneModel":"Mitsubishi CRJ-900LR\r\n","RegistrationNum":null}]
+            </example>
+            <returns>A list of Flights of type FlightDto which its AirlineId == id (parameter given in the method)</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightDataController.ListFlightsForAirplane(System.Int32)">
+            <summary>
+            The method takes an integer parameter "id," representing the AirplaneId, and retrieves a list of flights from the database associated with the specified airplane. 
+            The retrieved Flight entities are then mapped to FlightDto objects, which are a data transfer object. This was made in order to solve the related method ListFlightsForAirplane => that a Airplane has with the FLights (1 Airplane - Many Flights)
+            </summary>
+            <param name="id">This is the Id of the Airplane which will be used to retieve all the flights for this particular Airplane</param>
+            <example>
+            curl https://localhost:44379/api/FlightData/ListFlightsForAirplane/31
+            
+            [{"FlightId":30,"FlightNumber":"WS 3205","From":"Calgary","To":"Grande Prairie","DepartureAirport":"Calgary International Airport (YYC) (YYC)","DestinationAirport":"Grande Prairie Airport (CYQU) (YQU)","DepartureTime":"2024-02-06T15:00:00","ArrivalTime":"2024-02-06T16:33:00","TicketPrice":583.00,"TimeZoneFrom":"Mountain Standard Time","TimeZoneTo":"Mountain Standard Time","AirlineId":24,"AirlineName":"WestJet Airlines Ltd.","AirplaneId":31,"AirplaneModel":"De Havilland Canada Dash 8-400\r\n","RegistrationNum":null},
+            {"FlightId":31,"FlightNumber":"WS 3206","From":"Grande Prairie","To":"Calgary","DepartureAirport":"Grande Prairie Airport (CYQU) (YQU)","DestinationAirport":"Calgary International Airport (YYC) (YYC)","DepartureTime":"2024-02-06T17:15:00","ArrivalTime":"2024-02-06T18:37:00","TicketPrice":500.00,"TimeZoneFrom":"Mountain Standard Time","TimeZoneTo":"Mountain Standard Time","AirlineId":24,"AirlineName":"WestJet Airlines Ltd.","AirplaneId":31,"AirplaneModel":"De Havilland Canada Dash 8-400\r\n","RegistrationNum":null},
+            { "FlightId":32,"FlightNumber":"WS 3137","From":"Calgary","To":"Edmonton","DepartureAirport":"Calgary International Airport (YYC) (YYC)","DestinationAirport":"Edmonton International Airport (YEG)","DepartureTime":"2024-02-06T20:00:00","ArrivalTime":"2024-02-06T21:03:00","TicketPrice":535.00,"TimeZoneFrom":"Mountain Standard Time","TimeZoneTo":"Mountain Standard Time","AirlineId":24,"AirlineName":"WestJet Airlines Ltd.","AirplaneId":31,"AirplaneModel":"De Havilland Canada Dash 8-400\r\n","RegistrationNum":null}]
+            
+            
+            curl https://localhost:44379/api/FlightData/ListFlightsForAirplane/35
+            [{"FlightId":37,"FlightNumber":"AC 171","From":"Toronto","To":"Edmonton","DepartureAirport":"Toronto Pearson International Airport (YYZ)","DestinationAirport":"Edmonton International Airport (YEG)","DepartureTime":"2024-02-06T10:00:00","ArrivalTime":"2024-02-06T12:18:00","TicketPrice":850.00,"TimeZoneFrom":"Eastern Standard Time","TimeZoneTo":"Mountain Standard Time","AirlineId":28,"AirlineName":"Air Canada","AirplaneId":35,"AirplaneModel":"Airbus A220-300\r\n","RegistrationNum":null},
+            {"FlightId":38,"FlightNumber":"AC 426","From":"Toronto","To":"Montreal","DepartureAirport":"Toronto Pearson International Airport (YYZ)","DestinationAirport":"Montréal-Pierre Elliott Trudeau International Airport (YUL)","DepartureTime":"2024-02-07T20:30:00","ArrivalTime":"2024-02-07T21:50:00","TicketPrice":965.00,"TimeZoneFrom":"Eastern Standard Time","TimeZoneTo":"Eastern Standard Time","AirlineId":28,"AirlineName":"Air Canada","AirplaneId":35,"AirplaneModel":"Airbus A220-300\r\n","RegistrationNum":null}]
+            </example>
+            <returns>A list of Flights of type FlightDto which its AirplaneId == id (parameter given in the method)</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightDataController.ListPlanesForAirline(System.Int32)">
+            <summary>
+            The funcion of this method is to access to all the Airplane Model that a Airline has. The method takes an integer parameter "id," representing the AirlineId, and retrieves a list of flights from the database 
+            associated with the specified airline. Once this is done i made a filter for the RegistrationNum because the idea was to get the planes that a Airline has for that I first Group the recod by the RegistrationNum.
+            Then I select the first record of the Group and finally I make it a list of the records. The reason that I select the first it's to not get duplicate records of the Airplane
+            </summary>
+            <param name="id">This is the Id of the Airline which will be used to retieve all the flights with the informacion of the Plane</param>
+            <example>
+            curl https://localhost:44379/api/FlightData/ListPlanesForAirline/26
+            </example>
+            <returns>
+            Returns the list of unique FlightDto objects containing information about flights and their associated airplanes
+            This was done to display the Airplanes that belongs to a Airline
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightDataController.ListFlightsForLocation(System.Int32)">
+            <summary>
+            Gather information on Flights that are gonna go to a location (list of associated flights to a location), this Get method will find all the flights that were associated with a location
+            this method is in charge of lopping the database and look for any flight that contains locations that match with the location id that will be providadded in the url
+            </summary>
+            <example>
+            Using browser => GET: api/FlightData/ListFlightsForLocation/1
+            
+            Using curl comands in the terminal => curl https://localhost:44380/api/FlightData/ListFlightsForLocation/1
+            </example>
+            <param name="id">This is the id of the location that we are looking for</param>
+            <returns>
+            Return a list of the flights that are associated to the location 
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightDataController.ListFlightsNotAssociatedForLocation(System.Int32)">
+            <summary>
+            This Get method will list the differente flights taht are not asssociated with aa Location. the purpose of this method is to be able
+            to assign a flight to the location, but if the flight is already assigned it shoul not display it on the dropdown list
+            </summary>
+            <example>
+            Using browser => GET: api/FlightData/ListFlightsNotAssociatedForLocation/1
+            
+            Using curl comands in the terminal => curl https://localhost:44380/api/FlightData/ListFlightsNotAssociatedForLocation/1
+            </example>
+            <param name="id">This is the id of the location that we are looking for</param>
+            <returns>
+            Return a list of the flights that are associated to the location 
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightDataController.FindFlight(System.Int32)">
+            <summary>
+            This GET method returns an individual flight from the database by specifying the primary key FlightId
+            Additionally, this method will allow you to collect the information on the Foreign Key IDs as well as the airline and the plane model.
+            since these will be requested in Details View as well as in Edit View
+            </summary>
+            <example>
+            Using browser => GET: api/FlightData/FindFlight/25
+            
+            Using curl comands in the terminal => curl https://localhost:44379/api/FlightData/FindFlight/25
+            </example>
+            <param name="id">This is the FlightId parameter you want to search for.</param>
+            <returns>
+            A FlightDto object which represent the flight with the id given 
+            
+            curl https://localhost:44379/api/FlightData/FindFlight/25
+            {"FlightId":25,"FlightNumber":"AA 33","From":"New York","To":"Los Angeles","DepartureAirport":"John F. Kennedy International Airport (JFK)","DestinationAirport":"Los Angeles International Airport (LAX)","DepartureTime":"2024-02-06T06:00:00","ArrivalTime":"2024-02-06T09:23:00","TicketPrice":583.00,"TimeZoneFrom":"Eastern Standard Time","TimeZoneTo":"Pacific Standard Time","AirlineId":26,"AirlineName":"American\r\n","AirplaneId":28,"AirplaneModel":"Airbus A321-231\r\n"}
+            
+            curl https://localhost:44379/api/FlightData/FindFlight/37
+            {"FlightId":37,"FlightNumber":"AC 171","From":"Toronto","To":"Edmonton","DepartureAirport":"Toronto Pearson International Airport (YYZ)","DestinationAirport":"Edmonton International Airport (YEG)","DepartureTime":"2024-02-06T10:00:00","ArrivalTime":"2024-02-06T12:18:00","TicketPrice":850.00,"TimeZoneFrom":"Eastern Standard Time","TimeZoneTo":"Mountain Standard Time","AirlineId":28,"AirlineName":"Air Canada","AirplaneId":35,"AirplaneModel":"Airbus A220-300\r\n"}
+            
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightDataController.DeleteFlight(System.Int32)">
+            <summary>
+            This method is responsible for deleting a flight record in the Flights table, the deleted record will be according to the value indicated in the id parameter
+            </summary>
+            <example>
+            Because this method is POST, you must use the curl command in the terminal to delete the record
+            
+            POST: api/FlightData/DeleteFlight/39
+            curl -d "" https://localhost:44379/api/FlightData/DeleteFlight/39
+            </example>
+            <param name="id">This will indicate the FlightId value that you want to eliminate</param>
+            <returns>
+            curl -d "" https://localhost:44379/api/FlightData/DeleteFlight/39
+            This method will not return anything on the console, it will delete a flight from the DB, in this case the record with the FlightId = 39 will be deleated
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightDataController.AddFlight(GroupFlightPlanner.Models.Flight)">
+            <summary>
+            This method is responsible for receiving a new Flight record. For this, the Flight type object must be sent. In order to be able to test this method, 
+            you must open the folder where the flight.json is located
+            
+            When a user registers a flight to the system, they must enter the date and time of take off and arrival, however this is affected by the offset of the Time Zone where the computer is as it stores Date and time provided + time offset
+            In order to solve this, the timeZoneLocal.GetUtcOffset method was used and the .Add method was performed, which would allow adding or subtracting depending on the offset. 
+            This was used to save the correct date and time (supplied by the form) for the DepartureTime and ArrivalTime on the Database
+            </summary>
+            <example>
+            curl -d @flight.json -H "Content-type: application/json" https://localhost:44379/api/FlightData/AddFlight
+            The flight.json file contains the flight information that will be added to the DB.
+            </example>
+            <param name="Flight">This is the json object that contains the information of the flight to add.</param>
+            <returns>
+            {
+                "FlightId": 46,
+                "FlightNumber": "AC 426",
+                "From": "Toronto",
+                "To": "Montreal",
+                "DepartureAirport": "Toronto Pearson International Airport (YYZ)",
+                "DestinationAirport": "Montréal-Pierre Elliott Trudeau International Airport (YUL)",
+                "DepartureTime": "2/6/2024 8:30:00 AM",
+                "ArrivalTime": "2/6/2024 9:50:00 PM",
+                "TicketPrice": 965.00,
+                "TimeZoneFrom": "Eastern Standard Time",
+                "TimeZoneTo": "Eastern Standard Time",
+                "AirlineId": 28,
+                "AirplaneId": 35
+            }
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightDataController.UpdateFlight(System.Int32,GroupFlightPlanner.Models.Flight)">
+            <summary>
+            This POST method will be in charge of updating the record according to the id parameter that is provided, for this both the value that is delivered by the url (id) 
+            and the value that the FlightId (within the object received in FLight) have to match. otherwise the record is not updated
+            additionally, because this method is post to check its operation you must use the curl command in the terminal. for this open the folder where the flight.json is located on the terminal screen
+            
+            once you have the folder open you can use this command curl -d @flight.json -H "Content-type: application/json" https://localhost:44379/api/FlightData/UpdateFlight/39
+            
+            This method would also have the offset problem mentioned in the AddFlight method, therefore using the timeZoneLocal.GetUtcOffset and .Add methods would be necessary to handle the offset of the time. 
+            If this is not solved, every time the user updates a flight, the DepartureTime and ArrivalTime will add the number of hours according to the time zone offset
+            This was used to save the correct date and time (supplied by the form) for the DepartureTime and ArrivalTime on the Database
+            </summary>
+            <example>
+            curl -d @flight.json -H "Content-type: application/json" https://localhost:44379/api/FlightData/UpdateFlight/39
+            </example>
+            <param name="id">The value of the FlightId to update</param>
+            <param name="Flight">The Flight object, this parameter holds the new data, with this data the method will update the specified Flight</param>
+            <returns>
+            This method will not return anything on the console, but the method will return whether the update was successful or not, in case it was not successful because there was no id match (id != Flight.FlightId)
+            The values of the Flight object and the id sent in the url are printed in the console. If the method runs, without problem, the record will be updated.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.FlightDataController.FlightExists(System.Int32)">
+            <summary>
+            This method is responsible for returning a bool indicating if the flight exists
+            </summary>
+            <param name="id">The value of the FlightId to update</param>
+            <returns>A bool indicating if the record exists</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.GroupController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.GroupDataController.ListGroupsForActivity(System.Int32)">
+            <summary>
+            Gathers information about groups related to a particular activity
+            </summary>
+            <returns>
+            HEADER: 200 (OK)
+            CONTENT: all groups in the database that match to a particular activity id
+            </returns>
+            <param name="id">Activity Id.</param>
+            <example>
+            GET: api/GroupData/ListGroupsForActivity/1
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.GroupDataController.ListGroupsNotJoinInActivity(System.Int32)">
+            <summary>
+            Returns Groups in the system not joining in a particular activity.
+            </summary>
+            <returns>
+            HEADER: 200 (OK)
+            CONTENT: all groups in the database not joining in a particular activity
+            </returns>
+            <param name="id">Activity Primary Key</param>
+            <example>
+            GET: api/GroupData/ListGroupsNotJoinInActivity/1
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.GroupDataController.ListGroupsForEvent(System.Int32)">
+            <summary>
+            Gathers information about groups related to a particular event
+            </summary>
+            <returns>
+            HEADER: 200 (OK)
+            CONTENT: all groups in the database that match to a particular event id
+            </returns>
+            <param name="id">Event Id.</param>
+            <example>
+            GET: api/GroupData/ListGroupsForEvent/1
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.GroupDataController.ListGroupsNotJoinInEvent(System.Int32)">
+            <summary>
+            Returns Groups in the system not joining in a particular event.
+            </summary>
+            <returns>
+            HEADER: 200 (OK)
+            CONTENT: all groups in the database not joining in a particular event
+            </returns>
+            <param name="id">Event Primary Key</param>
+            <example>
+            GET: api/GroupData/ListGroupsNotJoinInEvent/1
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.GroupDataController.AddGroup(GroupFlightPlanner.Models.Group)">
+            <summary>
+            Adds a group to the system
+            </summary>
+            <param name="Group">JSON FORM DATA of an Group</param>
+            <returns>
+            HEADER: 201 (Created)
+            CONTENT: Group ID, Group Data
+            or
+            HEADER: 400 (Bad Request)
+            </returns>
+            <example>
+            POST: api/GroupData/AddGroup
+            FORM DATA: Group JSON Object
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.GroupDataController.UpdateGroup(System.Int32,GroupFlightPlanner.Models.Group)">
+            <summary>
+            Updates a particular group in the system with POST Data input
+            </summary>
+            <param name="id">Represents the group ID primary key</param>
+            <param name="Group">JSON FORM DATA of a Group</param>
+            <returns>
+            HEADER: 204 (Success, No Content Response)
+            or
+            HEADER: 400 (Bad Request)
+            or
+            HEADER: 404 (Not Found)
+            </returns>
+            <example>
+            POST: api/GroupData/UpdateGroup/5
+            FORM DATA: Group JSON Object
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.GroupDataController.DeleteGroup(System.Int32)">
+            <summary>
+            Deletes a group from the system by it's ID.
+            </summary>
+            <param name="id">The primary key of the group</param>
+            <returns>
+            HEADER: 200 (OK)
+            or
+            HEADER: 404 (NOT FOUND)
+            </returns>
+            <example>
+            POST: api/GroupData/DeleteGroup/5
+            FORM DATA: (empty)
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationController.List">
+            <summary>
+            handles request to get list of all locations. Calls ListLocations API to fetch the data.
+            </summary>
+            <returns>
+            A view listing all locations in the Db
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationController.Details(System.Int32)">
+            <summary>
+            handles request to get details of one location based on Id. Calls FindLocation API.
+            Also fetches related event data by calling event API. Shows it on one ViewModel.
+            </summary>
+            <param name="id">Id of the location being searched </param>
+            <returns>
+            A view with details of a particular location
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationController.New">
+            <summary>
+            Receives the HTTP GET request for the new.cshtml page
+            </summary>
+            <returns>The New View</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationController.Error">
+            <summary>
+            handles the request for the error page
+            </summary>
+            <returns>
+            The Error.cshtml view
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationController.Create(GroupFlightPlanner.Models.Location)">
+            <summary>
+            Handles POST request to create a new location. Calls the AddLocation API.
+            </summary>
+            <param name="location">A new instance of location object</param>
+            <returns>
+            Redirects to List.cshtml or Error.cshtml based on the result of query.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationController.Edit(System.Int32)">
+            <summary>
+            Recevies request to edit a location with locationid of id and redirects to edit view.
+            </summary>
+            <param name="id">id of location being edited</param>
+            <returns>
+            Edit.cshtml with the form values populated by location data with id of {id}
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationController.Update(System.Int32,GroupFlightPlanner.Models.Location)">
+            <summary>
+            Handles request to update the information of an existing location. Calls UpdateLocation API.
+            </summary>
+            <param name="id">Id of the location being updated</param>
+            <param name="location">A new instance of Location object used to hold the httprequest as JSON</param>
+            <returns>
+            Redirect to details of location with id of {id} with updated info.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationController.ConfirmDelete(System.Int32)">
+            <summary>
+            Handles request to delete an location with id = {id}. Calls FindLocation API.
+            </summary>
+            <param name="id">Id of location being deleted</param>
+            <returns>
+            Redirects to ConfirmDelete.cshtml view.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationController.Delete(System.Int32,GroupFlightPlanner.Models.Location)">
+            <summary>
+            Handles request to confirm the deletion of an location. Calls the DeleteLocation API.
+            </summary>
+            <param name="id">Id of the location being deleted</param>
+            <param name="location">A new instance of the Location object.</param>
+            <returns>
+            Redirect to List or Error view depending on server response.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationDataController.ListLocations">
+            <summary>
+            Returns a list of locations in db
+            </summary>
+            <returns>
+            List of Location data
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationDataController.ListLocationsForFlight(System.Int32)">
+            <summary>
+            Gather information on Locations related to a flight, this Get method will find all the locations that were associated with a flight
+            this method is in charge of lopping the database and look for any location that contains flights taht match with the flight id that will be providadded in the url
+            </summary>
+            <example>
+            Using browser => GET: api/LocationData/ListLocationsForFlight/1
+            
+            Using curl comands in the terminal => curl https://localhost:44380/api/LocationData/ListLocationsForFlight/1
+            </example>
+            <param name="id">This is the id of the flight that we are looking for </param>
+            <returns>
+            Return a list of the locations that are associated to the flight 
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationDataController.AssociateLocationWithFlight(System.Int32,System.Int32)">
+            <summary>
+            This is a POST method. Its function is to associate a flight to a location, the flight will be one of the flighst taht are not associated.
+            In order to work, this method requier 2 different parameters, the location id that will let the logic know which location will receive the association of a fligh and the flight id 
+            that will be the flight to associate
+            </summary>
+            <example>
+            POST api/LocationData/AssociateLocationWithFlight/1/1
+            </example>
+            <param name="locationid">The location ID primary key</param>
+            <param name="flightid">The flight ID primary key</param>
+            <returns>
+            it will return a 200(OK) if the association is successful or a 404 (Not Found) when the API does not found the id of the location or flight
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationDataController.UnAssociateLocationWithFlight(System.Int32,System.Int32)">
+            <summary>
+            This is a POST method. Its function is to unassociate a flight that is associated to a location.
+            In order to work, this method requier 2 different parameters, the location id that will let the logic know which location will remoce the association of a fligh and the flight id 
+            that will be the flight to unassociate
+            </summary>
+            <example>
+            POST api/LocationData/UnAssociateLocationWithFlight/1/1
+            </example>
+            <param name="locationid">The location ID primary key</param>
+            <param name="flightid">The flight ID primary key</param>
+            <returns>
+            it will return a 200(OK) if the unassociation is successful or a 404 (Not Found) when the API does not found the id of the location or flight
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationDataController.FindLocation(System.Int32)">
+            <summary>
+            Returns a particular location based on id
+            </summary>
+            <param name="id">Id of a location</param>
+            <returns>
+            NotFound message or data of a location with id = {id}
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationDataController.UpdateLocation(System.Int32,GroupFlightPlanner.Models.Location)">
+            <summary>
+            Updates the data of a location with id = {id} based on user input
+            </summary>
+            <param name="id">Event Id</param>
+            <param name="location"> JSON data of an event </param>
+            <returns>
+            204 (success, no response) 
+            BAD REQUESST (400)
+            or NOT FOUND (404) response.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationDataController.AddLocation(GroupFlightPlanner.Models.Location)">
+            <summary>
+            Adds new location into the database
+            </summary>
+            <param name="location">JSON data of a location</param>
+            <returns>
+            201 (created)
+            or 400 (Bad request)
+            response
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.LocationDataController.DeleteLocation(System.Int32)">
+            <summary>
+            Delets a location from db with id = {id}
+            </summary>
+            <param name="id">location id</param>
+            <returns>
+            404 not found
+            or 200 OK
+            </returns>
+            
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationController.List">
+            <summary>
+            handles request to get list of all Organizations. Calls ListOrganizations API to fetch the data.
+            </summary>
+            <returns>
+            A view listing all Organizations in the Db
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationController.Details(System.Int32)">
+            <summary>
+            handles request to get details of one Organization based on Id. Calls FindOrganization API.
+            </summary>
+            <param name="id">Id of the Organization being searched </param>
+            <returns>
+            A view with details of a particular Organization
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationController.New">
+            <summary>
+            Receives the HTTP GET request for the new.cshtml page
+            </summary>
+            <returns>The New View</returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationController.Error">
+            <summary>
+            handles the request for the error page
+            </summary>
+            <returns>
+            The Error.cshtml view
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationController.Create(GroupFlightPlanner.Models.Organization)">
+            <summary>
+            Handles POST request to create a new Organization. Calls the AddOrganization API.
+            </summary>
+            <param name="Organization">A new instance of Organization object</param>
+            <returns>
+            Redirects to List.cshtml or Error.cshtml based on the result of query.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationController.Edit(System.Int32)">
+            <summary>
+            Recevies request to edit a Organization with Organizationid of id and redirects to edit view. Calls FindOrganization API.
+            </summary>
+            <param name="id">id of Organization being edited</param>
+            <returns>
+            Edit.cshtml view
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationController.Update(System.Int32,GroupFlightPlanner.Models.Organization)">
+            <summary>
+            Handles request to update the information of an existing Organization. Calls UpdateOrganization API.
+            </summary>
+            <param name="id">Id of the Organization being updated</param>
+            <param name="Organization">A new instance of Organization object used to hold the httprequest as JSON</param>
+            <returns>
+            Redirect to details of Organization with id of {id} with updated info.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationController.ConfirmDelete(System.Int32)">
+            <summary>
+            Handles request to delete an Organization with id = {id}. Calls FindOrganization API.
+            </summary>
+            <param name="id">Id of Organization being deleted</param>
+            <returns>
+            Redirects to ConfirmDelete.cshtml view.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationController.Delete(System.Int32,GroupFlightPlanner.Models.Organization)">
+            <summary>
+            Handles request to confirm the deletion of an Organization. Calls the DeleteOrganization API.
+            </summary>
+            <param name="id">Id of the Organization being deleted</param>
+            <param name="Organization">A new instance of the Organization object.</param>
+            <returns>
+            Redirect to List or Error view depending on server response.
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationDataController.ListOrganizations">
+            <summary>
+            Returns all the Organizations from the Db
+            </summary>
+            <returns>
+            List of OrganizationDtos
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationDataController.FindOrganization(System.Int32)">
+            <summary>
+            Returns a particular Organization with id = {id}
+            </summary>
+            <param name="id">id of an organization</param>
+            <returns>
+            Not Found(404)
+            or
+            Organization objec
+            </returns>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationDataController.UpdateOrganization(System.Int32,GroupFlightPlanner.Models.Organization)">
+            <summary>
+            Updates data about a particular Organization in the system
+            </summary>
+            <param name="id">Id of an existing organization</param>
+            <param name="organization">JSON data of an organization</param>
+            <returns>
+            204 (success, no response) 
+            BAD REQUESST (400)
+            or NOT FOUND (404) response.
+            </returns>
+            
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationDataController.AddOrganization(GroupFlightPlanner.Models.Organization)">
+            <summary>
+            Adds a new organization to the system
+            </summary>
+            <param name="organization">JSON data of an organization</param>
+            <returns>
+            201 (created)
+            or 400 (Bad request)
+            response
+            </returns>
+            
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.OrganizationDataController.DeleteOrganization(System.Int32)">
+            <summary>
+            Deletes a particular organization with id = {id}
+            </summary>
+            <param name="id">Id of an existing organization</param>
+            <returns>
+            404 not found
+            or 200 OK
+            </returns>
+            
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.VolunteerController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.VolunteerDataController.ListVolunteers">
+            <summary>
+            Returns all volunteres in the system.
+            </summary>
+            <returns>
+            HEADER: 200 (OK)
+            CONTENT: all volunteers in the database, including their associated groups.
+            </returns>
+            <example>
+            GET: api/VolunteerData/ListVolunteers
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.VolunteerDataController.ListVolunteersForGroups(System.Int32)">
+            <summary>
+            Gathers information about all volunteers related to a particular groups ID
+            </summary>
+            <returns>
+            HEADER: 200 (OK)
+            CONTENT: all volunteers in the database, including their associated groups matched with a particular groups Id
+            </returns>
+            <param name="id">Groups Id.</param>
+            <example>
+            GET: api/VolunteerData/ListVolunteersForGroups/3
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.VolunteerDataController.AddVolunteer(GroupFlightPlanner.Models.Volunteer)">
+            <summary>
+            Adds a volunteer to the system
+            </summary>
+            <param name="Volunteer">JSON FORM DATA of a volunteer</param>
+            <returns>
+            HEADER: 201 (Created)
+            CONTENT: Voluntere ID, Volunteer Data
+            or
+            HEADER: 400 (Bad Request)
+            </returns>
+            <example>
+            POST: api/VolunteerData/AddVolunteer
+            FORM DATA: Volunteer JSON Object
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.VolunteerDataController.UpdateVolunteer(System.Int32,GroupFlightPlanner.Models.Volunteer)">
+            <summary>
+            Updates a particular volunteer in the system with POST Data input
+            </summary>
+            <param name="id">Represents the volunteer ID primary key</param>
+            <param name="Volunteer">JSON FORM DATA of an volunteer</param>
+            <returns>
+            HEADER: 204 (Success, No Content Response)
+            or
+            HEADER: 400 (Bad Request)
+            or
+            HEADER: 404 (Not Found)
+            </returns>
+            <example>
+            POST: api/VolunteerData/UpdateVolunteer/5
+            FORM DATA: volunteer JSON Object
+            </example>
+        </member>
+        <member name="M:GroupFlightPlanner.Controllers.VolunteerDataController.DeleteVolunteer(System.Int32)">
+            <summary>
+            Deletes an volunteer from the system by it's ID.
+            </summary>
+            <param name="id">The primary key of the Volunteer</param>
+            <returns>
+            HEADER: 200 (OK)
+            or
+            HEADER: 404 (NOT FOUND)
+            </returns>
+            <example>
+            POST: api/VolunteerData/DeleteVolunteer/5
+            FORM DATA: (empty)
+            </example>
+        </member>
+    </members>
+</doc>
