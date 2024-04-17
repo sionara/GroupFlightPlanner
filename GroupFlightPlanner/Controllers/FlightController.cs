@@ -179,7 +179,8 @@ namespace GroupFlightPlanner.Controllers
             //information of all the airlines and airplanes in the system 
 
             //instance of ViewModel
-            AddFlight ViewModel = new AddFlight();
+            //I changed it to the  UpdateFlight ViewModel, because this model has the properties of the AirlinesOptions, AirplanesOptions and also the SelectedFlight whch I need for the validation on the client side
+            UpdateFlight ViewModel = new UpdateFlight();
 
             //1. GET api/AirlineData/ListAirlines
             string url = "AirlineData/ListAirlines";

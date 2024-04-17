@@ -10,28 +10,44 @@
         <input type="text" name="AirplaneId" value="@Model.AirplaneId" style="display:none" />
     </div>
     <div class="mb-2">
-        <label>Airplane Model : </label> <input type="text" name="AirplaneModel" value="@Model.AirplaneModel" class="input-forms" />
+        <label>Airplane Model : </label> <input type="text" name="AirplaneModel" value="@Model.AirplaneModel" class="input-forms" id="AirplaneModel" data-val="true" data-val-required="Please Update the Airplane Model." />
+
+        @Html.ValidationMessageFor(model => model.AirplaneModel, "", new { @class = "text-danger", data_valmsg_for = "AirplaneModel" })
     </div>
     <div class="mb-2">
-        <label>Registration Number : </label> <input type="text" name="RegistrationNum" value="@Model.RegistrationNum" class="input-forms" />
+        <label>Registration Number : </label> <input type="text" name="RegistrationNum" value="@Model.RegistrationNum" class="input-forms" id="RegistrationNum" data-val="true" data-val-required="Please Update the Registration Number." />
+
+        @Html.ValidationMessageFor(model => model.RegistrationNum, "", new { @class = "text-danger", data_valmsg_for = "RegistrationNum" })
     </div>
     <div class="mb-2">
-        <label>Manufacturer : </label> <input type="text" name="ManufacturerName" value="@Model.ManufacturerName" class="input-forms" />
+        <label>Manufacturer : </label> <input type="text" name="ManufacturerName" value="@Model.ManufacturerName" class="input-forms" id="ManufacturerName" data-val="true" data-val-required="Please Update the Manufacturer Name." />
+
+        @Html.ValidationMessageFor(model => model.ManufacturerName, "", new { @class = "text-danger", data_valmsg_for = "ManufacturerName" })
     </div>
     <div class="mb-2">
-        <label>Manufacture Year : </label> <input type="date" name="ManufactureYear" value="@Model.ManufactureYear.Date.ToString("yyyy-MM-dd")" class="input-forms" />
+        <label>Manufacture Year : </label> <input type="date" name="ManufactureYear" value="@Model.ManufactureYear.Date.ToString("yyyy-MM-dd")" class="input-forms" id="ManufactureYear" data-val="true" data-val-required="Please Update the Manufacture Year." />
+
+        @Html.ValidationMessageFor(model => model.ManufactureYear, "", new { @class = "text-danger", data_valmsg_for = "ManufactureYear" })
     </div>
     <div class="mb-2">
-        <label>Max Passengers : </label> <input type="number" name="MaxPassenger" min="0" value="@Model.MaxPassenger" class="input-forms" />
+        <label>Max Passengers : </label> <input type="number" name="MaxPassenger" min="0" value="@Model.MaxPassenger" class="input-forms" id="MaxPassenger" data-val="true" data-val-required="Please Update the Max Passenger." />
+
+        @Html.ValidationMessageFor(model => model.MaxPassenger, "", new { @class = "text-danger", data_valmsg_for = "MaxPassenger" })
     </div>
     <div class="mb-2">
-        <label>Engine Model : </label> <input type="text" name="EngineModel" value="@Model.EngineModel" class="input-forms" />
+        <label>Engine Model : </label> <input type="text" name="EngineModel" value="@Model.EngineModel" class="input-forms" id="EngineModel" data-val="true" data-val-required="Please Update the Engine Model." />
+
+        @Html.ValidationMessageFor(model => model.EngineModel, "", new { @class = "text-danger", data_valmsg_for = "EngineModel" })
     </div>
     <div class="mb-2">
-        <label>Speed : </label> <input type="number" name="Speed" step="0.01" min="0" value="@Model.Speed" class="input-forms" />
+        <label>Speed : </label> <input type="number" name="Speed" step="0.01" min="0" value="@Model.Speed" class="input-forms" id="Speed" data-val="true" data-val-required="Please Update the Speed of the Aiplane." />
+
+        @Html.ValidationMessageFor(model => model.Speed, "", new { @class = "text-danger", data_valmsg_for = "Speed" })
     </div>
     <div class="mb-2">
-        <label>Range : </label> <input type="number" name="Range" step="0.01" min="0" value="@Model.Range" class="input-forms" />
+        <label>Range : </label> <input type="number" name="Range" step="0.01" min="0" value="@Model.Range" class="input-forms" id="Range" data-val="true" data-val-required="Please Update the Range of the Ariplane." />
+
+        @Html.ValidationMessageFor(model => model.Range, "", new { @class = "text-danger", data_valmsg_for = "Range" })
     </div>
 
     <div>

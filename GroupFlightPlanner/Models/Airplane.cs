@@ -12,20 +12,28 @@ namespace GroupFlightPlanner.Models
         [Key]
         public int AirplaneId { get; set; }
 
+        [Required]
         public string AirplaneModel { get; set; }
 
+        [Required]
         public string RegistrationNum { get; set; }
 
+        [Required]
         public string ManufacturerName { get; set; }
 
+        [Required]
         public DateTime ManufactureYear { get; set; }
 
+        [Required]
         public int MaxPassenger { get; set; }
 
+        [Required]
         public string EngineModel { get; set; }
 
+        [Required]
         public decimal Speed { get; set; }
 
+        [Required]
         public decimal Range { get; set; }
     }
 

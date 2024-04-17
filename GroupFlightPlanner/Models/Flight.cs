@@ -13,24 +13,34 @@ namespace GroupFlightPlanner.Models
         [Key]
         public int FlightId { get; set; }
 
+        [Required]
         public string FlightNumber { get; set; }
 
+        [Required]
         public string From { get; set; }
 
+        [Required]
         public string To { get; set; }
 
+        [Required]
         public string DepartureAirport { get; set; }
 
+        [Required]
         public string DestinationAirport { get; set; }
 
+        [Required]
         public DateTime DepartureTime { get; set; }
 
+        [Required]
         public DateTime ArrivalTime { get; set; }
 
+        [Required]
         public Decimal TicketPrice { get; set; }
 
+        [Required]
         public string TimeZoneFrom { get; set; }
 
+        [Required]
         public string TimeZoneTo { get; set; }
 
         //Foreign key that refers the Airline entity

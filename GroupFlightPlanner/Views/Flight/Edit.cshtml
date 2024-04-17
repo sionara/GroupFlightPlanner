@@ -10,34 +10,54 @@
         <input type="text" name="FlightId" value="@Model.SelectedFlight.FlightId" style="display:none" />
     </div>
     <div class="mb-2">
-        <label>Flight Number : </label> <input type="text" name="FlightNumber" value="@Model.SelectedFlight.FlightNumber" class="input-forms" />
+        <label>Flight Number : </label> <input type="text" name="FlightNumber" value="@Model.SelectedFlight.FlightNumber" class="input-forms" id="FlightNumber" data-val="true" data-val-required="Please Update the Flight Number." />
+
+        @Html.ValidationMessageFor(model => model.SelectedFlight.FlightNumber, "", new { @class = "text-danger", data_valmsg_for = "FlightNumber" })
     </div>
     <div class="mb-2">
-        <label>From : </label> <input type="text" name="From" value="@Model.SelectedFlight.From" class="input-forms" />
+        <label>From : </label> <input type="text" name="From" value="@Model.SelectedFlight.From" class="input-forms" id="From" data-val="true" data-val-required="Please Update the Departure City." />
+
+        @Html.ValidationMessageFor(model => model.SelectedFlight.From, "", new { @class = "text-danger", data_valmsg_for = "From" })
     </div>
     <div class="mb-2">
-        <label>To : </label> <input type="text" name="To" value="@Model.SelectedFlight.To" class="input-forms" />
+        <label>To : </label> <input type="text" name="To" value="@Model.SelectedFlight.To" class="input-forms" id="To" data-val="true" data-val-required="Please Update the Arrival City." />
+
+        @Html.ValidationMessageFor(model => model.SelectedFlight.To, "", new { @class = "text-danger", data_valmsg_for = "To" })
     </div>
     <div class="mb-2">
-        <label>Departure Airport : </label> <input type="text" name="DepartureAirport" value="@Model.SelectedFlight.DepartureAirport" class="input-forms" />
+        <label>Departure Airport : </label> <input type="text" name="DepartureAirport" value="@Model.SelectedFlight.DepartureAirport" class="input-forms" id="DepartureAirport" data-val="true" data-val-required="Please Update the Departure Airport." />
+
+        @Html.ValidationMessageFor(model => model.SelectedFlight.DepartureAirport, "", new { @class = "text-danger", data_valmsg_for = "DepartureAirport" })
     </div>
     <div class="mb-2">
-        <label>Destination Airport : </label> <input type="text" name="DestinationAirport" value="@Model.SelectedFlight.DestinationAirport" class="input-forms" />
+        <label>Destination Airport : </label> <input type="text" name="DestinationAirport" value="@Model.SelectedFlight.DestinationAirport" class="input-forms" id="DestinationAirport" data-val="true" data-val-required="Please Update the Destination Airport." />
+
+        @Html.ValidationMessageFor(model => model.SelectedFlight.DestinationAirport, "", new { @class = "text-danger", data_valmsg_for = "DestinationAirport" })
     </div>
     <div class="mb-2">
-        <label>Departure Time : </label> <input type="datetime-local" name="DepartureTime" value="@Model.SelectedFlight.DepartureTime.ToString("yyyy-MM-ddT"+@Model.SelectedFlight.DepartureTime.TimeOfDay+"")" class="input-forms" />
+        <label>Departure Time : </label> <input type="datetime-local" name="DepartureTime" value="@Model.SelectedFlight.DepartureTime.ToString("yyyy-MM-ddT"+@Model.SelectedFlight.DepartureTime.TimeOfDay+"")" class="input-forms" id="DepartureTime" data-val="true" data-val-required="Please Update the Departure Time." />
+
+        @Html.ValidationMessageFor(model => model.SelectedFlight.DepartureTime, "", new { @class = "text-danger", data_valmsg_for = "DepartureTime" })
     </div>
     <div class="mb-2">
-        <label>Arrival Time : </label> <input type="datetime-local" name="ArrivalTime" value="@Model.SelectedFlight.ArrivalTime.ToString("yyyy-MM-ddT"+@Model.SelectedFlight.ArrivalTime.TimeOfDay+"")" class="input-forms" />
+        <label>Arrival Time : </label> <input type="datetime-local" name="ArrivalTime" value="@Model.SelectedFlight.ArrivalTime.ToString("yyyy-MM-ddT"+@Model.SelectedFlight.ArrivalTime.TimeOfDay+"")" class="input-forms" id="ArrivalTime" data-val="true" data-val-required="Please Update the Arrival Time." />
+
+        @Html.ValidationMessageFor(model => model.SelectedFlight.ArrivalTime, "", new { @class = "text-danger", data_valmsg_for = "ArrivalTime" })
     </div>
     <div class="mb-2">
-        <label>Ticket Price : </label> <input type="number" name="TicketPrice" step="0.01" min="0" value="@Model.SelectedFlight.TicketPrice" class="input-forms" />
+        <label>Ticket Price : </label> <input type="number" name="TicketPrice" step="0.01" min="0" value="@Model.SelectedFlight.TicketPrice" class="input-forms" id="TicketPrice" data-val="true" data-val-required="Please Update the Ticket Price." />
+
+        @Html.ValidationMessageFor(model => model.SelectedFlight.TicketPrice, "", new { @class = "text-danger", data_valmsg_for = "TicketPrice" })
     </div>
     <div class="mb-2">
-        <label>Time Zone From : </label> <input type="text" name="TimeZoneFrom" value="@Model.SelectedFlight.TimeZoneFrom" class="input-forms" />
+        <label>Time Zone From : </label> <input type="text" name="TimeZoneFrom" value="@Model.SelectedFlight.TimeZoneFrom" class="input-forms" id="TimeZoneFrom" data-val="true" data-val-required="Please Update the Time Zone of Departure City." />
+
+        @Html.ValidationMessageFor(model => model.SelectedFlight.TimeZoneFrom, "", new { @class = "text-danger", data_valmsg_for = "TimeZoneFrom" })
     </div>
     <div class="mb-2">
-        <label>Time Zone To : </label> <input type="text" name="TimeZoneTo" value="@Model.SelectedFlight.TimeZoneTo" class="input-forms" />
+        <label>Time Zone To : </label> <input type="text" name="TimeZoneTo" value="@Model.SelectedFlight.TimeZoneTo" class="input-forms" id="TimeZoneTo" data-val="true" data-val-required="Please Update the Time Zone of Arrival City." />
+
+        @Html.ValidationMessageFor(model => model.SelectedFlight.TimeZoneTo, "", new { @class = "text-danger", data_valmsg_for = "TimeZoneTo" })
     </div>
 
     <div class="mb-2">

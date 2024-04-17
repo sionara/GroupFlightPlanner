@@ -12,18 +12,25 @@ namespace GroupFlightPlanner.Models
         [Key]
         public int AirlineId { get; set; }
 
+        [Required]
         public string AirlineName { get; set; }
 
+        [Required]
         public string Country { get; set; }
 
+        [Required]
         public string Headquarters { get; set; }
 
+        [Required]
         public string FounderName { get; set; }
 
+        [Required]
         public DateTime FoundingYear { get; set; }
 
+        [Required]
         public string Website { get; set; }
 
+        [Required]
         public string ContactNumber { get; set; }
     }
 

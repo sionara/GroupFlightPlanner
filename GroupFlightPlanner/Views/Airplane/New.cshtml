@@ -1,4 +1,4 @@
-﻿
+﻿@model GroupFlightPlanner.Models.Airplane
 @{
     ViewBag.Title = "New";
 }
@@ -7,28 +7,44 @@
 
 <form action="/Airplane/Create" method="POST">
     <div class="mb-2">
-        <label>Airplane Model : </label> <input type="text" name="AirplaneModel" class="input-forms" />
+        <label>Airplane Model : </label> <input type="text" name="AirplaneModel" class="input-forms" id="AirplaneModel" data-val="true" data-val-required="Please Enter an Airplane Model." />
+
+        @Html.ValidationMessageFor(model => model.AirplaneModel, "", new { @class = "text-danger", data_valmsg_for = "AirplaneModel" })
     </div>
     <div class="mb-2">
-        <label>Registration Number : </label> <input type="text" name="RegistrationNum" class="input-forms" />
+        <label>Registration Number : </label> <input type="text" name="RegistrationNum" class="input-forms" id="RegistrationNum" data-val="true" data-val-required="Please Enter the Registration Number." />
+
+        @Html.ValidationMessageFor(model => model.RegistrationNum, "", new { @class = "text-danger", data_valmsg_for = "RegistrationNum" })
     </div>
     <div class="mb-2">
-        <label>Manufacturer : </label> <input type="text" name="ManufacturerName" class="input-forms" />
+        <label>Manufacturer : </label> <input type="text" name="ManufacturerName" class="input-forms" id="ManufacturerName" data-val="true" data-val-required="Please Enter the Manufacturer Name." />
+
+        @Html.ValidationMessageFor(model => model.ManufacturerName, "", new { @class = "text-danger", data_valmsg_for = "ManufacturerName" })
     </div>
     <div class="mb-2">
-        <label>Manufacture Year : </label> <input type="date" name="ManufactureYear" class="input-forms" />
+        <label>Manufacture Year : </label> <input type="date" name="ManufactureYear" class="input-forms" id="ManufactureYear" data-val="true" data-val-required="Please Enter the Manufacture Year." />
+
+        @Html.ValidationMessageFor(model => model.ManufactureYear, "", new { @class = "text-danger", data_valmsg_for = "ManufactureYear" })
     </div>
     <div class="mb-2">
-        <label>Max Passengers : </label> <input type="number" name="MaxPassenger" min="0" class="input-forms" />
+        <label>Max Passengers : </label> <input type="number" name="MaxPassenger" min="0" class="input-forms" id="MaxPassenger" data-val="true" data-val-required="Please Enter the Max Passenger." />
+
+        @Html.ValidationMessageFor(model => model.MaxPassenger, "", new { @class = "text-danger", data_valmsg_for = "MaxPassenger" })
     </div>
     <div class="mb-2">
-        <label>Engine Model : </label> <input type="text" name="EngineModel" class="input-forms" />
+        <label>Engine Model : </label> <input type="text" name="EngineModel" class="input-forms" id="EngineModel" data-val="true" data-val-required="Please Enter the Engine Model." />
+
+        @Html.ValidationMessageFor(model => model.EngineModel, "", new { @class = "text-danger", data_valmsg_for = "EngineModel" })
     </div>
     <div class="mb-2">
-        <label>Speed : </label> <input type="number" name="Speed" step="0.01" min="0" class="input-forms" />
+        <label>Speed : </label> <input type="number" name="Speed" step="0.01" min="0" class="input-forms" id="Speed" data-val="true" data-val-required="Please Enter the Speed of the Aiplane." />
+
+        @Html.ValidationMessageFor(model => model.Speed, "", new { @class = "text-danger", data_valmsg_for = "Speed" })
     </div>
     <div class="mb-2">
-        <label>Range : </label> <input type="number" name="Range" step="0.01" min="0" class="input-forms" />
+        <label>Range : </label> <input type="number" name="Range" step="0.01" min="0" class="input-forms" id="Range" data-val="true" data-val-required="Please Enter the Range of the Ariplane." />
+
+        @Html.ValidationMessageFor(model => model.Range, "", new { @class = "text-danger", data_valmsg_for = "Range" })
     </div>
 
     <div>

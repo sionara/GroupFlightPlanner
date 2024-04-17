@@ -1,4 +1,4 @@
-﻿
+﻿@model GroupFlightPlanner.Models.Airline
 @{
     ViewBag.Title = "Create";
 }
@@ -7,25 +7,39 @@
 
 <form action="/Airline/Create" method="POST">
     <div class="mb-2">
-        <label>Name Airline : </label> <input type="text" name="AirlineName" class="input-forms" />
+        <label>Name Airline : </label> <input type="text" name="AirlineName" class="input-forms" id="AirlineName" data-val="true" data-val-required="Please Enter an Airline Name." />
+
+        @Html.ValidationMessageFor(model => model.AirlineName, "", new { @class = "text-danger", data_valmsg_for = "AirlineName" })
     </div>
     <div class="mb-2">
-        <label>Country : </label> <input type="text" name="Country" class="input-forms" />
+        <label>Country : </label> <input type="text" name="Country" class="input-forms" id="Country" data-val="true" data-val-required="Please Enter a Country." />
+
+        @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger", data_valmsg_for = "Country" })
     </div>
     <div class="mb-2">
-        <label>Headquarters : </label> <input type="text" name="Headquarters" class="input-forms" />
+        <label>Headquarters : </label> <input type="text" name="Headquarters" class="input-forms" id="Headquarters" data-val="true" data-val-required="Please Enter the Headquarters." />
+
+        @Html.ValidationMessageFor(model => model.Headquarters, "", new { @class = "text-danger", data_valmsg_for = "Headquarters" })
     </div>
     <div class="mb-2">
-        <label>Founder : </label> <input type="text" name="FounderName" class="input-forms" />
+        <label>Founder : </label> <input type="text" name="FounderName" class="input-forms" id="FounderName" data-val="true" data-val-required="Please Enter the Founder Name." />
+
+        @Html.ValidationMessageFor(model => model.FounderName, "", new { @class = "text-danger", data_valmsg_for = "FounderName" })
     </div>
     <div class="mb-2">
-        <label>Founding Year : </label> <input type="date" name="FoundingYear" class="input-forms" />
+        <label>Founding Year : </label> <input type="date" name="FoundingYear" class="input-forms" id="FoundingYear" data-val="true" data-val-required="Please Enter the Founding Year." />
+
+        @Html.ValidationMessageFor(model => model.FoundingYear, "", new { @class = "text-danger", data_valmsg_for = "FoundingYear" })
     </div>
     <div class="mb-2">
-        <label>Website : </label> <input type="text" name="Website" class="input-forms" />
+        <label>Website : </label> <input type="text" name="Website" class="input-forms" id="Website" data-val="true" data-val-required="Please Enter the Website of the Airline." />
+
+        @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-danger", data_valmsg_for = "Website" })
     </div>
     <div class="mb-2">
-        <label>Contact Number : </label> <input type="tel" name="ContactNumber" class="input-forms" />
+        <label>Contact Number : </label> <input type="tel" name="ContactNumber" class="input-forms" id="ContactNumber" data-val="true" data-val-required="Please Enter the Contact Number." />
+
+        @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger", data_valmsg_for = "ContactNumber" })
     </div>
 
     <div>

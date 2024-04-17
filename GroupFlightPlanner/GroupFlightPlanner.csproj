@@ -269,6 +269,18 @@
     <Compile Include="Migrations\202404041352018_locations-flights.Designer.cs">
       <DependentUpon>202404041352018_locations-flights.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404170500514_airline-validation.cs" />
+    <Compile Include="Migrations\202404170500514_airline-validation.Designer.cs">
+      <DependentUpon>202404170500514_airline-validation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404170524340_airplane-validation.cs" />
+    <Compile Include="Migrations\202404170524340_airplane-validation.Designer.cs">
+      <DependentUpon>202404170524340_airplane-validation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404170543161_flight-validation.cs" />
+    <Compile Include="Migrations\202404170543161_flight-validation.Designer.cs">
+      <DependentUpon>202404170543161_flight-validation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -503,6 +515,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404041352018_locations-flights.resx">
       <DependentUpon>202404041352018_locations-flights.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404170500514_airline-validation.resx">
+      <DependentUpon>202404170500514_airline-validation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404170524340_airplane-validation.resx">
+      <DependentUpon>202404170524340_airplane-validation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404170543161_flight-validation.resx">
+      <DependentUpon>202404170543161_flight-validation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
