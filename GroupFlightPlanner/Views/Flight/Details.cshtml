@@ -6,9 +6,12 @@
 <div class="redirect-features">
     <a href="/Flight/List" class="btn btn-primary">Go back to list</a>
 
-    <a href="/Flight/Edit/@Model.SelectedFlight.FlightId" class="btn btn-warning">Update <span class="fa-solid fa-arrows-rotate"></span></a>
+    @if (Model.IsAdmin)
+    {
+        <a href="/Flight/Edit/@Model.SelectedFlight.FlightId" class="btn btn-warning">Update <span class="fa-solid fa-arrows-rotate"></span></a>
 
-    <a href="/Flight/DeleteConfirm/@Model.SelectedFlight.FlightId" class="btn btn-danger">Delete <span class="fa-solid fa-trash icon-trash"></span></a>
+        <a href="/Flight/DeleteConfirm/@Model.SelectedFlight.FlightId" class="btn btn-danger">Delete <span class="fa-solid fa-trash icon-trash"></span></a>
+    }
 </div>
 
 <h2 class="mt-2">Details of Flight Number: <span class="title-entity">@Model.SelectedFlight.FlightNumber</span></h2>

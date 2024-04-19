@@ -337,6 +337,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\ViewModels\AddFlight.cs" />
+    <Compile Include="Models\ViewModels\AirlineList.cs" />
+    <Compile Include="Models\ViewModels\AirplaneList.cs" />
     <Compile Include="Models\ViewModels\CreateEvent.cs" />
     <Compile Include="Models\ViewModels\DetailsActivity.cs" />
     <Compile Include="Models\ViewModels\DetailsAirline.cs" />
@@ -347,6 +349,7 @@
     <Compile Include="Models\ViewModels\DetailsLocation.cs" />
     <Compile Include="Models\ViewModels\DetailsOrganization.cs" />
     <Compile Include="Models\ViewModels\DetailsVolunteer.cs" />
+    <Compile Include="Models\ViewModels\FlightList.cs" />
     <Compile Include="Models\ViewModels\UpdateEvent.cs" />
     <Compile Include="Models\ViewModels\UpdateFlight.cs" />
     <Compile Include="Models\ViewModels\UpdateVolunteer.cs" />
