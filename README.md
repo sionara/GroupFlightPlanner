@@ -67,3 +67,21 @@ Worked with association between Events and Groups.
        - ListGroupsNotJoinInEvent
 5. Showed associations of events and groups, and events and groups have not been unassociated on the view of event details and group details.
 
+## Technologies used for the project:
+   - ASP.NET Entity Framework
+   - Bootstrap CSS Framework
+   - Vanilla CSS
+   - LINQ
+   - Web API Controllers
+   - MVC Controllers
+
+## Getting Started:
+   1. Clone the repository to your local machine.
+   2. Open the code with Visual Studio
+   3. Run the Project and if you get an Error due to the target framework
+      - Change target framework to 4.7.1
+      - Change back to 4.7.2
+   4. Make sure there is an App_Data folder in the project (Right click solution > View in File Explorer)
+      - If there is no folder create a folder called App_Data
+   5. Run Update-Database by typing it on Tools > Nuget Package Manager > Package Manage Console
+   6. Check that the database is created using (View > SQL Server Object Explorer > MSSQLLocalDb > ..)
