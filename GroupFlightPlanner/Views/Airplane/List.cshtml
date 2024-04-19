@@ -1,11 +1,14 @@
-﻿@model IEnumerable<GroupFlightPlanner.Models.AirplaneDto>
+﻿@model GroupFlightPlanner.Models.ViewModels.AirplaneList
 @{
     ViewBag.Title = "List";
 }
 
 <h2>List of Airplanes in the system</h2>
 
-<a href="/Airplane/New" class="btn btn-success">New Airplane <span class="fa-solid fa-circle-plus"></span></a>
+@if (Model.IsAdmin)
+{
+    <a href="/Airplane/New" class="btn btn-success">New Airplane <span class="fa-solid fa-circle-plus"></span></a>
+}
 
 <form action="/Airplane/List" method="GET" class="space-search">
     <div class="display-search">
@@ -15,8 +18,9 @@
 </form>
 
 <div class="container">
+    <div>IsAdmin:@Model.IsAdmin</div>
     <div class="row">
-        @foreach (var airplane in Model)
+        @foreach (var airplane in Model.Airplanes)
         {
             <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card">

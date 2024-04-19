@@ -5,11 +5,9 @@ using System.Web;
 
 namespace GroupFlightPlanner.Models.ViewModels
 {
-    public class DetailsAirplane
+    public class AirplaneList
     {
-
         public bool IsAdmin { get; set; }
-        public AirplaneDto SelectedAirplane { get; set; }
-        public IEnumerable<FlightDto> RelatedFlights { get; set; }
+        public IEnumerable<AirplaneDto> Airplanes { get; set; }
     }
 }

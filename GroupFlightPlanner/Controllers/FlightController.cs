@@ -82,6 +82,10 @@ namespace GroupFlightPlanner.Controllers
             //communicate with the flight data api to retrieve a list of flights
             //curl https://localhost:44380/api/FlightData/ListFlights
 
+            FlightList ViewModel = new FlightList();
+            if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) ViewModel.IsAdmin = true;
+            else ViewModel.IsAdmin = false;
+
             string url = "FlightData/ListFlights/" + FlightSearch;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
@@ -89,7 +93,9 @@ namespace GroupFlightPlanner.Controllers
 
             IEnumerable<FlightDto> flights = response.Content.ReadAsAsync<IEnumerable<FlightDto>>().Result;
 
-            return View(flights);
+            ViewModel.Flights = flights;
+
+            return View(ViewModel);
         }
 
         /// <summary>
@@ -112,6 +118,9 @@ namespace GroupFlightPlanner.Controllers
 
             //instance of ViewModel
             DetailsFlight ViewModel = new DetailsFlight();
+
+            if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) ViewModel.IsAdmin = true;
+            else ViewModel.IsAdmin = false;
 
             string url = "FlightData/FindFlight/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -173,7 +182,7 @@ namespace GroupFlightPlanner.Controllers
         /// <returns>
         /// Thi method provide the a ViewModel of type AddFlight, which holds the Airlines Options and Airplanes Options, so this properties will given to the VIew New
         /// </returns>
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult New()
         {
             //information of all the airlines and airplanes in the system 
@@ -212,7 +221,7 @@ namespace GroupFlightPlanner.Controllers
         /// <returns>
         /// Returns the user to either the List View or the Error View, depending on the response StatusCode
         /// </returns>
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(Flight flight)
         {
@@ -252,7 +261,7 @@ namespace GroupFlightPlanner.Controllers
         /// <returns>
         /// Returns a ViewModel of type UpdateFlight which holds the iformation of the flight to edit (ViewModel.SelectedFlight), the list of Airlines (ViewModel.AirlinesOptions) and the list of Airplanes (ViewModel.AirplanesOptions)
         /// </returns>
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             //instance of ViewModel
@@ -291,7 +300,7 @@ namespace GroupFlightPlanner.Controllers
         /// If the update is satisfactory the user will be redirected to the flight list, otherwise it will be sent to the error page
         /// </returns>
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Update(int id, Flight flight)
         {
             GetApplicationCookie();//get token credentials
@@ -329,7 +338,7 @@ namespace GroupFlightPlanner.Controllers
         /// <returns>
         /// Returns a view that provides information about the flight to delete, this is through the selectedflight that was found by the supplied id
         /// </returns>
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "FlightData/FindFlight/" + id;
@@ -351,7 +360,7 @@ namespace GroupFlightPlanner.Controllers
         /// If the IsSuccessStatusCode is false, this will indicate that the record was not deleted and the user will be directed to the View Error 
         /// </returns>
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             GetApplicationCookie();//get token credentials

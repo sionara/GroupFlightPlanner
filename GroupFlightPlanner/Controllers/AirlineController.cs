@@ -82,6 +82,10 @@ namespace GroupFlightPlanner.Controllers
             //communicate with the airline data api to retrieve a list of airlines
             //curl https://localhost:44380/api/AirlineData/ListAirlines
 
+            AirlineList ViewModel = new AirlineList();
+            if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) ViewModel.IsAdmin = true;
+            else ViewModel.IsAdmin = false;
+
             string url = "AirlineData/ListAirlines/" + AirlineSearch;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
@@ -94,7 +98,9 @@ namespace GroupFlightPlanner.Controllers
             //Debug.WriteLine("Number of airlines received : ");
             //Debug.WriteLine(airlines.Count());
 
-            return View(airlines);
+            ViewModel.Airlines = airlines;
+
+            return View(ViewModel);
         }
 
         /// <summary>
@@ -116,6 +122,9 @@ namespace GroupFlightPlanner.Controllers
 
             //instance of ViewModel
             DetailsAirline ViewModel = new DetailsAirline();
+
+            if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) ViewModel.IsAdmin = true;
+            else ViewModel.IsAdmin = false;
 
             string url = "AirlineData/FindAirline/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -163,7 +172,7 @@ namespace GroupFlightPlanner.Controllers
         /// <returns>
         /// Returns the view of the form so that the user can insert a new airline.
         /// </returns>
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult New()
         {
             return View();
@@ -185,7 +194,7 @@ namespace GroupFlightPlanner.Controllers
         /// Returns the user to either the List View or the Error View, depending on the response StatusCode
         /// </returns>
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Airline airline)
         {
             GetApplicationCookie();
@@ -224,7 +233,7 @@ namespace GroupFlightPlanner.Controllers
         /// <returns>
         /// Returns the view with the form filled with the information of the airline to update
         /// </returns>
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             string url = "AirlineData/FindAirline/" + id;
@@ -252,7 +261,7 @@ namespace GroupFlightPlanner.Controllers
         /// If the update is satisfactory the user will be redirected to the airline list, otherwise it will be sent to the error page
         /// </returns>
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Update(int id, Airline airline)
         {
             GetApplicationCookie();
@@ -290,7 +299,7 @@ namespace GroupFlightPlanner.Controllers
         /// <returns>
         /// Returns a view that provides information about the airline to delete, this is through the selectedairline that was found by the supplied id
         /// </returns>
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "AirlineData/FindAirline/" + id;
@@ -312,7 +321,7 @@ namespace GroupFlightPlanner.Controllers
         /// If the IsSuccessStatusCode is false, this will indicate that the record was not deleted and the user will be directed to the View Error 
         /// </returns>
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             GetApplicationCookie();

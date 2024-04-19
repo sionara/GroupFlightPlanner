@@ -407,7 +407,7 @@ namespace GroupFlightPlanner.Controllers
         /// </returns>
         [ResponseType(typeof(Flight))]
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult DeleteFlight(int id)
         {
             Flight Flight = db.Flights.Find(id);
@@ -455,7 +455,7 @@ namespace GroupFlightPlanner.Controllers
         /// </returns>
         [ResponseType(typeof(Flight))]
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult AddFlight(Flight Flight)
         {
             if (!ModelState.IsValid)
@@ -514,7 +514,7 @@ namespace GroupFlightPlanner.Controllers
         /// </returns>
         [ResponseType(typeof(void))]
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult UpdateFlight(int id, Flight Flight)
         {
             Debug.WriteLine("Update Flight method starts here");

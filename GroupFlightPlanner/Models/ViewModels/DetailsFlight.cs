@@ -17,5 +17,7 @@ namespace GroupFlightPlanner.Models.ViewModels
 
         //the related locations to a flight
         public IEnumerable<LocationDto> RelatedLocations { get; set; }
+
+        public bool IsAdmin { get; set; }
     }
 }
