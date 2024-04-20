@@ -2,6 +2,49 @@
 
 A C# and ASP.NET web app which displays information about treeplanting events, flights to that event location, and volunteers who are going to the event.
 
+### Feedback Airlines - Airplanes 
+
+In order to create a new relationship between **Airplanes** and **Airlines** to observe the Airplanes that belong to an Airline, a **1-M relationship** must be created (**1 Airline has many Airplanes**, and **1 Airplane belongs to an Airline**)
+
+**Steps:**
+
+1.  Go to Airplane Model and create a Foreign Key that refers to the Airline entity
+```
+[ForeignKey("Airline")]
+public int AirlineId { get; set; }
+public virtual Airline Airline { get; set; }
+```
+2.  Make sure that you have ```using System.ComponentModel.DataAnnotations.Schema;``` on top of the Airplane Model
+3.  Make sure that the migrations are enabled, for this open the Package Manager Console, and run ```enable-migrations```
+4.  Perform a new migration, this migration will create a new column called AirlineId which will indicate which Airline the Airplane belongs to. ```add-migration airplaneFK-ariplane```
+5.  Check that the file **IdentityModels.cs** has declared both entities
+6.  Update the database ```update-database```
+7.  Now when you want to create an Airplane you must enter the ID of the Airline. Update the **airplane.json** which is the file to test the API and add the ID corresponding to the Airline, this will allow you to enter a new Airplane belonging to an Airline through the use of the API
+8.  Create a new input which will be a dropdown where you can see all the airlines
+```
+@foreach (var airline in Model.AirlinesOptions){
+    @airline.AirlineName
+}
+```
+9.  In the method **New** of AirplaneConroller call the list of Airlines API to be able to display their information in the dropdown. When users create a New Airplane they can choose to which Airline the Airplane belongs, the dropdown will take the ID of the Airline chosen and assign the ID of the Airline to the new Airplane
+10.  Now create a method called **ListAirplanesForAirline** in the AirplaneDataController and get the list of Airplanes and filter for the AirlineId given ```List Airplanes= db.Airplanes.Where(p =>p.AirlineId == id).ToList();```
+11.  Later call this method from the **Airline Controller** to obtain the list and assign it to the **ViewModel.RelatedAirplanes** parameter
+12.  Lastly, go to the Airlines **Details.cshtml** and add this piece of code to see the list of Airplanes belonging to an Airline
+```
+<ol>
+    @foreach (var airplane in Model.RelatedAirplanes)
+    {
+        <li>
+            <a href="/Airplane/Details/@airplane.AirplaneId">
+                Registration Num: <span class="related-entities">@airplane.RegistrationNum</span> 
+                <br /> 
+                Model: <span class="related-entities">@airplane.AirplaneModel</span>
+            </a>
+        </li>
+    }
+</ol>
+```
+
 ### Collaboration Together (Sion, Arnulfo, Nhi)
 - Setting up the MVP of the 3 Passion Projects in just one project
 
