@@ -1,5 +1,6 @@
 ﻿namespace GroupFlightPlanner.Migrations
 {
+    using MySql.Data.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -11,6 +12,7 @@
         {
             AutomaticMigrationsEnabled = false;
             ContextKey = "GroupFlightPlanner.Models.ApplicationDbContext";
+            SetSqlGenerator("MySql.Data.MySqlClient", new MySqlMigrationSqlGenerator());
         }
 
         protected override void Seed(GroupFlightPlanner.Models.ApplicationDbContext context)
